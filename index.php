@@ -45,7 +45,7 @@
               <li class="active"><a href="javascript:void(0)">购票</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="./login.html">欢迎登陆</a></li>
+            <li><a href="./login.html">欢迎,<?php session_start();echo $_SESSION['user'];?></a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
