@@ -75,6 +75,7 @@
               <option value="1">上海</option>
             </select>
             <label for="name">日期</label>
+<<<<<<< HEAD:buy_ticket.html
             <div class="form-group">
                 <div class="input-group date form_date col-md-12" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                     <input class="form-control" size="10" type="text" value="" readonly>
@@ -82,6 +83,12 @@
 					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
 				<input type="hidden" id="dtp_input2" value="" />
+=======
+            <select class="form-control" name="date">
+              <option value="1">头等舱</option>
+              <option value="2">经济舱</option>
+            </select>
+>>>>>>> ffb174a7dfa9e4c74d2ef4717da8331abc429f12:buy_ticket.php
               <label for="name"></label>
               <div class="form-group">
                 <button type="submit" class="btn btn-primary form-control">查询</button>
@@ -110,13 +117,15 @@
                   <th>到达机场</th>
                   <th>出发时间</th>
                   <th>到达时间</th>
-                  <th>机票价格</th>
+                  <th>头等舱价格</th>
+                  <th>经济舱价格</th>
                   <th>订票</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th>null</th>
+                  <td>null</td>
                   <td>null</td>
                   <td>null</td>
                   <td>null</td>
