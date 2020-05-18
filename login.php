@@ -14,7 +14,7 @@ $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
 //$row = $result->fetch_assoc();
 
-$query = "SELECT name,password,salt FROM customer WHERE name = ?";
+$query = "SELECT name,pwd_hash,salt FROM customer WHERE name = ?";
 if ($stmt = $mysqli->prepare($query))
 {
     // 处理打算执行的SQL命令
