@@ -60,22 +60,22 @@
       </style>
       <div class="panel-heading"> 机票搜索 </div>
       <div class="panel-body">
-        <form role="form">
+        <form role="form" method="post" action="search.php">
           <div class="form-group">
             <label for="name">出发地</label>
-            <select class="form-control">
-              <option>北京</option>
-              <option>上海</option>
+            <select class="form-control" name="departure">
+              <option value="0">北京</option>
+              <option value="1">上海</option>
             </select>
             <label for="name">到达地</label>
-            <select class="form-control">
-              <option>北京</option>
-              <option>上海</option>
+            <select class="form-control" name="arrival">
+              <option value="0">北京</option>
+              <option value="1">上海</option>
             </select>
             <label for="name">仓位</label>
-            <select class="form-control">
-              <option>头等舱</option>
-              <option>经济舱</option>
+            <select class="form-control" name="type">
+              <option value="1">头等舱</option>
+              <option value="2">经济舱</option>
             </select>
               <label for="name"></label>
               <div class="form-group">
@@ -96,11 +96,11 @@
         <div class="col-md-12">
           <div class="table-responsive">
             <table class="table table-bordered ">
+
               <thead class="thead-dark">
                 <tr>
-                  <th>出发城市</th>
+                  <th>航班号</th>
                   <th>出发机场</th>
-                  <th>到达城市</th>
                   <th>到达机场</th>
                   <th>出发时间</th>
                   <th>到达时间</th>
@@ -111,7 +111,6 @@
               <tbody>
                 <tr>
                   <th>null</th>
-                  <td>null</td>
                   <td>null</td>
                   <td>null</td>
                   <td>null</td>
