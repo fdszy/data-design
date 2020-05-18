@@ -6,8 +6,7 @@ $pwd = $_POST['password'];
 $confirm = $_POST['confirm'];
 $id = $_POST['id'];
 
-if($comfirm == $pwd){
-
+if($confirm == $pwd){
 
   $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
