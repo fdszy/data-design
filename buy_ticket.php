@@ -77,7 +77,7 @@
             <label for="name">日期</label>
             <div class="form-group">
                 <div class="input-group date form_date col-md-12" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input class="form-control" size="10" type="text" value="" readonly>
+                    <input class="form-control" size="10" type="text" value="date" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>

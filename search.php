@@ -1,5 +1,5 @@
 <?php
-header ( "Content-type:text/html;charset=utf-8" ); 
+//header("Content-type:text/html;charset=utf-8"); 
 session_start();
 $cities = array('北京','上海') //others
 $departure = $_POST['departure'];
