@@ -1,4 +1,4 @@
-﻿# data-design
+﻿# database course design
 航空票务数据系统
 
 前端：bootstrap框架
