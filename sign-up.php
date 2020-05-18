@@ -16,7 +16,7 @@ $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 $salt = substr(str_shuffle("QWERTYUIOPASDFGHJKLZXCVBNM1234567890qwertyuiopasdfghjklzxcvbnm"),mt_rand(0,strlen($strs)-11),10);
 $pwd = md5($pwd,$salt);
 
-$query = "INSERT customer (id,name,password,salt,balance) VALUES (?,?,?,?,0.00)";
+$query = "INSERT customer (id,name,pwd_hash,salt,balance) VALUES (?,?,?,?,0.00)";
 if ($stmt = $mysqli->prepare($query))
 {
     $stmt->bind_param('ssss', $id,$name,$pwd,$salt);
