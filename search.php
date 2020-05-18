@@ -1,7 +1,7 @@
 <?php
 //header("Content-type:text/html;charset=utf-8"); 
 session_start();
-$cities = array('北京','上海') //others
+$cities = array('北京','上海'); //others
 $departure = $_POST['departure'];
 $arrival = $_POST['arrival'];
 $date = $_POST['date']; // 日期
@@ -24,7 +24,7 @@ if ($stmt = $mysqli->prepare($query)){
     $stmt->store_result();
     $stmt->bind_result($id);
     while ($stmt->fetch()){
-      array_push($departure_ids,$id)
+      array_push($departure_ids,$id);
     }
     $stmt->free_result();
   
@@ -33,7 +33,7 @@ if ($stmt = $mysqli->prepare($query)){
     $stmt->store_result();
     $stmt->bind_result($id);
     while ($stmt->fetch()){
-      array_push($arrival_ids,$id)
+      array_push($arrival_ids,$id);
     }
     $stmt->free_result();
 }
@@ -64,7 +64,7 @@ if ($stmt = $mysqli->prepare($query) && $stmt2 = $mysqli->prepare($query2)){
           $result['price1'] = $price1;
           $result['price2'] = $price2;          
         }
-        array_push($results,$result)
+        array_push($results,$result);
         $stmt2->free_result();
       }
       $stmt->free_result();
