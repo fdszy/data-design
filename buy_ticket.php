@@ -72,8 +72,8 @@
               <option value="0">北京</option>
               <option value="1">上海</option>
             </select>
-            <label for="name">仓位</label>
-            <select class="form-control" name="type">
+            <label for="name">日期</label>
+            <select class="form-control" name="date">
               <option value="1">头等舱</option>
               <option value="2">经济舱</option>
             </select>
@@ -104,13 +104,15 @@
                   <th>到达机场</th>
                   <th>出发时间</th>
                   <th>到达时间</th>
-                  <th>机票价格</th>
+                  <th>头等舱价格</th>
+                  <th>经济舱价格</th>
                   <th>订票</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th>null</th>
+                  <td>null</td>
                   <td>null</td>
                   <td>null</td>
                   <td>null</td>
