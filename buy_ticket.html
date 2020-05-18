@@ -8,6 +8,8 @@
   <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
   <title>航空机票管理系统</title>
   <!-- Bootstrap -->
+  <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="./static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
   <link href="./static/css/bootstrap.min.css" rel="stylesheet">
   <!-- Css -->
   <link rel="stylesheet" href="./static/css/offcanvas.css">
@@ -72,14 +74,18 @@
               <option value="0">北京</option>
               <option value="1">上海</option>
             </select>
-            <label for="name">仓位</label>
-            <select class="form-control" name="type">
-              <option value="1">头等舱</option>
-              <option value="2">经济舱</option>
-            </select>
+            <label for="name">日期</label>
+            <div class="form-group">
+                <div class="input-group date form_date col-md-12" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input class="form-control" size="10" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+				<input type="hidden" id="dtp_input2" value="" />
               <label for="name"></label>
               <div class="form-group">
                 <button type="submit" class="btn btn-primary form-control">查询</button>
+            </div>
             </div>
           </div>
         </form>
@@ -130,6 +136,44 @@
       </div>
       </di</div>
   </div>
+
+<script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./static/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./static/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
+	$('.form_date').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+	$('.form_time').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 1,
+		minView: 0,
+		maxView: 1,
+		forceParse: 0
+    });
+</script>
 
 </body>
 
