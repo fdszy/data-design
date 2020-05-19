@@ -36,7 +36,8 @@ if ($stmt = $mysqli->prepare($query))
 	    if(md5($pwd+$salt,FALSE) == $password){
 		    echo "<script>alert('登陆成功！');</script>";
 		    $_SESSION['user'] = $name;
-        echo '<meta http-equiv="refresh" content="0.5;url=index.php>';
+        //echo '<meta http-equiv="refresh" content="0.5;url=index.php>';
+        echo "<script language='javascript' type='text/javascript'>window.location.href='./index.php'</script>";
         exit;
 	    }
 	    else{
