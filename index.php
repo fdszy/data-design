@@ -2,31 +2,57 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-  <title>航空机票管理系统</title>
-  <!-- Bootstrap -->
-  <link href="./static/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Css -->
-  <link rel="stylesheet" href="./static/css/offcanvas.css">
-  <link rel="stylesheet" href="./static/css/bootstrap-datetimepicker.min.css">
-  <style> body {
-            font-family: "Microsoft YaHei UI", "Droid Sans Mono", serif;
-        }
-    </style>
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>航空机票购买系统</title>
+	<link rel="stylesheet" href="./static/css/index_bootstrap.min.css">
+	<script src="./static/js/jquery.min.js"></script>
+	<script src="./static/js/bootstrap.min.js"></script>
+    <link href="./static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="./static/css/animate.min.css" rel="stylesheet">
+    <link href="./static/css/prettyPhoto.css" rel="stylesheet">
+    <link href="./static/css/main.css" rel="stylesheet">
+    <link href="./static/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="./static/js/html5shiv.js"></script>
+    <script src="./static/js/respond.min.js"></script>
     <![endif]-->
 </head>
 
 <body>
-  <div id="app">
-    <nav class="navbar navbar-fixed-top navbar-inverse">
+	<div id="myCarousel" class="carousel slide">
+	<!-- 点容器 -->
+	<ol class="carousel-indicators">
+		<li class="active"></li>
+		<li></li>
+		<li></li>
+	</ol>
+	<!-- 轮播（Carousel）项目 -->
+	<div class="carousel-inner">
+		<div class="item active">
+            <a href="./buy_ticket.html"><img src="image/机票选购.jpg"/></a>
+			<div class="carousel-caption">机票选购</div>
+		</div>
+		<div class="item">
+			<img src="image/订单信息.jpg" />
+			<div class="carousel-caption">图片 2</div>
+		</div>
+		<div class="item">
+			<img src="image/个人中心.jpg" class="img-responsive center-block"/>
+			<div class="carousel-caption">图片 3</div>
+		</div>
+	</div>
+	<!-- 左右箭头 -->
+	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left"></span>
+	</a>
+	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right"></span>
+	</a>
+</div>
+<nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -39,7 +65,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-          <li class="active"><a href="javascript:void(0)">首页</a></li>
+             <li class="active"><a href="javascript:void(0)">首页</a></li>
             <li><a href="./user.html">帐号管理</a></li>
             <li><a href="./ticket.html">账户信息</a></li>
               <li><a href="./buy_ticket.php">购票</a></li>
@@ -50,90 +76,167 @@
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-    <h5>账户余额：0 </h5>
-    <div class="panel panel-default">
-      <style>
-        .form-group {
-          height: 200px;
-          width: 400px;
-      </style>
-      <div class="panel-heading"> 机票搜索 </div>
-      <div class="panel-body">
-        <form role="form">
-          <div class="form-group">
-            <label for="name">出发地</label>
-            <select class="form-control">
-              <option>北京</option>
-              <option>上海</option>
-            </select>
-            <label for="name">到达地</label>
-            <select class="form-control">
-              <option>北京</option>
-              <option>上海</option>
-            </select>
-            <label for="name">仓位</label>
-            <select class="form-control">
-              <option>头等舱</option>
-              <option>经济舱</option>
-            </select>
-              <label for="name"></label>
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary form-control">查询</button>
+
+<section id="recent-works">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>近期新闻</h2>
             </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-      <style>
-        .form-group {
-          height: 200px;
-          width: 400px;
-      </style>
-      <div class="panel-heading"> 查询结果 </div>
-      <div class="panel-body">
-          <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="table-responsive">
-            <table class="table table-bordered ">
-              <thead class="thead-dark">
-                <tr>
-                  <th>出发城市</th>
-                  <th>出发机场</th>
-                  <th>到达城市</th>
-                  <th>到达机场</th>
-                  <th>出发时间</th>
-                  <th>到达时间</th>
-                  <th>机票价格</th>
-                  <th>订票</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>null</th>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td>
-                  <td><a class="btn btn-primary" href="#"><i class="fa fa-download fa-fw"></i>购买机票</a></td>
-                </tr>
-                <tr></tr>
-                <tr></tr>
-              </tbody>
-            </table>
-          </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="image/1.jpg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">Business theme</a> </h3>
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                <a class="preview" href="images/portfolio/full/item1.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="image/1.jpg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">Business theme</a></h3>
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                <a class="preview" href="images/portfolio/full/item2.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="image/1.jpg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">Business theme </a></h3>
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                <a class="preview" href="images/portfolio/full/item3.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="image/1.jpg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">Business theme </a></h3>
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                <a class="preview" href="images/portfolio/full/item4.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="image/1.jpg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">Business theme</a></h3>
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                <a class="preview" href="images/portfolio/full/item5.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="image/1.jpg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">Business theme </a></h3>
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                <a class="preview" href="images/portfolio/full/item6.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="image/1.jpg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">Business theme </a></h3>
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                <a class="preview" href="images/portfolio/full/item7.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="image/1.jpg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">Business theme </a></h3>
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                <a class="preview" href="images/portfolio/full/item8.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#recent-works-->
+
+<section id="bottom">
+        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>about us</h3>
+                        <ul>
+                            <li><a href="#">we are</a></li>
+                            <li><a href="#">students</a></li>
+                            <li><a href="#">from</a></li>
+                            <li><a href="#">computer and sciecnce</a></li>
+                            <li><a href="#">school</a></li>
+                            <li><a href="#">of</a></li>
+                            <li><a href="#">fudan</a></li>
+                        </ul>
+                    </div>
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">github</a></li>
+                            <li><a href="#">csdn</a></li>
+                            <li><a href="#">菜鸟教程</a></li>
+                            <li><a href="#">各大网站页面参考</a></li>
+                        </ul>
+                    </div>
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Developers</h3>
+                        <ul>
+                            <li><a href="#">sha zeyang</a></li>
+                            <li><a href="#">mao xiangyu</a></li>
+                            <li><a href="#">ma zuolin</a></li>
+                        </ul>
+                    </div>
+                </div><!--/.col-md-3-->
+
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-      </div>
-      </di</div>
+    </section><!--/#bottom-->
 
 </body>
 
 </html>
+

@@ -17,18 +17,16 @@ $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 $query = "SELECT name,pwd_hash,salt FROM customer WHERE name = ?";
 if ($stmt = $mysqli->prepare($query))
 {
-    // 处理打算执行的SQL命令
+    // 给绑定的变量赋上值
     $stmt->bind_param('s', $user);
  
-    // 给绑定的变量赋上值
-    $stmt->execute();
- 
     // 执行SQL语句
-    $stmt->store_result();
+    $stmt->execute();
  
     // 取回全部查询结果
     $stmt->bind_result($name, $password, $salt);
- 
+    $stmt->store_result();
+
     // 打印提示信息
     $a = 0;
     while ($stmt->fetch())

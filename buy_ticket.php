@@ -106,8 +106,10 @@
         <div class="col-md-12">
           <div class="table-responsive">
             <table class="table table-bordered ">
-
-              <thead class="thead-dark">
+            <?php 
+            session_start();
+            if(isset($_SESSION['result'])){
+              echo '<thead class="thead-dark">
                 <tr>
                   <th>航班号</th>
                   <th>出发机场</th>
@@ -118,21 +120,25 @@
                   <th>经济舱价格</th>
                   <th>订票</th>
                 </tr>
-              </thead>
-              <tbody>
+              </thead>';
+              foreach($_SESSION['result'] as $result){
+              echo "<tbody>
                 <tr>
-                  <th>null</th>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td>
-                  <td><a class="btn btn-primary" href="#"><i class="fa fa-download fa-fw"></i>购买机票</a></td>
+                  <th>".$result['flight']."</th>
+                  <td>".$result['departure']."</td>
+                  <td>".$result['arrival']."</td>
+                  <td>".$result['de-time']."</td>
+                  <td>".$result['ar-time']."</td>
+                  <td>".$result['price1']."</td>
+                  <td>".$result['price2']."</td>";
+              echo '<td><a class="btn btn-primary" href="#"><i class="fa fa-download fa-fw"></i>购买机票</a></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
-              </tbody>
+              </tbody>';
+                }
+              }
+            ?>
             </table>
           </div>
         </div>
