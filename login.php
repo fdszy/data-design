@@ -42,13 +42,13 @@ if ($stmt = $mysqli->prepare($query))
 	    }
 	    else{
         echo "<script>alert('用户名或密码错误');</script>";
-        echo '<meta http-equiv="refresh" content="0.5;url=login.html>';
+        echo "<script language='javascript' type='text/javascript'>window.location.href='./login.html'</script>";
         exit;
 	    }
     }
   if($a == 0){ // no this user
 		echo "<script>alert('用户名或密码错误');</script>";
-    echo '<meta http-equiv="refresh" content="0.5;url=login.html>';
+    echo "<script language='javascript' type='text/javascript'>window.location.href='./login.html'</script>";
     }
 }
 

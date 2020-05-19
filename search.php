@@ -8,7 +8,7 @@ $date = $_POST['date']; // 日期
 echo $date;
 if($departure == $arrival){
   echo "<script>alert('出发地和到达地不能相同！');</script>";
-  echo '<meta http-equiv="refresh" content="0.5;url=buy_ticket.php>';
+  echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
   exit;
 }
 
@@ -72,7 +72,7 @@ if ($stmt = $mysqli->prepare($query) && $stmt2 = $mysqli->prepare($query2)){
     }
   }
   $_SESSION['result'] = $result;
-  echo '<meta http-equiv="refresh" content="0.5;url=buy_ticket.php>';
+  echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
   exit;
   
 }
