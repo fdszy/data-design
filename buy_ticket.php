@@ -96,7 +96,7 @@
       </div>
     </div>
       </div>
-    <p><img src="image/ticket_plane.jpg"class = "img-round" width="1200"height="300" class="img-responsive center-block"/> </p>
+    <p><img src="image/ticket_plane.jpg"class = "img-round" width="1000"height="300" class="img-responsive center-block"/> </p>
         <div class="panel panel-default">
       <div class="panel-heading"> 查询结果 </div>
       <div class="panel-body">
