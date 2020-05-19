@@ -36,11 +36,11 @@
 			<div class="carousel-caption">机票选购</div>
 		</div>
 		<div class="item">
-			<img src="image/订单信息.jpg" />
+            <a href="./ticket.html"><img src="image/订单信息.jpg" /></a>
 			<div class="carousel-caption">图片 2</div>
 		</div>
 		<div class="item">
-			<img src="image/个人中心.jpg" class="img-responsive center-block"/>
+            <a href="./user.html"><img src="image/个人中心.jpg" class="img-responsive center-block"/></a>
 			<div class="carousel-caption">图片 3</div>
 		</div>
 	</div>
@@ -68,7 +68,7 @@
              <li class="active"><a href="javascript:void(0)">首页</a></li>
             <li><a href="./user.html">帐号管理</a></li>
             <li><a href="./ticket.html">账户信息</a></li>
-              <li><a href="./buy_ticket.php">购票</a></li>
+              <li><a href="./buy_ticket.html">购票</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="./login.html">欢迎,<?php session_start();echo $_SESSION['user'];?></a></li>
