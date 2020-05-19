@@ -5,7 +5,7 @@ $cities = array('北京','上海'); //others
 $departure = $_POST['departure'];
 $arrival = $_POST['arrival'];
 $date = $_POST['date']; // 日期
-
+echo $date;
 if($departure == $arrival){
   echo "<script>alert('出发地和到达地不能相同！');</script>";
   header("Refresh:0.5;url=buy_ticket.php");
