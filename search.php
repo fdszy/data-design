@@ -8,8 +8,8 @@ $date = $_POST['date']; // 日期
 echo $date;
 if($departure == $arrival){
   echo "<script>alert('出发地和到达地不能相同！');</script>";
-  header("Refresh:0.5;url=buy_ticket.php");
-  exit();
+  echo '<meta http-equiv="refresh" content="0.5;url=buy_ticket.php>';
+  exit;
 }
 
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
@@ -72,7 +72,8 @@ if ($stmt = $mysqli->prepare($query) && $stmt2 = $mysqli->prepare($query2)){
     }
   }
   $_SESSION['result'] = $result;
-  header("Refresh:0.25;url=buy_ticket.php");
+  echo '<meta http-equiv="refresh" content="0.5;url=buy_ticket.php>';
+  exit;
   
 }
 

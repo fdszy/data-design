@@ -18,18 +18,19 @@ if($confirm == $pwd){
   if ($stmt = $mysqli->prepare($query)){
     $stmt->bind_param('ssss', $id,$name,$pwd,$salt);
     if($stmt->execute()){
-		  echo "<script>alert('注册成功，正在跳转到登陆界面...');</script>";
-		  header("Refresh:0.5;url=login.html");
+      echo "<script>alert('注册成功，正在跳转到登陆界面...');</script>";
+      echo '<meta http-equiv="refresh" content="0.5;url=login.html>';
     }
 	  else{
-		  echo "<script>alert('注册失败，请重试');</script>";
-		  header("Refresh:0.5;url=sign-in.html");
-	  }
+      echo "<script>alert('注册失败，请重试');</script>";
+      echo '<meta http-equiv="refresh" content="0.5;url=sign-up.html>';
+    }
+    exit;
   }
 }
 else{
   echo "<script>alert('两次输入密码不一致');</script>";
-  header("Refresh:0.5;url=sign-up.html");
+  echo '<meta http-equiv="refresh" content="0.5;url=sign-up.html>';  
 }
 
 ?>

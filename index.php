@@ -68,7 +68,7 @@
              <li class="active"><a href="javascript:void(0)">首页</a></li>
             <li><a href="./user.html">帐号管理</a></li>
             <li><a href="./ticket.html">账户信息</a></li>
-              <li><a href="./buy_ticket.html">购票</a></li>
+              <li><a href="./buy_ticket.php">购票</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="./login.html">欢迎,<?php session_start();echo $_SESSION['user'];?></a></li>

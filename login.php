@@ -36,16 +36,18 @@ if ($stmt = $mysqli->prepare($query))
 	    if(md5($pwd+$salt,FALSE) == $password){
 		    echo "<script>alert('登陆成功！');</script>";
 		    $_SESSION['user'] = $name;
-		    header("Location:index.php");
+        echo '<meta http-equiv="refresh" content="0.5;url=index.php>';
+        exit;
 	    }
 	    else{
-		    echo "<script>alert('用户名或密码错误');</script>";
-		    header("Refresh:0.5;url=login.html");
+        echo "<script>alert('用户名或密码错误');</script>";
+        echo '<meta http-equiv="refresh" content="0.5;url=login.html>';
+        exit;
 	    }
     }
   if($a == 0){ // no this user
 		echo "<script>alert('用户名或密码错误');</script>";
-		header("Refresh:0.5;url=login.html");
+    echo '<meta http-equiv="refresh" content="0.5;url=login.html>';
     }
 }
 
