@@ -11,6 +11,7 @@
   <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="./static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
   <link href="./static/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- Css -->
   <link rel="stylesheet" href="./static/css/offcanvas.css">
   <link rel="stylesheet" href="./static/css/bootstrap-datetimepicker.min.css">
@@ -28,6 +29,9 @@
 
 <body>
   <div id="app">
+    <div class="jumbotron">
+        <h1 class="text-center">购票中心</h1>
+    </div>
     <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <div class="navbar-header">
@@ -41,7 +45,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-             <li><a href="./index.php">首页</a></li>
+             <li><a href="./index.html">首页</a></li>
             <li><a href="./user.html">帐号管理</a></li>
             <li><a href="./ticket.html">账户信息</a></li>
               <li class="active"><a href="javascript:void(0)">购票</a></li>
@@ -77,7 +81,7 @@
             <label for="name">日期</label>
             <div class="form-group">
                 <div class="input-group date form_date col-md-12" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input class="form-control" size="10" type="text" name="date" value="" readonly>
+                    <input class="form-control" size="10" type="text" value="" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
@@ -92,7 +96,7 @@
       </div>
     </div>
       </div>
-    <p><img src="image/ticket_plane.jpg"class = "img-round" width="900"height="300"</p>
+    <p><img src="image/ticket_plane.jpg"class = "img-round" width="1200"height="300" class="img-responsive center-block"/> </p>
         <div class="panel panel-default">
       <div class="panel-heading"> 查询结果 </div>
       <div class="panel-body">
