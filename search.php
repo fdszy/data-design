@@ -21,17 +21,16 @@ if ($stmt = $mysqli->prepare($query)){
 
     $stmt->bind_param('s', $cities[$departure]);
     $stmt->execute();
+    $stmt->bind_result($id);    
     $stmt->store_result();
-    $stmt->bind_result($id);
     while ($stmt->fetch()){
       array_push($departure_ids,$id);
     }
-    $stmt->free_result();
-  
+    $stmt->free_result(); 
     $stmt->bind_param('s', $cities[$arrival]);
     $stmt->execute();
+    $stmt->bind_result($id);    
     $stmt->store_result();
-    $stmt->bind_result($id);
     while ($stmt->fetch()){
       array_push($arrival_ids,$id);
     }
@@ -48,13 +47,15 @@ if ($stmt = $mysqli->prepare($query) && $stmt2 = $mysqli->prepare($query2)){
       $result = array();
       $stmt->bind_param('ss', $start, $end);
       $stmt->execute();
+      $stmt->bind_result($id);      
       $stmt->store_result();
-      $stmt->bind_result($id);
+
       while ($stmt->fetch()){
         $stmt2->bind_param('ss', $id, $date);
         $stmt2->execute();
-        $stmt2->store_result();
         $stmt2->bind_result($time,$price1,$price2);
+        $stmt2->store_result();
+
         while ($stmt->fetch()){
           $result['flightNo'] = $id;
           $result['departure'] = $start;
@@ -71,7 +72,7 @@ if ($stmt = $mysqli->prepare($query) && $stmt2 = $mysqli->prepare($query2)){
     }
   }
   $_SESSION['result'] = $result;
-
+  header("Refresh:0.25;url=buy_ticket.php");
   
 }
 
