@@ -35,9 +35,8 @@ if ($stmt = $mysqli->prepare($query))
 	    $a = 1;
 	    if(md5($pwd+$salt,FALSE) == $password){
 		    echo "<script>alert('登陆成功！');</script>";
-		    $url = "login.html";
 		    $_SESSION['user'] = $name;
-		    header("Refresh:0.5;url=index.php");
+		    header("Location:index.php");
 	    }
 	    else{
 		    echo "<script>alert('用户名或密码错误');</script>";
