@@ -27,8 +27,10 @@ if ($stmt = $mysqli->prepare($query))
     $stmt->bind_result($name, $password, $salt);
     $stmt->store_result();
 
-    // 打印提示信息
-    $a = 0;
+    if($stmt->num_rows == 0){//没有这个用户
+		  echo "<script>alert('用户名或密码错误');</script>";
+      echo "<script language='javascript' type='text/javascript'>window.location.href='./login.html'</script>";
+    }
     while ($stmt->fetch())
     {
         // 逐条从MySQL服务取数据
@@ -46,10 +48,8 @@ if ($stmt = $mysqli->prepare($query))
         exit;
 	    }
     }
-  if($a == 0){ // no this user
-		echo "<script>alert('用户名或密码错误');</script>";
-    echo "<script language='javascript' type='text/javascript'>window.location.href='./login.html'</script>";
-    }
+
+    
 }
 
 

@@ -14,6 +14,21 @@ if($confirm == $pwd){
   $salt = substr(str_shuffle($strs),mt_rand(0,strlen($strs)-11),10);
   $pwd = md5($pwd+$salt,FALSE);
 
+  //康康用户名用过没
+  $query = "SELECT id from customer WHERE name = ?";
+  if ($stmt = $mysqli->prepare($query)){
+    $stmt->bind_param('s',$name);
+    $stmt->execute();
+    $stmt->bind_result($temp);
+    $stmt->store_result();
+    if($stmt->num_rows != 0){
+      echo "<script>alert('用户名已被使用！');</script>";
+      echo "<script language='javascript' type='text/javascript'>window.location.href='./sign-up.html'</script>";
+    }
+    exit;
+  }
+
+  //正常注册
   $query = "INSERT customer (id,name,pwd_hash,salt,balance) VALUES (?,?,?,?,0.00)";
   if ($stmt = $mysqli->prepare($query)){
     $stmt->bind_param('ssss', $id,$name,$pwd,$salt);
