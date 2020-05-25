@@ -6,12 +6,18 @@ if(!isset($_SESSION['user'])){
 $oldpwd = $_POST['oldpwd'];
 
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
+
 $query = "SELECT pwd_hash,salt FROM customer WHERE name = ?";
 if ($stmt = $mysqli->prepare($query)){
     $stmt->bind_param('s', $_SESSION['user']);
     $stmt->execute();
     $stmt->bind_result($pwd, $salt);
     $stmt->store_result();
+    if($stmt->num_rows == 0){
+        echo "<script>alert('error!');</script>";
+        echo "<script language='javascript' type='text/javascript'>window.location.href='./user.php'</script>";
+        exit;
+    }
     while ($stmt->fetch()){
         if(md5($oldpwd+$salt,FALSE) != $pwd){
             echo "<script>alert('旧密码错误');</script>";
