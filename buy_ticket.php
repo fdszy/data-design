@@ -46,8 +46,8 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
              <li><a href="./index.html">首页</a></li>
-            <li><a href="./user.html">帐号管理</a></li>
-            <li><a href="./ticket.html">账户信息</a></li>
+            <li><a href="./user.html">账号管理</a></li>
+            <li><a href="./ticket.html">订单信息</a></li>
               <li class="active"><a href="javascript:void(0)">购票</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -66,7 +66,7 @@
       </style>
       <div class="panel-heading"> 机票搜索 </div>
       <div class="panel-body">
-        <form role="form" method="post" action="search.php">
+        <form role="form" method="post" action="search_ticket.php">
           <div class="form-group">
             <label for="name">出发地</label>
             <select class="form-control" name="departure">
@@ -80,7 +80,7 @@
             </select>
             <label for="name">日期</label>
             <div class="form-group">
-                <div class="input-group date form_date col-md-12" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <div class="input-group date form_date col-md-12" data-date="" data-date-format="yyyy-MM-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                     <input class="form-control" size="10" type="text" name="date" value="" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>

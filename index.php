@@ -1,3 +1,8 @@
+<?php 
+session_start(); 
+if(!isset($_SESSION['user'])){
+    header("Location:./login.html");
+}?>
 <!DOCTYPE html>
 <html>
 
@@ -66,8 +71,8 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
              <li class="active"><a href="javascript:void(0)">首页</a></li>
-            <li><a href="./user.html">帐号管理</a></li>
-            <li><a href="./ticket.html">账户信息</a></li>
+            <li><a href="./user.html">账号管理</a></li>
+            <li><a href="./ticket.html">订单信息</a></li>
               <li><a href="./buy_ticket.php">购票</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -201,7 +206,7 @@
                             <li><a href="#">we are</a></li>
                             <li><a href="#">students</a></li>
                             <li><a href="#">from</a></li>
-                            <li><a href="#">computer and sciecnce</a></li>
+                            <li><a href="#">computer and science</a></li>
                             <li><a href="#">school</a></li>
                             <li><a href="#">of</a></li>
                             <li><a href="#">fudan</a></li>
