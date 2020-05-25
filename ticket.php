@@ -44,14 +44,14 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="./index.html">首页</a></li>
+            <li><a href="./index.php">首页</a></li>
             <li><a href="./user.php">账号管理</a></li>
             <li class="active"><a href="javascript:void(0)">订单信息</a></li>
             <li><a href="./buy_ticket.php">购票</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="./login.html">欢迎,
-                <!--?php session_start();echo $_SESSION['user'];?--></a></li>
+                <?php session_start();echo $_SESSION['user']['name'];?></a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -125,7 +125,7 @@
                   <td>null</td>
                   <td>null</td>
                   <td>null</td>
-                  <td>null</td><a class="btn btn-primary" href="#">退票</a>
+                  <td>null</td><a class="btn btn-primary" href="./process_order.php?option=cancel&fNo=">退票</a>
                   <td><br></td>
                 </tr>
                 <tr></tr>

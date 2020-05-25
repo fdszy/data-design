@@ -124,14 +124,14 @@
               foreach($_SESSION['result_inv'] as $result){
               echo "<tbody>
                 <tr>
-                  <th>".$result['flight']."</th>
+                  <th>".$result['flightNo']."</th>
                   <td>".$result['departure']."</td>
                   <td>".$result['arrival']."</td>
                   <td>".$result['de-time']."</td>
                   <td>".$result['ar-time']."</td>
                   <td>".$result['price1']."</td>
                   <td>".$result['price2']."</td>";
-              echo '<td><a class="btn btn-primary" href="#"><i class="fa fa-download fa-fw"></i>购买机票</a></td>
+              echo '<td><a class="btn btn-primary" href="./process_order.php?option=buy&fNo='.$result['flightNo'].'"><i class="fa fa-download fa-fw"></i>购买机票</a></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
