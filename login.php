@@ -41,9 +41,9 @@ if ($stmt = $mysqli->prepare($query))
             exit;
 	    }
 	    else{
-        echo "<script>alert('用户名或密码错误');</script>";
-        echo "<script language='javascript' type='text/javascript'>window.location.href='./login.html'</script>";
-        exit;
+            echo "<script>alert('用户名或密码错误');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./login.html'</script>";
+            exit;
 	    }
     }
 
