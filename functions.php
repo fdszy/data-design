@@ -1,8 +1,8 @@
 <?php
 header ( "Content-type:text/html;charset=utf-8" ); 
-//session_start();
+session_start();
 
-function show_userinfo($username){
+function update_userinfo($username){
     $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
     $query = "SELECT id,name,balance FROM customer WHERE name = ?";
@@ -13,9 +13,7 @@ function show_userinfo($username){
         $stmt->store_result();
 
         while ($stmt->fetch()){
-            echo '<p class = "col-md-offset-3">用户ID：'.$id.'</p>';
-            echo '<p class = "col-md-offset-3">用户名称：'.$name.'</p>';
-            echo '<p class = "col-md-offset-3">账户余额：'.$balance.'</p>';
+            $_SESSION['user'] = array('name'=>$name,'id'=>$id,'balance'=>$balance);
 	    }
 
 	    }

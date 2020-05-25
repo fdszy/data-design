@@ -108,21 +108,9 @@
                         <div :class="{hidden: isAccountInfoHidden}">
                             <h1 class="text-center">帐号信息</h1>
                             <div style="margin-top: 20px">
-                            <?php
-                            include("./functions.php");
-                            session_start();
-                            if(isset($_SESSION['user'])){
-                                show_userinfo($_SESSION['user']);
-                            }
-                            else{
-                                echo '<p class = "col-md-offset-3">未登陆</p>';
-                            }
-                            ?>
-                            <p class = "col-md-offset-3">用户ID：{{ userInfo.id }}</p>
-                            <p class = "col-md-offset-3">用户名：{{ userInfo.account }}</p>
-                            <p class = "col-md-offset-3">创建时间：{{ userInfo.create_time }}</p>
-                            <p class = "col-md-offset-3">姓名：{{ userInfo.p_name }}</p>
-                            <p class = "col-md-offset-3">身份证号：{{ userInfo.id_card }}</p>
+                            <p class = "col-md-offset-3">用户ID：<?php session_start();echo $_SESSION['user']['id'];?></p>
+                            <p class = "col-md-offset-3">用户名：<?php session_start();echo $_SESSION['user']['name'];?></p>
+                            <p class = "col-md-offset-3">账户余额：<?php session_start();echo $_SESSION['user']['balance'];?></p>
                         </div>
                     </div>
                         <div :class="{hidden: isChgPwdHidden}">
