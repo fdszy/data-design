@@ -9,7 +9,7 @@ $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
 $query = "SELECT pwd_hash,salt FROM customer WHERE name = ?";
 if ($stmt = $mysqli->prepare($query)){
-    $stmt->bind_param('s', $_SESSION['user']);
+    $stmt->bind_param('s', $_SESSION['user']['name']);
     $stmt->execute();
     $stmt->bind_result($pwd, $salt);
     $stmt->store_result();
