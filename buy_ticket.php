@@ -45,7 +45,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-             <li><a href="./index.html">首页</a></li>
+             <li><a href="./index.php">首页</a></li>
             <li><a href="./user.html">账号管理</a></li>
             <li><a href="./ticket.html">订单信息</a></li>
               <li class="active"><a href="javascript:void(0)">购票</a></li>
@@ -108,7 +108,7 @@
             <table class="table table-bordered ">
             <?php 
             session_start();
-            if(isset($_SESSION['result'])){
+            if(isset($_SESSION['result_inv'])){
               echo '<thead class="thead-dark">
                 <tr>
                   <th>航班号</th>
@@ -121,7 +121,7 @@
                   <th>订票</th>
                 </tr>
               </thead>';
-              foreach($_SESSION['result'] as $result){
+              foreach($_SESSION['result_inv'] as $result){
               echo "<tbody>
                 <tr>
                   <th>".$result['flight']."</th>

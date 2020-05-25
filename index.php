@@ -2,7 +2,8 @@
 session_start(); 
 if(!isset($_SESSION['user'])){
     header("Location:./login.html");
-}?>
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -71,7 +72,7 @@ if(!isset($_SESSION['user'])){
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
              <li class="active"><a href="javascript:void(0)">首页</a></li>
-            <li><a href="./user.html">账号管理</a></li>
+            <li><a href="./user.php">账号管理</a></li>
             <li><a href="./ticket.html">订单信息</a></li>
               <li><a href="./buy_ticket.php">购票</a></li>
           </ul>

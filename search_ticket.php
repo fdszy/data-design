@@ -5,6 +5,7 @@ $cities = array('北京','上海'); //others
 $departure = $_POST['departure'];
 $arrival = $_POST['arrival'];
 $date = $_POST['date']; // 日期
+
 echo "<script>alert('".$date."');</script>";
 if($departure == $arrival){
   echo "<script>alert('出发地和到达地不能相同！');</script>";
@@ -71,7 +72,7 @@ if ($stmt = $mysqli->prepare($query) && $stmt2 = $mysqli->prepare($query2)){
       $stmt->free_result();
     }
   }
-  $_SESSION['result'] = $result;
+  $_SESSION['result_inv'] = $result;
   echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
   exit;
   

@@ -108,6 +108,16 @@
                         <div :class="{hidden: isAccountInfoHidden}">
                             <h1 class="text-center">帐号信息</h1>
                             <div style="margin-top: 20px">
+                            <?php
+                            include("./functions.php");
+                            session_start();
+                            if(isset($_SESSION['user'])){
+                                show_userinfo($_SESSION['user']);
+                            }
+                            else{
+                                echo '<p class = "col-md-offset-3">未登陆</p>';
+                            }
+                            ?>
                             <p class = "col-md-offset-3">用户ID：{{ userInfo.id }}</p>
                             <p class = "col-md-offset-3">用户名：{{ userInfo.account }}</p>
                             <p class = "col-md-offset-3">创建时间：{{ userInfo.create_time }}</p>

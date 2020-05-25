@@ -34,7 +34,6 @@ if ($stmt = $mysqli->prepare($query))
     while ($stmt->fetch())
     {
         // 逐条从MySQL服务取数据
-	    $a = 1;
 	    if(md5($pwd+$salt,FALSE) == $password){
 		    echo "<script>alert('登陆成功！');</script>";
 		    $_SESSION['user'] = $name;
