@@ -29,12 +29,13 @@ if($confirm != $newpwd){
     exit;
 }
 
-$query = "UPDATE customer SET pwd_hash = ? WHERE name = ? ";
+$query = "UPDATE customer SET pwd_hash = ? WHERE name = ?";
 if ($stmt = $mysqli->prepare($query)){
   $stmt->bind_param('ss', md5($newpwd+$salt,FALSE),$name);
   if($stmt->execute()){
     echo "<script>alert('修改成功！');</script>";
     echo "<script language='javascript' type='text/javascript'>window.location.href='./user.php'</script>";
+  }
   else{
     echo "<script>alert('修改失败，请重试');</script>";
     echo "<script language='javascript' type='text/javascript'>window.location.href='./user.php'</script>";
