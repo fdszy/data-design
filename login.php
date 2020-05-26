@@ -45,10 +45,8 @@ if ($stmt = $mysqli->prepare($query))
             echo "<script language='javascript' type='text/javascript'>window.location.href='./login.html'</script>";
             exit;
 	    }
-    }
-
-    
+    }  
 }
-
+$mysqli->close();
 
 ?>

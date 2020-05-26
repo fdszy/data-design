@@ -40,7 +40,7 @@ if ($stmt = $mysqli->prepare($query)){
 
 $results = array();
 $query = "SELECT flight_No FROM flight WHERE departure_airport = ? AND arrival_airport = ?";
-$query2 = "SELECT TIME(departure_time),seat1_price,seat2_price FROM inventory WHERE fNo = ? AND DATE_FORMAT(departure_time,'%Y-%m-%d') = ?";
+$query2 = "SELECT TIME(departure_time),TIME(arrival_time),seat1_price,seat2_price FROM inventory WHERE fNo = ? AND DATE_FORMAT(departure_time,'%Y-%m-%d') = ?";
 if ($stmt = $mysqli->prepare($query) && $stmt2 = $mysqli->prepare($query2)){
 
   foreach($departure_ids as $start){
@@ -54,7 +54,7 @@ if ($stmt = $mysqli->prepare($query) && $stmt2 = $mysqli->prepare($query2)){
       while ($stmt->fetch()){
         $stmt2->bind_param('ss', $id, $date);
         $stmt2->execute();
-        $stmt2->bind_result($time,$price1,$price2);
+        $stmt2->bind_result($de_time,$ar_time,$price1,$price2);
         $stmt2->store_result();
 
         while ($stmt->fetch()){
@@ -77,6 +77,6 @@ if ($stmt = $mysqli->prepare($query) && $stmt2 = $mysqli->prepare($query2)){
   exit;
   
 }
-
+$mysqli->close();
 
 ?>

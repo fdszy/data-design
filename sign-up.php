@@ -46,5 +46,5 @@ else{
   echo "<script>alert('两次输入密码不一致');</script>";
   echo "<script language='javascript' type='text/javascript'>window.location.href='./sign-up.html'</script>";
 }
-
+$mysqli->close();
 ?>

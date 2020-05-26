@@ -103,34 +103,41 @@
         <div class="col-md-12">
           <div class="table-responsive">
             <table class="table table-striped table-borderless">
-              <thead>
+              <?php 
+              include "functions.php";
+              session_start();
+              $results = query_user_tickets($_SESSION['user']['id']);
+              echo '<thead>
+              <tr>
+                <th scope="col">航班号</th>
+                <th scope="col">乘客姓名</th>                 
+                <th scope="col">出发机场</th>
+                <th scope="col">出发时间</th>
+                <th scope="col">到达机场</th>
+                <th scope="col">到达时间</th>
+                <th scope="col">票价</th>
+                <th scope="col">座位号</th>
+                <th scope="col">操作</th>
+              </tr>
+            </thead>';
+              foreach($results as $result){
+                echo '<tbody>
                 <tr>
-                  <th scope="col">出发机场</th>
-                  <th scope="col">出发地点</th>
-                  <th scope="col">到达机场</th>
-                  <th scope="col">到达地点</th>
-                  <th scope="col">出发时间</th>
-                  <th scope="col">到达时间</th>
-                  <th scope="col">票价</th>
-                  <th scope="col">座位号</th>
-                  <th scope="col">操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">null</th>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td>
-                  <td>null</td><a class="btn btn-primary" href="./process_order.php?option=cancel&fNo=">退票</a>
+                  <th scope="row">'.$result['No']'</th>
+                  <td>'.$result['passenger']'</td>
+                  <td>'.$result['departure']'</td>
+                  <td>'.$result['de_time']'</td>
+                  <td>'.$result['arrival']'</td>
+                  <td>'.$result['ar_time']'</td>
+                  <td>'.$result['price']'</td>
+                  <td>'.$result['seatNo']'</td><a class="btn btn-primary" href="./process_order.php?option=cancel&fNo='.$result['No'].'">退票</a>
                   <td><br></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
-              </tbody>
+              </tbody>';
+              }
+              ?>
             </table>
           </div>
         </div>

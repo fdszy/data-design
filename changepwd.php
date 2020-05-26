@@ -48,5 +48,5 @@ if ($stmt = $mysqli->prepare($query)){
   }
   exit;
 }
-
+$mysqli->close();
 ?>
