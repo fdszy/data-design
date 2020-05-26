@@ -61,8 +61,8 @@ if ($stmt = $mysqli->prepare($query) && $stmt2 = $mysqli->prepare($query2)){
           $result['flightNo'] = $id;
           $result['departure'] = $start;
           $result['arrival'] = $end;
-          $result['de-time'] = $time;
-          $result['ar-time'] = $time;
+          $result['de-time'] = $de_time;
+          $result['ar-time'] = $ar_time;
           $result['price1'] = $price1;
           $result['price2'] = $price2;          
         }

@@ -123,14 +123,14 @@
               foreach($results as $result){
                 echo '<tbody>
                 <tr>
-                  <th scope="row">'.$result['No']'</th>
-                  <td>'.$result['passenger']'</td>
-                  <td>'.$result['departure']'</td>
-                  <td>'.$result['de_time']'</td>
-                  <td>'.$result['arrival']'</td>
-                  <td>'.$result['ar_time']'</td>
-                  <td>'.$result['price']'</td>
-                  <td>'.$result['seatNo']'</td><a class="btn btn-primary" href="./process_order.php?option=cancel&fNo='.$result['No'].'">退票</a>
+                  <th scope="row">'.$result['No'].'</th>
+                  <td>'.$result['passenger'].'</td>
+                  <td>'.$result['departure'].'</td>
+                  <td>'.$result['de_time'].'</td>
+                  <td>'.$result['arrival'].'</td>
+                  <td>'.$result['ar_time'].'</td>
+                  <td>'.$result['price'].'</td>
+                  <td>'.$result['seatNo'].'</td><a class="btn btn-primary" href="./process_order.php?option=cancel&fNo='.$result['No'].'">退票</a>
                   <td><br></td>
                 </tr>
                 <tr></tr>
