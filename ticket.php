@@ -102,11 +102,11 @@
       <div class="row">
         <div class="col-md-12">
           <div class="table-responsive">
-            <table class="table table-striped table-borderless">
               <?php 
-              include "functions.php";
+              include 'functions.php';
               session_start();
-              echo '<thead>
+              echo '<table class="table table-striped table-borderless">
+              <thead>
               <tr>
                 <th scope="col">航班号</th>
                 <th scope="col">乘客姓名</th>                 

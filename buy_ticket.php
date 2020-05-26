@@ -46,8 +46,8 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
              <li><a href="./index.php">首页</a></li>
-            <li><a href="./user.html">账号管理</a></li>
-            <li><a href="./ticket.html">订单信息</a></li>
+            <li><a href="./user.php">账号管理</a></li>
+            <li><a href="./ticket.php">订单信息</a></li>
               <li class="active"><a href="javascript:void(0)">购票</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
