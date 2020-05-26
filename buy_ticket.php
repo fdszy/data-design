@@ -107,7 +107,6 @@
           <div class="table-responsive">
             <table class="table table-bordered ">
             <?php 
-            session_start();
             if(isset($_SESSION['result_inv'])){
               echo '<thead class="thead-dark">
                 <tr>

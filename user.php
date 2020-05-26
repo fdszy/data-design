@@ -108,9 +108,9 @@
                         <div :class="{hidden: isAccountInfoHidden}">
                             <h1 class="text-center">帐号信息</h1>
                             <div style="margin-top: 20px">
-                            <p class = "col-md-offset-3">用户ID：<?php session_start();echo $_SESSION['user']['id'];?></p>
-                            <p class = "col-md-offset-3">用户名：<?php session_start();echo $_SESSION['user']['name'];?></p>
-                            <p class = "col-md-offset-3">账户余额：<?php session_start();echo $_SESSION['user']['balance'];?></p>
+                            <p class = "col-md-offset-3">用户ID：<?php echo $_SESSION['user']['id'];?></p>
+                            <p class = "col-md-offset-3">用户名：<?php echo $_SESSION['user']['name'];?></p>
+                            <p class = "col-md-offset-3">账户余额：<?php echo $_SESSION['user']['balance'];?></p>
                         </div>
                     </div>
                         <form action="changepwd.php" method="post">
