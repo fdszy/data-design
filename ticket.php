@@ -106,7 +106,6 @@
               <?php 
               include "functions.php";
               session_start();
-              $results = query_user_tickets($_SESSION['user']['id']);
               echo '<thead>
               <tr>
                 <th scope="col">航班号</th>
@@ -120,6 +119,8 @@
                 <th scope="col">操作</th>
               </tr>
             </thead>';
+              $results = query_user_tickets($_SESSION['user']['id']);
+              
               foreach($results as $result){
                 echo '<tbody>
                 <tr>
