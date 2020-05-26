@@ -47,7 +47,7 @@ function query_user_tickets($id){
         while ($stmt->fetch()){
             $stmt2 = $mysqli->prepare($query2);
             //通过座位号区分舱位，未完成
-            if(true){
+            if(strpos($seat,'A') === 0){
                 $type = 'seat1_price';
             }
             else{

@@ -104,7 +104,6 @@
           <div class="table-responsive">
               <?php 
               include 'functions.php';
-              session_start();
               echo '<table class="table table-striped table-borderless">
               <thead>
               <tr>
@@ -131,7 +130,8 @@
                   <td>'.$result['arrival'].'</td>
                   <td>'.$result['ar_time'].'</td>
                   <td>'.$result['price'].'</td>
-                  <td>'.$result['seatNo'].'</td><a class="btn btn-primary" href="./process_order.php?option=cancel&fNo='.$result['No'].'">退票</a>
+                  <td>'.$result['seatNo'].'</td>
+                  <a class="btn btn-primary" href="./process_order.php?option=cancel&fNo='.$result['No'].'&passenger='.$result['passenger'].'&time='.$result['de_time'].'">退票</a>
                   <td><br></td>
                 </tr>
                 <tr></tr>
