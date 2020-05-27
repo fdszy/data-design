@@ -4,6 +4,11 @@ $op = $_GET['option'];
 if($op == 'buy'){
     $fNo = $_GET['fNo'];
     
+    $query = "INSERT ticket VALUES ()";
+     
+    $query4 = "UPDATE inventory SET ? = ? WHERE fNo = and departure_time = ?";
+ 
+    $query5 = "UPDATE customer SET balance = ? WHERE id = ?";
 }
 elseif($op == 'cancel'){
     $fNo = $_GET['fNo'];

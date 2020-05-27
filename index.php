@@ -43,11 +43,11 @@ if(!isset($_SESSION['user'])){
 		</div>
 		<div class="item">
             <a href="./ticket.html"><img src="image/订单信息.jpg" /></a>
-			<div class="carousel-caption">图片 2</div>
+			<div class="carousel-caption">订单信息</div>
 		</div>
 		<div class="item">
             <a href="./user.html"><img src="image/个人中心.jpg" class="img-responsive center-block"/></a>
-			<div class="carousel-caption">图片 3</div>
+			<div class="carousel-caption">个人中心</div>
 		</div>
 	</div>
 	<!-- 左右箭头 -->
