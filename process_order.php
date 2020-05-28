@@ -1,33 +1,95 @@
 <?php
+include 'functions.php';
 
+$mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 $op = $_GET['option'];
+
 if($op == 'buy'){
     $fNo = $_GET['fNo'];
-    
-    $query = "INSERT ticket VALUES ()";
+    $seat = $_GET['seat'];    
+    $passenger = $_GET['passenger'];
+    $de_time = $_GET['time'];
+
+    if($seat == '1'){
+        $price = "seat1_price";
+        $left = "seat1_surplus";
+        $total = "seat1_total";
+        $a = 'A';
+    }
+    else{
+        $price = "seat2_price";
+        $left = "seat2_surplus";
+        $total = "seat2_total";
+        $a = 'B';
+    }
+
+    $query = "SELECT ?,?,? from inventory i INNER JOIN flight f
+              ON i.fNo =  f.flight_No
+              WHERE i.fNo = ? AND i.departure_time = ?
+              UNION ";
+
+    $query_ex = "SELECT id from customer WHERE name = ?";
+
+    $query2 = "INSERT ticket (t_fNo,t_departure_time,passenger_id,purchaser_id,seat) VALUES (?,?,?,?,?)";
      
-    $query4 = "UPDATE inventory SET ? = ? WHERE fNo = and departure_time = ?";
+    $query3 = "UPDATE inventory SET ? = ? WHERE fNo = ? AND departure_time = ?";
  
-    $query5 = "UPDATE customer SET balance = ? WHERE id = ?";
+    $query4 = "UPDATE customer SET balance = ? WHERE id = ?";
+
+    if ($stmt = $mysqli->prepare($query)){
+        $stmt->bind_param('ssss', $price, $left, $total, $fNo, $de_time);
+        $stmt->execute();
+        $stmt->bind_result($pay, $seat_left, $seat_total);
+        $stmt->store_result();
+        $stmt->fetch();
+        if($num == 0){
+            echo "<script>alert('该航班该舱位已无余票！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+        }
+        $stmt->free_result();
+
+        $seat_No = $a.strval($seat_total-$seat_left+1);
+
+        $stmt = $mysqli->prepare($query_ex);
+        $stmt->bind_param('s', $passenger);
+        $stmt->execute();
+        $stmt->bind_result($pas_id);
+        $stmt->store_result();
+        $stmt->fetch();
+        $stmt->free_result();
+
+        $stmt = $mysqli->prepare($query2);
+        $stmt->bind_param('sssss',$fNo,$de_time,$pas_id,$_SESSION['user']['id'],$seat_No);
+        $stmt->execute();
+
+        $stmt = $mysqli->prepare($query3);
+        $stmt->bind_param('siss',$left,$num-1,$fNo,$de_time);
+        $stmt->execute();
+
+        $stmt = $mysqli->prepare($query4);
+        $stmt->bind_param('ds',$_SESSION['user']['balance']+$pay,$_SESSION['user']['id']);
+        $stmt->execute();
+
+        update_userinfo();
+    }
+
+
 }
 elseif($op == 'cancel'){
     $fNo = $_GET['fNo'];
     $passenger = $_GET['passenger'];
     $de_time = $_GET['time'];
 
-    $_SESSION['user']['id'];
-    $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
-
     $query = "SELECT t.seat,c.id 
               FROM ticket t INNER JOIN customer c 
               ON t.passenger_id = c.id
               WHERE t_fNo = ? AND t_departure_time = ? AND c.name = ?";
     
-    $query2 = "SELECT ?,? from inventory WHERE fNo = ? and departure_time = ?";
+    $query2 = "SELECT ?,? from inventory WHERE fNo = ? AND departure_time = ?";
 
     $query3 = "DELETE from ticket WHERE t_fNo = ? AND passenger_id = ?";
 
-    $query4 = "UPDATE inventory SET ? = ? WHERE fNo = and departure_time = ?";
+    $query4 = "UPDATE inventory SET ? = ? WHERE fNo = AND departure_time = ?";
  
     $query5 = "UPDATE customer SET balance = ? WHERE id = ?";
 
@@ -37,7 +99,8 @@ elseif($op == 'cancel'){
         $stmt->bind_result($seat, $pas_id);
         $stmt->store_result();
         if($stmt->num_rows != 1){
-
+            echo "<script>alert('未知错误！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
         }
         $stmt->fetch();
         $stmt->free_result();
@@ -53,7 +116,7 @@ elseif($op == 'cancel'){
         $stmt = $mysqli->prepare($query2);
         $stmt->bind_param('ssss',$price,$left,$fNo,$de_time);
         $stmt->execute();
-        $stmt->bind_result($money, $num);
+        $stmt->bind_result($pay, $seat_left);
         $stmt->store_result();
         $stmt->fetch();
 
@@ -62,12 +125,14 @@ elseif($op == 'cancel'){
         $stmt->execute();
 
         $stmt = $mysqli->prepare($query4);
-        $stmt->bind_param('siss',$left,$num+1,$fNo,$de_time);
+        $stmt->bind_param('siss',$left,$seat_left+1,$fNo,$de_time);
         $stmt->execute();
 
         $stmt = $mysqli->prepare($query5);
-        $stmt->bind_param('ds',$_SESSION['user']['balance']+$money,$_SESSION['user']['id']);
+        $stmt->bind_param('ds',$_SESSION['user']['balance']+$pay,$_SESSION['user']['id']);
         $stmt->execute();
+
+        update_userinfo();
 
     }
     $mysqli->close();
