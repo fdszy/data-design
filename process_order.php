@@ -2,13 +2,14 @@
 include 'functions.php';
 
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
-$op = $_GET['option'];
+$op = $_REQUEST['option'];
 
 if($op == 'buy'){
-    $fNo = $_GET['fNo'];
-    $seat = $_GET['seat'];    
-    $passenger = $_GET['passenger'];
-    $de_time = $_GET['time'];
+    $fNo = $_POST['fNo'];
+    $seat = $_POST['seat'];    
+    $passenger = $_POST['passenger'];
+    $pas_id = $_POST['passenger_id'];
+    $de_time = $_POST['time'];
 
     if($seat == '1'){
         $price = "seat1_price";
@@ -27,8 +28,6 @@ if($op == 'buy'){
               ON i.fNo =  f.flight_No
               WHERE i.fNo = ? AND i.departure_time = ?
               UNION ";
-
-    $query_ex = "SELECT id from customer WHERE name = ?";
 
     $query2 = "INSERT ticket (t_fNo,t_departure_time,passenger_id,purchaser_id,seat) VALUES (?,?,?,?,?)";
      
@@ -49,14 +48,6 @@ if($op == 'buy'){
         $stmt->free_result();
 
         $seat_No = $a.strval($seat_total-$seat_left+1);
-
-        $stmt = $mysqli->prepare($query_ex);
-        $stmt->bind_param('s', $passenger);
-        $stmt->execute();
-        $stmt->bind_result($pas_id);
-        $stmt->store_result();
-        $stmt->fetch();
-        $stmt->free_result();
 
         $stmt = $mysqli->prepare($query2);
         $stmt->bind_param('sssss',$fNo,$de_time,$pas_id,$_SESSION['user']['id'],$seat_No);

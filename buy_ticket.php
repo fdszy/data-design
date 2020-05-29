@@ -130,7 +130,11 @@
                   <td>".$result['ar-time']."</td>
                   <td>".$result['price1']."</td>
                   <td>".$result['price2']."</td>";
-              echo '<td><a class="btn btn-primary" href="./process_order.php?option=buy&fNo='.$result['flightNo'].'"><i class="fa fa-download fa-fw"></i>购买机票</a></td>
+              echo '<td><a class="btn btn-primary" href="./confirm_info.php?fNo='.$result['flightNo']
+                    .'&de='.$result['departure'].'&ar='.$result['arrival']
+                    .'&de_time='.$result['de-time'].'&ar_time='.$result['ar-time']
+                    .'&price1='.$result['price1'].'&price2='.$result['price2']
+                        .'"><i class="fa fa-download fa-fw"></i>购买机票</a></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
