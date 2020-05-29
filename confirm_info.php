@@ -1,5 +1,6 @@
 <?php
 if (!isset($_SERVER['HTTP_REFERER'])) {
+    header("Location:buy_ticket.php");
     exit;
 }
 ?>

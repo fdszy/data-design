@@ -78,5 +78,5 @@ if ($stmt = $mysqli->prepare($query) && $stmt2 = $mysqli->prepare($query2)){
   
 }
 $mysqli->close();
-
+echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
 ?>
