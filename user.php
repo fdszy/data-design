@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION['user']['name'] === "admin"){
+    header("Location:admin_user.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,7 +91,7 @@
               <li><a href="./buy_ticket.php">购票</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="./login.html">欢迎,<?php session_start();echo $_SESSION['user']['name'];?></a></li>
+            <li><a href="./login.html">欢迎,<?php echo $_SESSION['user']['name'];?></a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->

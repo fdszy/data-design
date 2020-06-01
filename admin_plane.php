@@ -83,13 +83,13 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-             <li><a href="./index.html">首页</a></li>
+             <li><a href="./index.php">首页</a></li>
             <li class="active"><a href="javascript:void(0)">航班管理</a></li>
-            <li><a href="./admin_user.html">客户信息管理</a></li>
+            <li><a href="./admin_user.php">客户信息管理</a></li>
               <li><a href="./buy_ticket.html">流量统计</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="./login.html">欢迎,<?php session_start();echo $_SESSION['user'];?></a></li>
+            <li><a href="./login.html">欢迎,<?php session_start();echo $_SESSION['user']['name'];?></a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -204,39 +204,41 @@
                             </div>
                         </div>
                     </div>
-                    <div :class="{hidden: isChgPwdHidden}">
-                        <h1 class = "text-center">修改密码</h1>
-                        <div class="row" style="margin-top: 20px;margin-left: 30px">
+                    <form action="changepwd.php" method="post">
+                        <div :class="{hidden: isChgPwdHidden}">
+                            <h1 class = "text-center">修改密码</h1>
+                            <div class="row" style="margin-top: 20px;margin-left: 30px">
                             <div class="col-lg-8">
                                 <div class="input-group">
                                     <span class="input-group-addon">旧密码</span>
                                     <input type="text" v-model="passwordForm.oldPassword" class="form-control"
-                                           placeholder="Old Password">
+                                           placeholder="Old Password" name="oldpwd">
                                 </div>
                             </div>
                             <div class="col-lg-8" style="margin-top: 3px">
                                 <div class="input-group">
                                     <span class="input-group-addon">新密码</span>
                                     <input type="text" v-model="passwordForm.newPassword" class="form-control"
-                                           placeholder="New Password">
+                                           placeholder="New Password" name="newpwd">
                                 </div>
                             </div>
                             <div class="col-lg-8" style="margin-top: 3px">
                                 <div class="input-group">
                                     <span class="input-group-addon">重复密码</span>
                                     <input type="text" v-model="passwordForm.newPassword2" class="form-control"
-                                           placeholder="Repeat Password">
+                                           placeholder="Repeat Password" name="confirm">
                                 </div>
                             </div>
                             <div class="col-lg-12" style="font-size: 1.2em; margin-top: 3px">
                                 <span class="label label-danger">{{ passwordForm.errorLabel }}</span>
                             </div>
                             <div class="col-lg-8" style="margin-top: 5px">
-                                <button @click="changePassword()" class="btn btn-primary" style="float: right">修改密码
+                                <button type="submit" class="btn btn-primary" style="float: right">修改密码
                                 </button>
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
 
 

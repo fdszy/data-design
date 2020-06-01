@@ -89,13 +89,13 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="./index.html">首页</a></li>
-                    <li><a href="./admin_plane.html">航班管理</a></li>
+                    <li><a href="./index.php">首页</a></li>
+                    <li><a href="./admin_plane.php">航班管理</a></li>
                     <li class="active"><a href="javascript:void(0)">客户信息管理</a></li>
                     <li><a href="./buy_ticket.html">流量统计</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="./login.html">欢迎,<?php session_start();echo $_SESSION['user'];?></a></li>
+                    <li><a href="./login.html">欢迎,<?php session_start();echo $_SESSION['user']['name'];?></a></li>
                 </ul>
             </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
@@ -120,10 +120,11 @@
                             <div class = "panel-default">
                             <div class="panel-heading"> 账号查询 </div>
                             <div class="panel-body">
-                                <form role="form" method="post" action="search.php">
+                                <form role="form" method="post" action="admin_manage_user.php">
+                                    <input type="hidden" name="op" value="query">
                                     <div class="form-group">
-                                        <label for="name">账号名</label>
-                                        <input type="text" class="form-control" id="planeid" placeholder="请输入需要查询的账户名">
+                                        <label for="name">用户名</label>
+                                        <input type="text" class="form-control" name="username" placeholder="请输入需要查询的账户名">
                                         <label for="name"></label>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary form-control">查询</button>
@@ -138,17 +139,26 @@
                                 <div class="panel-body">
                                     <table class="table table-striped">
                                         <caption></caption>
-                                        <thead>
+                                        <?php
+
+                                        if(isset($_SESSION['admin_query_user'])){
+                                            echo '<thead>
                                         <tr>
                                             <th>用户名</th>
-                                            <th>用户账户余额</th>
-                                            <th>姓名</th>
                                             <th>身份证号</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-
-                                        </tbody>
+                                            <th>用户账户余额</th>
+                                        </tr>' ;
+                                            echo "<tbody>  
+                                            <tr>
+                                              <th>".$_SESSION['admin_query_user']['name']."</th>
+                                              <td>".$_SESSION['admin_query_user']['id']."</td>
+                                              <td>".$_SESSION['admin_query_user']['balance']."</td>
+                                            </tr>
+                                        </tbody>";
+                                            unset($_SESSION['admin_query_user']);
+                                        }
+                                        
+                                        ?>
                                     </table>
                                 </div>
                             </div>

@@ -57,7 +57,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     </ol>
 
     <div class="jumbotron">
-        <h1 class="text-center">确认订单信息信息</h1>
+        <h1 class="text-center">确认订单信息</h1>
     </div>
     <nav class="navbar navbar-fixed-top navbar-inverse">
         <div class="container">

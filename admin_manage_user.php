@@ -1,0 +1,27 @@
+<?php
+session_start();
+if(!isset($_GET['op'])){
+    echo "<script language='javascript' type='text/javascript'>window.location.href='./user.php'</script>";
+    exit;
+}
+
+$mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
+$op = $_POST['op'];
+if($op == "query"){
+    $query = "SELECT id,name,balance FROM customer WHERE name = ?";
+    if ($stmt = $mysqli->prepare($query)){
+        $stmt->bind_param('s', $_POST['username']);
+        $stmt->execute();
+        $stmt->bind_result($id, $name, $balance);    
+        $stmt->store_result();
+        while ($stmt->fetch()){
+            $_SESSION['admin_query_user'] = array('name'=>$name,'id'=>$id,'balance'=>$balance);
+        }
+        echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_user.php'</script>";
+    }
+    $mysqli->close();
+
+}
+
+
+?>
