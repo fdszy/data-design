@@ -8,63 +8,27 @@
   <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
   <title>航空机票管理系统</title>
   <!-- Bootstrap -->
-  <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="./static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-  <link href="./static/css/bootstrap.min.css" rel="stylesheet">
+        <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="./static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+        <link href="./static/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Css -->
+        <link rel="stylesheet" href="./static/css/offcanvas.css">
+        <link rel="stylesheet" href="./static/css/bootstrap-datetimepicker.min.css">
+        <script src="./static/js/jquery.min.js"></script>
+
+        <!--[if lt IE 9]>
+        <script src="./static/js/html5shiv.js"></script>
+        <script src="./static/js/respond.min.js"></script>
+      <style> body {
+                font-family: "Microsoft YaHei UI", "Droid Sans Mono", serif;
+            }
+        </style>
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
         <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-        <script src="./static/js/bootstrap.min.js"></script>
-  <!-- Css -->
-  <link rel="stylesheet" href="./static/css/offcanvas.css">
-  <link rel="stylesheet" href="./static/css/bootstrap-datetimepicker.min.css">
-    <!--[if lt IE 9]>
-    <script src="./static/js/html5shiv.js"></script>
-    <script src="./static/js/respond.min.js"></script>
-  <style> body {
-            font-family: "Microsoft YaHei UI", "Droid Sans Mono", serif;
-        }
-    </style>
-        <style>
-/* Custom Styles */
-    ul.nav-tabs{
-        width: 140px;
-        margin-top: 20px;
-        border-radius: 4px;
-        border: 1px solid #ddd;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
-    }
-    ul.nav-tabs li{
-        margin: 0;
-        border-top: 1px solid #ddd;
-    }
-    ul.nav-tabs li:first-child{
-        border-top: none;
-    }
-    ul.nav-tabs li a{
-        margin: 0;
-        padding: 8px 16px;
-        border-radius: 0;
-    }
-    ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
-        color: #fff;
-        background: #000000;
-        border: 1px solid #000000;
-    }
-    ul.nav-tabs li:first-child a{
-        border-radius: 4px 4px 0 0;
-    }
-    ul.nav-tabs li:last-child a{
-        border-radius: 0 0 4px 4px;
-    }
-    ul.nav-tabs.affix{
-        top: 30px; /* Set the top position of pinned element */
-    }
-</style>
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 </head>
@@ -130,6 +94,14 @@
                                         <label for="name">航班号</label>
                                         <input type="text" class="form-control" id="planeid" placeholder="请输入航班号">
                                         <br>
+                                        <div class="form-group">
+                                            <div class="input-group date form_date col-md-12" data-date="" data-date-format="yyyy-MM-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                                <input class="form-control" size="10" type="text" value="" readonly>
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                            </div>
+                                            <input type="hidden" id="dtp_input2" value="" />
+                                        </div>
                                         <button type="submit" class="btn btn-primary">查询</button>
                                     </form>
                                 </div>
@@ -354,6 +326,43 @@
                 }
             })
         </script>
+<script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./static/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./static/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1
+    });
+    $('.form_date').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    $('.form_time').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+    });
+</script>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
