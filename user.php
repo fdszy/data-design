@@ -175,24 +175,9 @@ if($_SESSION['user']['name'] === "admin"){
             isAccountInfoHidden: false,
             isUserMgrHidden: true,
             isChgPwdHidden: true,
-            userInfo: {},
-            passengers: [],
-            passengerForm: {
-                pName: '',
-                pId: ''
-            },
-            passwordForm: {
-                oldPassword: '',
-                newPassword: '',
-                newPassword2: '',
-                errorLabel: '',
-            }
+
         },
-        created: function () {
-            this.userId = getCookie('userId');
-            this.loadUserInfo();
-            this.loadPassengers();
-        },
+
         methods: {
             changeAccountInfo: function () {
                 this.isAccountInfoHidden = false;
@@ -209,62 +194,7 @@ if($_SESSION['user']['name'] === "admin"){
                 this.isUserMgrHidden = true;
                 this.isChgPwdHidden = false;
             },
-            loadUserInfo: function () {
-                api.save({action: 'user_info'}, {
-                    uid: this.userId
-                }).then(resp => {
-                    this.userInfo = resp.body;
-                });
-            },
-            loadPassengers: function () {
-                api.save({action: 'get_my_psg'}, {
-                    uid: this.userId
-                }).then(resp => {
-                    this.passengers = resp.body;
-                });
-            },
-            delPassenger: function (psgId) {
-                api.save({action: 'del_psg'}, {
-                    pId: psgId,
-                    uid: this.userId
-                }).then(resp => {
-                    checkResp(resp, () => {
-                        this.loadPassengers()
-                    });
-                });
-            },
-            addPassenger: function () {
-                api.save({action: 'add_psg'}, {
-                    pName: this.passengerForm.pName,
-                    pId: this.passengerForm.pId,
-                    uid: this.userId
-                }).then(resp => {
-                    checkResp(resp, () => {
-                        this.loadPassengers()
-                    });
-                });
-            },
-            changePassword: function () {
-                if (this.passwordForm.newPassword !== this.passwordForm.newPassword2) {
-                    this.passwordForm.errorLabel = "两次输入的密码不一致";
-                    return;
-                }
-                this.passwordForm.errorLabel = '';
 
-                api.save({action: 'change_password'}, {
-                    uid: this.userId,
-                    old_pwd: this.passwordForm.oldPassword,
-                    new_pwd: this.passwordForm.newPassword,
-                }).then(resp => {
-                    checkResp(resp, () => {
-                        setCookie("userId", 0);
-                        alert("修改密码成功，请重新登录");
-                        location.href = './index.html';
-                    });
-                });
-
-
-            }
         }
     })
 </script>
