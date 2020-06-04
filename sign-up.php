@@ -35,6 +35,7 @@ if($confirm == $pwd){
     if($stmt->execute()){
       echo "<script>alert('注册成功，正在跳转到登陆界面...');</script>";
       echo "<script language='javascript' type='text/javascript'>window.location.href='./login.html'</script>";
+    }
 	  else{
       echo "<script>alert('注册失败，请重试');</script>";
       echo "<script language='javascript' type='text/javascript'>window.location.href='./sign-up.html'</script>";
