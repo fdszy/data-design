@@ -18,7 +18,29 @@ function update_userinfo($username){
     }
     $mysqli->close();
 }
-    
+
+function get_blacklist(){
+    $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
+
+    $query = "SELECT id,name,balance FROM customer WHERE credit < 0.00";
+    $results = array();
+
+    if ($stmt = $mysqli->prepare($query)){
+        $stmt->execute();
+        $stmt->bind_result($id, $name, $balance);
+        $stmt->store_result();
+
+        while ($stmt->fetch()){
+            $result = array('name'=>$name,'id'=>$id,'balance'=>$balance);
+            array_push($results,$result);
+        }
+        $mysqli->close();
+        return $results;
+    }
+    $mysqli->close();
+
+}
+
 function query_user_tickets($id){
     $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 

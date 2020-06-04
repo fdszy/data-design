@@ -29,7 +29,7 @@ if($confirm == $pwd){
   }
 
   //正常注册
-  $query = "INSERT customer (id,name,pwd_hash,salt,balance) VALUES (?,?,?,?,0.00)";
+  $query = "INSERT customer (id,name,pwd_hash,salt,balance,credit) VALUES (?,?,?,?,0.00,0.00)";
   if ($stmt = $mysqli->prepare($query)){
     $stmt->bind_param('ssss', $id,$name,$pwd,$salt);
     if($stmt->execute()){

@@ -170,10 +170,11 @@
                             <div class = "panel-default">
                                 <div class="panel-heading"> 拉入黑名单 </div>
                                 <div class="panel-body">
-                                    <form role="form" method="post" action="search.php">
+                                    <form role="form" method="post" action="admin_manage_user.php">
                                         <div class="form-group">
+                                            <input type="hidden" name="op" value="black">
                                             <label for="name">账号名</label>
-                                            <input type="text" class="form-control" id="planeid" placeholder="请输入需要拉入黑名单的账户名">
+                                            <input type="text" class="form-control" name="username" placeholder="请输入需要拉入黑名单的账户名">
                                             <label for="name"></label>
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary form-control">拉入黑名单</button>
@@ -191,14 +192,24 @@
                                         <thead>
                                         <tr>
                                             <th>用户名</th>
-                                            <th>用户账户余额</th>
-                                            <th>姓名</th>
                                             <th>身份证号</th>
+                                            <th>用户账户余额</th> 
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <?php
+                                        include 'functions.php';
+                                        $results = get_blacklist();
+                                        foreach($results as $result){
+                                            echo "<tbody>
+                                            <tr>
+                                              <th>$result['name']</th>
+                                              <td>$result['id']</td>
+                                              <td>$result['balance']</td>
+                                            </tr>
+                                        </tbody>";
+                                        }
+                                        ?>
 
-                                        </tbody>
                                     </table>
                                 </div>
                             </div>
