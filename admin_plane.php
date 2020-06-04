@@ -96,7 +96,7 @@
                                         <br>
                                         <label for="name">航班日期</label>
                                         <div class="form-group">
-                                            <div class="input-group date form_date col-md-12" data-date="" data-date-format="yyyy-MM-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                            <div class="input-group date form_date col-md-12" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                                                 <input class="form-control" size="10" type="text" value="" readonly>
                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -332,10 +332,10 @@
 <script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="./static/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-<script type="text/javascript" src="./static/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./static/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script type="text/javascript">
     $('.form_datetime').datetimepicker({
-        //language:  'fr',
+        //language:  'zh-CN',
         weekStart: 1,
         todayBtn:  1,
         autoclose: 1,
@@ -345,7 +345,7 @@
         showMeridian: 1
     });
     $('.form_date').datetimepicker({
-        language:  'fr',
+        language:  'zh-CN',
         weekStart: 1,
         todayBtn:  1,
         autoclose: 1,
@@ -355,7 +355,7 @@
         forceParse: 0
     });
     $('.form_time').datetimepicker({
-        language:  'fr',
+        language:  'zh-CN',
         weekStart: 1,
         todayBtn:  1,
         autoclose: 1,
