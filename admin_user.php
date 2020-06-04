@@ -202,9 +202,9 @@
                                         foreach($results as $result){
                                             echo "<tbody>
                                             <tr>
-                                              <th>$result['name']</th>
-                                              <td>$result['id']</td>
-                                              <td>$result['balance']</td>
+                                              <th>".$result['name']."</th>
+                                              <td>".$result['id']."</td>
+                                              <td>".$result['balance']."</td>
                                             </tr>
                                         </tbody>";
                                         }
