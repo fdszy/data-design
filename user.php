@@ -167,36 +167,49 @@ if($_SESSION['user']['name'] === "admin"){
 <script src="./static/js/vue.js"></script>
 <script src="./static/js/vue-resource.min.js"></script>
 <script src="./static/js/common.js"></script>
-<script>
-    new Vue({
-        el: '#app',
-        data: {
-            userId: 0,
-            isAccountInfoHidden: false,
-            isUserMgrHidden: true,
-            isChgPwdHidden: true,
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    userId: 0,
+                    isAccountInfoHidden: false,
+                    isUserMgrHidden: true,
+                    isChgPwdHidden: true,
+                    userInfo: {},
+                    passengers: [],
+                    passengerForm: {
+                        pName: '',
+                        pId: ''
+                    },
+                    passwordForm: {
+                        oldPassword: '',
+                        newPassword: '',
+                        newPassword2: '',
+                        errorLabel: '',
+                    }
+                },
+                created: function () {
 
-        },
+                },
+                methods: {
+                    changeAccountInfo: function () {
+                        this.isAccountInfoHidden = false;
+                        this.isUserMgrHidden = true;
+                        this.isChgPwdHidden = true;
+                    },
+                    changePsgMgr: function () {
+                        this.isAccountInfoHidden = true;
+                        this.isUserMgrHidden = false;
+                        this.isChgPwdHidden = true;
+                    },
+                    changeChgPsw: function () {
+                        this.isAccountInfoHidden = true;
+                        this.isUserMgrHidden = true;
+                        this.isChgPwdHidden = false;
+                    },
 
-        methods: {
-            changeAccountInfo: function () {
-                this.isAccountInfoHidden = false;
-                this.isUserMgrHidden = true;
-                this.isChgPwdHidden = true;
-            },
-            changePsgMgr: function () {
-                this.isAccountInfoHidden = true;
-                this.isUserMgrHidden = false;
-                this.isChgPwdHidden = true;
-            },
-            changeChgPsw: function () {
-                this.isAccountInfoHidden = true;
-                this.isUserMgrHidden = true;
-                this.isChgPwdHidden = false;
-            },
-
-        }
-    })
-</script>
+                }
+            })
+        </script>
 </body>
 </html>
