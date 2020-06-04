@@ -25,7 +25,6 @@ if($confirm == $pwd){
       echo "<script>alert('用户名已被使用！');</script>";
       echo "<script language='javascript' type='text/javascript'>window.location.href='./sign-up.html'</script>";
     }
-    exit;
   }
 
   //正常注册
