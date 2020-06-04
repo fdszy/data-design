@@ -1,8 +1,8 @@
 <?php
 header ( "Content-type:text/html;charset=utf-8" ); 
-session_start();
 
 function update_userinfo($username){
+    session_start();
     $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
     $query = "SELECT id,name,balance FROM customer WHERE name = ?";

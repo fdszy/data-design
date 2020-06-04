@@ -4,6 +4,7 @@ if(!isset($_POST['op'])){
     echo "<script language='javascript' type='text/javascript'>window.location.href='./user.php'</script>";
     exit;
 }
+
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 $op = $_POST['op'];
 if($op === "query"){

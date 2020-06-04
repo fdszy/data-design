@@ -90,14 +90,15 @@
                                 </style>
                                 <div class="panel-heading"> 航班查询 </div>
                                 <div class="panel-body">
-                                    <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
+                                    <form role="form" method="post" action="admin_manage_flight.php">
+                                        <input type="hidden" name="op" value="query">
                                         <label for="name">航班号</label>
-                                        <input type="text" class="form-control" id="planeid" placeholder="请输入航班号">
+                                        <input type="text" class="form-control" name="fNo" placeholder="请输入航班号">
                                         <br>
                                         <label for="name">航班日期</label>
                                         <div class="form-group">
                                             <div class="input-group date form_date col-md-12" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                                                <input class="form-control" size="10" type="text" value="" readonly>
+                                                <input class="form-control" size="10" type="text" name ="date" value="" readonly>
                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                                             </div>
@@ -115,18 +116,36 @@
                             <div class="panel-body">
                                 <table class="table table-striped">
                                     <caption></caption>
-                                    <thead>
+                                    <?php 
+                                    if(isset($_SESSION['admin_query_flight'])){
+                                        echo "<thead>
                                     <tr>
                                         <th>航班号</th>
+                                        <th>出发时间</th>
+                                        <th>到达时间</th>
                                         <th>头等舱总仓位</th>
                                         <th>经济舱总仓位</th>
                                         <th>头等舱剩余仓位</th>
                                         <th>经济舱剩余仓位</th>
                                     </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
+                                    </thead>";
+                                        foreach($_SESSION['admin_query_flight'] as $result){
+                                            echo "<tbody>
+                                            <tr>
+                                              <td>'.$result['fNo'].'</td>
+                                              <td>'.$result['de_time'].'</td>
+                                              <td>'.$result['ar-time'].'</td>
+                                              <td>'.$result['de_time'].'</td>
+                                              <td>'.$result['t-1'].'</td>
+                                              <td>'.$result['l-1'].'</td>
+                                              <td>'.$result['t-2'].'</td>
+                                              <td>'.$result['l-2'].'</td>
+                                            </tr>
+                                          </tbody>";
+                                        }
+                                        unset($_SESSION['admin_query_flight']);
+                                    }
+                                    ?>
                                 </table>
                             </div>
                             </div>

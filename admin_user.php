@@ -150,7 +150,7 @@
                                         </tr>' ;
                                             echo "<tbody>  
                                             <tr>
-                                              <th>".$_SESSION['admin_query_user']['name']."</th>
+                                              <td>".$_SESSION['admin_query_user']['name']."</td>
                                               <td>".$_SESSION['admin_query_user']['id']."</td>
                                               <td>".$_SESSION['admin_query_user']['balance']."</td>
                                             </tr>
@@ -202,7 +202,7 @@
                                         foreach($results as $result){
                                             echo "<tbody>
                                             <tr>
-                                              <th>".$result['name']."</th>
+                                              <td>".$result['name']."</td>
                                               <td>".$result['id']."</td>
                                               <td>".$result['balance']."</td>
                                             </tr>
