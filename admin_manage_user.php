@@ -12,7 +12,7 @@ if($op === "query"){
     if ($stmt = $mysqli->prepare($query)){
         $stmt->bind_param('s', $_POST['username']);
         $stmt->execute();
-        echo "<script>alert('".$stmt->error."');</script>"; // 测试使用
+        echo "<script>alert('".$stmt->num_rows."');</script>"; // 测试使用
         $stmt->bind_result($id, $name, $balance);    
         $stmt->store_result();
         while ($stmt->fetch()){
