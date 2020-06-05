@@ -136,14 +136,14 @@
                                         foreach($_SESSION['admin_query_flight'] as $result){
                                             echo "<tbody>
                                             <tr>
-                                              <td>'.$result['fNo'].'</td>
-                                              <td>'.$result['de_time'].'</td>
-                                              <td>'.$result['ar-time'].'</td>
-                                              <td>'.$result['de_time'].'</td>
-                                              <td>'.$result['t-1'].'</td>
-                                              <td>'.$result['l-1'].'</td>
-                                              <td>'.$result['t-2'].'</td>
-                                              <td>'.$result['l-2'].'</td>
+                                              <td>".$result['fNo']."</td>
+                                              <td>".$result['de_time']."</td>
+                                              <td>".$result['ar-time']."</td>
+                                              <td>".$result['de_time']."</td>
+                                              <td>".$result['t-1']."</td>
+                                              <td>".$result['l-1']."</td>
+                                              <td>".$result['t-2']."</td>
+                                              <td>".$result['l-2']."</td>
                                             </tr>
                                           </tbody>";
                                         }
