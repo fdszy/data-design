@@ -58,7 +58,7 @@ function airport_name_to_id($name, $mysqli){
 }
 
 function user_id_to_name($id, $mysqli){
-    $query = "SELECT name FROM cuatomer WHERE id = ?";
+    $query = "SELECT name FROM customer WHERE id = ?";
     if ($stmt = $mysqli->prepare($query)){
         $stmt->bind_param('s', $id);
         $stmt->execute();
@@ -79,7 +79,7 @@ function refresh_message(){
         $stmt->bind_result($id, $userid, $time, $content, $reply_id);
         $stmt->store_result();
         while ($stmt->fetch()){
-            $user = user_id_to_name($userid);
+            $user = user_id_to_name($userid, $mysqli);
             $results["$id"] = array("user"=>$user,"time"=>$time,"content"=>$content,"reply"=>$reply_id);
         }
     }
