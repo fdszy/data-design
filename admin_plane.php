@@ -305,54 +305,81 @@
                         </div>
                     </div>
                     <div :class="{hidden: isChgPwdHidden}">
-                        <h1 class = "text-center">留言板</h1>
-                        <div class="form-group">
-                            <label for="content">请输入留言内容</label>
-                            <textarea id="content" class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="button" class="btn btn-primary" id="sub_btn">发送</button>
-                        <br>
-                        <hr style="filter: alpha(opacity=100,finishopacity=0,style=2)" width="80%" color="#6f5499" size="10"/>
-                        <div id="messDivId" style="margin-left:25%;">
-                            <div class="story">
-                                <div class="opbtn"></div>
-                                <div class="m_top">
-                                    <div class = "aut_na">
-                                        <h4><strong>sss</strong>&nbsp&nbsp;</h4>
-                                    </div>
-                                </div>
-                                <p class="story_time">2020/06/5 10:00</p>
-                                <p class="story_m">航班啥时候飞</p>
+                    <h1 class = "text-center">留言板</h1>
+                            <form role="form" method="post" action="messageboard.php">
+                            <input type="hidden" name="user" value="<?php echo $_SESSION['user']['name']?>">
+                            <div class="form-group">
+                                <label for="content">请输入留言内容</label>
+                                <textarea name="content" class="form-control" rows="3"></textarea>
+                                <input type="text" class="form-control" name="reply" value="NULL" placeholder="如果是回复消息，请在这里输入回复的楼层">
                             </div>
+                            <button type="submit" class="btn btn-primary" id="sub_btn">发送</button>
+                            </form>
                             <br>
-                            <div class="story">
-                                <div class="opbtn"></div>
-                                <div class="m_top">
-                                    <div class = "aut_na">
-                                        <h4><strong>管理员</strong>&nbsp;&nbsp;&nbsp;</h4>
+                            <hr style="filter: alpha(opacity=100,finishopacity=0,style=2)" width="80%" color="#6f5499" size="10"/>
+                            <div id="messDivId" style="margin-left:25%;">
+                                <?php 
+                                include 'functions.php';
+                                $results = refresh_message();
+                                foreach($results as $key=>$value){
+                                   echo '<div class="story">
+                                    <div class="opbtn"></div>
+                                    <div class="m_top">
+                                       <div class = "aut_na">
+                                           <h4><strong>'.$value['user'].'</strong>&nbsp&nbsp;</h4>
+                                       </div>
                                     </div>
-                                </div>
-                                <p class="story_time">2022/01/12 8:12</p>
-                                <p class="story_m">延误了，不飞了</p>
-                                <p class="story_hf"><strong>@sss</strong><small>(2020/06/05 10:00)</small>:航班啥时候飞</p>
-                            </div>
-                            <br>
-                            <div class="story">
-                                <div class="opbtn"></div>
-                                <div class="m_top">
-                                    <div class = "aut_na">
-                                        <h4><strong>毛哥</strong>&nbsp;&nbsp;&nbsp;</h4>
+                                    <p class="story_time">'.$value['time'].'</p>
+                                    <p class="story_m">'.$value['content'].'</p>';
+                                    if($value['reply']!=NULL){
+                                        echo '<p class="story_hf"><strong>@'.$results[$value['reply']]['user']
+                                        .'</strong><small>('.$results[$value['reply']]['time']
+                                        .')</small>:'.$results[$value['reply']]['content'].'</p>';
+                                    }
+                                    echo '</div>
+                                    <br>'; 
+                                }
+                                ?>
+                                <!--
+                                <div class="story">
+                                    <div class="opbtn"></div>
+                                    <div class="m_top">
+                                        <div class = "aut_na">
+                                            <h4><strong>sss</strong>&nbsp&nbsp;</h4>
+                                        </div>
                                     </div>
+                                    <p class="story_time">2020/06/5 10:00</p>
+                                    <p class="story_m">航班啥时候飞</p>
                                 </div>
-                                <p class="story_time">2026/02/10 13:23</p>
-                                <p class="story_m">别飞了，爬吧</p>
-                                <p class="story_hf"><strong>@管理员</strong><small>(2022/01/12
-                                    8:12)</small>:延误了，飞不了</p>
-                            </div>
+                                <br>
+                                <div class="story">
+                                    <div class="opbtn"></div>
+                                    <div class="m_top">
+                                        <div class = "aut_na">
+                                            <h4><strong>管理员</strong>&nbsp;&nbsp;&nbsp;</h4>
+                                        </div>
+                                    </div>
+                                    <p class="story_time">2022/01/12 8:12</p>
+                                    <p class="story_m">延误了，不飞了</p>
+                                    <p class="story_hf"><strong>@sss</strong><small>(2020/06/05 10:00)</small>:航班啥时候飞</p>
+                                </div>
+                                <br>
+                                <div class="story">
+                                    <div class="opbtn"></div>
+                                    <div class="m_top">
+                                        <div class = "aut_na">
+                                            <h4><strong>毛哥</strong>&nbsp;&nbsp;&nbsp;</h4>
+                                        </div>
+                                    </div>
+                                    <p class="story_time">2026/02/10 13:23</p>
+                                    <p class="story_m">别飞了，爬吧</p>
+                                    <p class="story_hf"><strong>@管理员</strong><small>(2022/01/12
+                                        8:12)</small>:延误了，飞不了</p>
+                                </div> -->
                         </div>
 
                     </div>
-                    </form>
+                    
                 </div>
 
 

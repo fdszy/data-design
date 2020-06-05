@@ -57,6 +57,22 @@ function airport_name_to_id($name, $mysqli){
     }
 }
 
+function refresh_message(){
+    $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
+    $results = array();
+    $query = "SELECT id,user,time,content,reply_id FROM post";
+    if ($stmt = $mysqli->prepare($query)){
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+        $stmt->bind_result($id, $user, $time, $content, $reply_id);
+        $stmt->store_result();
+        while ($stmt->fetch()){
+            $results["$id"] = array("user"=>$user,"time"=>$time,"content"=>$content,"reply"=>$reply_id);
+        }
+    }
+    return $results;
+}
+
 function query_user_tickets($id){
     $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
