@@ -67,7 +67,11 @@
                 <div class="list-group">
                     <a href="#" @click="changeAccountInfo()" class="list-group-item"
                        :class="{active: !isAccountInfoHidden}" >票务信息</a>
-                    <a href="#" @click="changePsgMgr()" class="list-group-item" :class="{active: !isUserMgrHidden}">修改航班</a>
+                    <a href="#" @click="changePsgMgr()" class="list-group-item" :class="{active: !isUserMgrHidden}">注册航班</a>
+                    <a href="#" @click="changeline()" class="list-group-item" :class="{active: !isline}">添加航线</a>
+                    <a href="#" @click="changeflight()" class="list-group-item" :class="{active: !isflight}">修改航班</a>
+                    <a href="#" @click="changeprice()" class="list-group-item" :class="{active: !isprice}">修改票价信息</a>
+                    <a href="#" @click="changedelete()" class="list-group-item" :class="{active: !isdelete}">删除航班</a>
                     <a href="#" @click="changeChgPsw()" class="list-group-item"
                        :class="{active: !isChgPwdHidden}">发送消息</a>
                 </div>
@@ -132,14 +136,14 @@
                                         foreach($_SESSION['admin_query_flight'] as $result){
                                             echo "<tbody>
                                             <tr>
-                                              <td>".$result['fNo']."</td>
-                                              <td>".$result['de_time']."</td>
-                                              <td>".$result['ar-time']."</td>
-                                              <td>".$result['de_time']."</td>
-                                              <td>".$result['t-1']."</td>
-                                              <td>".$result['l-1']."</td>
-                                              <td>".$result['t-2']."</td>
-                                              <td>".$result['l-2']."</td>
+                                              <td>'.$result['fNo'].'</td>
+                                              <td>'.$result['de_time'].'</td>
+                                              <td>'.$result['ar-time'].'</td>
+                                              <td>'.$result['de_time'].'</td>
+                                              <td>'.$result['t-1'].'</td>
+                                              <td>'.$result['l-1'].'</td>
+                                              <td>'.$result['t-2'].'</td>
+                                              <td>'.$result['l-2'].'</td>
                                             </tr>
                                           </tbody>";
                                         }
@@ -151,11 +155,11 @@
                             </div>
                         </div>
                     <div :class="{hidden: isUserMgrHidden}">
-                        <h1 class="text-center" >修改航班</h1>
+                        <h1 class="text-center" >注册航班</h1>
                         <div style="margin-top: 20px">
                             <div class="panel panel-default">
 
-                                <div class="panel-heading"> 添加/修改航班 </div>
+                                <div class="panel-heading"> 注册航班 </div>
                                 <div class="panel-body">
                                     <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
                                         <label for="name">航班号</label>
@@ -164,18 +168,99 @@
                                         <input type="text" class="form-control" placeholder="请输入飞机型号">
                                         <label for="name">出发机场</label>
                                         <input type="text" class="form-control" placeholder="请输入出发机场">
+                                        <label for="name">到达机场</label>
+                                        <input type="text" class="form-control" placeholder="请输入到达机场">
                                         <label for="name">中转机场1</label>
                                         <input type="text" class="form-control" placeholder="请输入中转机场1（如果没有请输入无">
                                         <label for="name">中转机场2</label>
                                         <input type="text" class="form-control" placeholder="请输入中转机场2（如果没有请输入无">
-                                        <label for="datetime">出发时间</label>
-                                        <input type="text" class="form-control" placeholder="请输入出发时间">
+
                                         <label for="name">头等舱数量</label>
                                         <input type="text" class="form-control" placeholder="请输入头等舱数量">
-                                        <label for="name">头等舱价格</label>
-                                        <input type="text" class="form-control" placeholder="请输入头等舱价格">
                                         <label for="name">经济舱数量</label>
                                         <input type="text" class="form-control" placeholder="请输入经济舱数量">
+
+                                        <br>
+                                        <button type="submit" class="btn btn-primary">注册</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div :class="{hidden: isline}">
+                        <h1 class="text-center" >添加航线</h1>
+                        <div style="margin-top: 20px">
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading"> 添加航线 </div>
+                                <div class="panel-body">
+                                    <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
+                                        <label for="name">航班号</label>
+                                        <input type="text" class="form-control" placeholder="请输入航班号">
+                                        <label for="name">出发时间</label>
+                                        <input type="text" class="form-control" placeholder="请输入出发时间（按照正确的时间格式）">
+                                        <label for="name">出发机场</label>
+                                        <input type="text" class="form-control" placeholder="请输入出发机场">
+                                        <label for="name">头等舱价格</label>
+                                        <input type="text" class="form-control" placeholder="请输入头等舱价格">
+                                        <label for="name">经济舱价格</label>
+                                        <input type="text" class="form-control" placeholder="请输入经济舱价格">
+                                        <br>
+                                        <button type="submit" class="btn btn-primary">添加</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div :class="{hidden: isflight}">
+                        <h1 class="text-center" >修改航线</h1>
+                        <div style="margin-top: 20px">
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading"> 修改航线 </div>
+                                <div class="panel-body">
+                                    <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
+                                        <label for="name">航班号</label>
+                                        <input type="text" class="form-control" placeholder="请输入航班号">
+                                        <label for="name">飞机型号</label>
+                                        <input type="text" class="form-control" placeholder="请输入飞机型号">
+                                        <label for="name">出发机场</label>
+                                        <input type="text" class="form-control" placeholder="请输入出发机场">
+                                        <label for="name">到达机场</label>
+                                        <input type="text" class="form-control" placeholder="请输入到达机场">
+                                        <label for="name">中转机场1</label>
+                                        <input type="text" class="form-control" placeholder="请输入中转机场1（如果没有请输入无">
+                                        <label for="name">中转机场2</label>
+                                        <input type="text" class="form-control" placeholder="请输入中转机场2（如果没有请输入无">
+
+                                        <label for="name">头等舱数量</label>
+                                        <input type="text" class="form-control" placeholder="请输入头等舱数量">
+                                        <label for="name">经济舱数量</label>
+                                        <input type="text" class="form-control" placeholder="请输入经济舱数量">
+                                        <br>
+                                        <button type="submit" class="btn btn-primary">修改</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div :class="{hidden: isprice}">
+                        <h1 class="text-center" >修改票价</h1>
+                        <div style="margin-top: 20px">
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading"> 修改票价 </div>
+                                <div class="panel-body">
+                                    <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
+                                        <label for="name">航班号</label>
+                                        <input type="text" class="form-control" placeholder="请输入航班号">
+                                        <label for="name">出发时间</label>
+                                        <input type="text" class="form-control" placeholder="请输入出发时间（按照正确的时间格式）">
+
+                                        <label for="name">头等舱价格</label>
+                                        <input type="text" class="form-control" placeholder="请输入头等舱价格">
                                         <label for="name">经济舱价格</label>
                                         <input type="text" class="form-control" placeholder="请输入经济舱价格">
                                         <br>
@@ -183,6 +268,12 @@
                                     </form>
                                 </div>
                             </div>
+
+                        </div>
+                    </div>
+                    <div :class="{hidden: isdelete}">
+                        <h1 class="text-center" >删除航班</h1>
+                        <div style="margin-top: 20px">
                             <div class="panel panel-default">
 
                                 <div class="panel-heading"> 删除航班 </div>
@@ -190,47 +281,72 @@
                                     <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
                                         <label for="name">航班号</label>
                                         <input type="text" class="form-control" placeholder="请输入航班号">
-
+                                        <br>
+                                        <button type="submit" class="btn btn-primary">删除</button>
+                                    </form>
+                                </div>
+                                <div class="panel-heading"> 删除航线 </div>
+                                <div class="panel-body">
+                                    <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
+                                        <label for="name">航班号</label>
+                                        <input type="text" class="form-control" placeholder="请输入航班号">
+                                        <label for="name">出发时间</label>
+                                        <input type="text" class="form-control" placeholder="请输入出发时间">
                                         <br>
                                         <button type="submit" class="btn btn-primary">删除</button>
                                     </form>
                                 </div>
                             </div>
+
                         </div>
                     </div>
-                    <form action="changepwd.php" method="post">
-                        <div :class="{hidden: isChgPwdHidden}">
-                            <h1 class = "text-center">修改密码</h1>
-                            <div class="row" style="margin-top: 20px;margin-left: 30px">
-                            <div class="col-lg-8">
-                                <div class="input-group">
-                                    <span class="input-group-addon">旧密码</span>
-                                    <input type="text" v-model="passwordForm.oldPassword" class="form-control"
-                                           placeholder="Old Password" name="oldpwd">
+                    <div :class="{hidden: isChgPwdHidden}">
+                        <h1 class = "text-center">留言板</h1>
+                        <div class="form-group">
+                            <label for="content">请输入留言内容</label>
+                            <textarea id="content" class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="sub_btn">发送</button>
+                        <br>
+                        <hr style="filter: alpha(opacity=100,finishopacity=0,style=2)" width="80%" color="#6f5499" size="10"/>
+                        <div id="messDivId" style="margin-left:25%;">
+                            <div class="story">
+                                <div class="opbtn"></div>
+                                <div class="m_top">
+                                    <div class = "aut_na">
+                                        <h4><strong>sss</strong>&nbsp&nbsp;</h4>
+                                    </div>
                                 </div>
+                                <p class="story_time">2020/06/5 10:00</p>
+                                <p class="story_m">航班啥时候飞</p>
                             </div>
-                            <div class="col-lg-8" style="margin-top: 3px">
-                                <div class="input-group">
-                                    <span class="input-group-addon">新密码</span>
-                                    <input type="text" v-model="passwordForm.newPassword" class="form-control"
-                                           placeholder="New Password" name="newpwd">
+                            <br>
+                            <div class="story">
+                                <div class="opbtn"></div>
+                                <div class="m_top">
+                                    <div class = "aut_na">
+                                        <h4><strong>管理员</strong>&nbsp;&nbsp;&nbsp;</h4>
+                                    </div>
                                 </div>
+                                <p class="story_time">2022/01/12 8:12</p>
+                                <p class="story_m">延误了，不飞了</p>
+                                <p class="story_hf"><strong>@sss</strong><small>(2020/06/05 10:00)</small>:航班啥时候飞</p>
                             </div>
-                            <div class="col-lg-8" style="margin-top: 3px">
-                                <div class="input-group">
-                                    <span class="input-group-addon">重复密码</span>
-                                    <input type="text" v-model="passwordForm.newPassword2" class="form-control"
-                                           placeholder="Repeat Password" name="confirm">
+                            <br>
+                            <div class="story">
+                                <div class="opbtn"></div>
+                                <div class="m_top">
+                                    <div class = "aut_na">
+                                        <h4><strong>毛哥</strong>&nbsp;&nbsp;&nbsp;</h4>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12" style="font-size: 1.2em; margin-top: 3px">
-                                <span class="label label-danger">{{ passwordForm.errorLabel }}</span>
-                            </div>
-                            <div class="col-lg-8" style="margin-top: 5px">
-                                <button type="submit" class="btn btn-primary" style="float: right">修改密码
-                                </button>
+                                <p class="story_time">2026/02/10 13:23</p>
+                                <p class="story_m">别飞了，爬吧</p>
+                                <p class="story_hf"><strong>@管理员</strong><small>(2022/01/12
+                                    8:12)</small>:延误了，飞不了</p>
                             </div>
                         </div>
+
                     </div>
                     </form>
                 </div>
@@ -255,96 +371,81 @@
                     isAccountInfoHidden: false,
                     isUserMgrHidden: true,
                     isChgPwdHidden: true,
-                    userInfo: {},
-                    passengers: [],
-                    passengerForm: {
-                        pName: '',
-                        pId: ''
-                    },
-                    passwordForm: {
-                        oldPassword: '',
-                        newPassword: '',
-                        newPassword2: '',
-                        errorLabel: '',
-                    }
+                    isline: true,
+                    isflight: true,
+                    isprice: true,
+                    isdelete: true,
+
                 },
                 created: function () {
-                    this.userId = getCookie('userId');
-                    this.loadUserInfo();
-                    this.loadPassengers();
+
                 },
                 methods: {
                     changeAccountInfo: function () {
                         this.isAccountInfoHidden = false;
                         this.isUserMgrHidden = true;
                         this.isChgPwdHidden = true;
+                        this.isline = true;
+                        this.isflight = true;
+                        this.isprice = true;
+                        this.isdelete = true;
                     },
                     changePsgMgr: function () {
                         this.isAccountInfoHidden = true;
                         this.isUserMgrHidden = false;
                         this.isChgPwdHidden = true;
+                        this.isline = true;
+                        this.isflight = true;
+                        this.isprice = true;
+                        this.isdelete = true;
                     },
                     changeChgPsw: function () {
                         this.isAccountInfoHidden = true;
                         this.isUserMgrHidden = true;
                         this.isChgPwdHidden = false;
+                        this.isline = true;
+                        this.isflight = true;
+                        this.isprice = true;
+                        this.isdelete = true;
                     },
-                    loadUserInfo: function () {
-                        api.save({action: 'user_info'}, {
-                            uid: this.userId
-                        }).then(resp => {
-                            this.userInfo = resp.body;
-                        });
+                    changeline: function(){
+                        this.isAccountInfoHidden = true;
+                        this.isUserMgrHidden = true;
+                        this.isChgPwdHidden = true;
+                        this.isline = false;
+                        this.isflight = true;
+                        this.isprice = true;
+                        this.isdelete = true;
                     },
-                    loadPassengers: function () {
-                        api.save({action: 'get_my_psg'}, {
-                            uid: this.userId
-                        }).then(resp => {
-                            this.passengers = resp.body;
-                        });
+                    changeflight: function(){
+                        this.isAccountInfoHidden = true;
+                        this.isUserMgrHidden = true;
+                        this.isChgPwdHidden = true;
+                        this.isline = true;
+                        this.isflight = false;
+                        this.isprice = true;
+                        this.isdelete = true;
                     },
-                    delPassenger: function (psgId) {
-                        api.save({action: 'del_psg'}, {
-                            pId: psgId,
-                            uid: this.userId
-                        }).then(resp => {
-                            checkResp(resp, () => {
-                                this.loadPassengers()
-                            });
-                        });
+                    changeprice: function(){
+                        this.isAccountInfoHidden = true;
+                        this.isUserMgrHidden = true;
+                        this.isChgPwdHidden = true;
+                        this.isline = true;
+                        this.isflight = true;
+                        this.isprice = false;
+                        this.isdelete = true;
                     },
-                    addPassenger: function () {
-                        api.save({action: 'add_psg'}, {
-                            pName: this.passengerForm.pName,
-                            pId: this.passengerForm.pId,
-                            uid: this.userId
-                        }).then(resp => {
-                            checkResp(resp, () => {
-                                this.loadPassengers()
-                            });
-                        });
+                    changedelete: function(){
+                        this.isAccountInfoHidden = true;
+                        this.isUserMgrHidden = true;
+                        this.isChgPwdHidden = true;
+                        this.isline = true;
+                        this.isflight = true;
+                        this.isprice = true;
+                        this.isdelete = false;
                     },
-                    changePassword: function () {
-                        if (this.passwordForm.newPassword !== this.passwordForm.newPassword2) {
-                            this.passwordForm.errorLabel = "两次输入的密码不一致";
-                            return;
-                        }
-                        this.passwordForm.errorLabel = '';
-
-                        api.save({action: 'change_password'}, {
-                            uid: this.userId,
-                            old_pwd: this.passwordForm.oldPassword,
-                            new_pwd: this.passwordForm.newPassword,
-                        }).then(resp => {
-                            checkResp(resp, () => {
-                                setCookie("userId", 0);
-                                alert("修改密码成功，请重新登录");
-                                location.href = './index.html';
-                            });
-                        });
 
 
-                    }
                 }
             })
         </script>
