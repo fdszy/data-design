@@ -57,6 +57,18 @@ function airport_name_to_id($name, $mysqli){
     }
 }
 
+function user_id_to_name($id, $mysqli){
+    $query = "SELECT name FROM cuatomer WHERE id = ?";
+    if ($stmt = $mysqli->prepare($query)){
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+        $stmt->bind_result($name);
+        $stmt->store_result();
+        $stmt->fetch();
+        return $name;
+    }
+}
+
 function refresh_message(){
     $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
     $results = array();
@@ -64,9 +76,10 @@ function refresh_message(){
     if ($stmt = $mysqli->prepare($query)){
         $stmt->bind_param('s', $id);
         $stmt->execute();
-        $stmt->bind_result($id, $user, $time, $content, $reply_id);
+        $stmt->bind_result($id, $userid, $time, $content, $reply_id);
         $stmt->store_result();
         while ($stmt->fetch()){
+            $user = user_id_to_name($userid);
             $results["$id"] = array("user"=>$user,"time"=>$time,"content"=>$content,"reply"=>$reply_id);
         }
     }

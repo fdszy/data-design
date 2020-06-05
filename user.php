@@ -123,11 +123,11 @@ if($_SESSION['user']['name'] === "admin"){
                         <div :class="{hidden: isUserMgrHidden}">
                             <h1 class = "text-center">留言板</h1>
                             <form role="form" method="post" action="messageboard.php">
-                            <input type="hidden" name="user" value="<?php echo $_SESSION['user']['name']?>">
+                            <input type="hidden" name="user" value="<?php echo $_SESSION['user']['id']?>">
                             <div class="form-group">
                                 <label for="content">请输入留言内容</label>
                                 <textarea name="content" class="form-control" rows="3"></textarea>
-                                <input type="text" class="form-control" name="reply" value="NULL" placeholder="如果是回复消息，请在这里输入回复的楼层，,不是的话输入NULL即可">
+                                <input type="text" class="form-control" name="reply" value="NULL" placeholder="如果是回复消息，请在这里输入回复的楼层，不是的话输入NULL即可">
                             </div>
                             <button type="submit" class="btn btn-primary" id="sub_btn">发送</button>
                             </form>
@@ -142,7 +142,7 @@ if($_SESSION['user']['name'] === "admin"){
                                     <div class="opbtn"></div>
                                     <div class="m_top">
                                        <div class = "aut_na">
-                                           <h4><strong>'.$value['user'].'</strong>&nbsp&nbsp;</h4>
+                                           <h4><strong>'.$key.$value['user'].'</strong>&nbsp&nbsp;</h4>
                                        </div>
                                     </div>
                                     <p class="story_time">'.$value['time'].'</p>
