@@ -127,7 +127,9 @@ if($_SESSION['user']['name'] === "admin"){
                                 <textarea id="content" class="form-control" rows="3"></textarea>
                             </div>
                             <button type="button" class="btn btn-primary" id="sub_btn">发送</button>
-                            <div id="messDivId">
+                            <br>
+                            <hr style="filter: alpha(opacity=100,finishopacity=0,style=2)" width="80%" color="#6f5499" size="10"/>
+                            <div id="messDivId" style="margin-left:25%;">
                                 <div class="story">
                                     <div class="opbtn"></div>
                                     <div class="m_top">
