@@ -15,7 +15,7 @@ if($op === "query"){
 
         $stmt->bind_result($id, $name, $balance);    
         $stmt->store_result();
-        echo "<script>alert('".$stmt->num_rows.",".$stmt->sqlstate.');</script>"; // 测试使用
+        echo "<script>alert('".$stmt->num_rows.",".$stmt->sqlstate."');</script>"; // 测试使用
         while ($stmt->fetch()){
             $_SESSION['admin_query_user'] = array('name'=>$name,'id'=>$id,'balance'=>$balance);
         }
