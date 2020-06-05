@@ -127,7 +127,7 @@ if($_SESSION['user']['name'] === "admin"){
                             <div class="form-group">
                                 <label for="content">请输入留言内容</label>
                                 <textarea name="content" class="form-control" rows="3"></textarea>
-                                <input type="text" class="form-control" name="reply" value="NULL" placeholder="如果是回复消息，请在这里输入回复的楼层">
+                                <input type="text" class="form-control" name="reply" value="NULL" placeholder="如果是回复消息，请在这里输入回复的楼层，,不是的话输入NULL即可">
                             </div>
                             <button type="submit" class="btn btn-primary" id="sub_btn">发送</button>
                             </form>
