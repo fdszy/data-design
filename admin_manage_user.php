@@ -13,10 +13,8 @@ if($op === "query"){
     if ($stmt = $mysqli->prepare($query)){
         $stmt->bind_param('s', $_POST['username']);
         $stmt->execute();
-
         $stmt->bind_result($id, $name, $balance);    
         $stmt->store_result();
-        echo "<script>alert('".$stmt->num_rows."');</script>"; // 测试使用
         while ($stmt->fetch()){
             $_SESSION['admin_query_user'] = array('name'=>$name,'id'=>$id,'balance'=>$balance);
         }
