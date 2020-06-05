@@ -155,31 +155,32 @@
                             </div>
                         </div>
                     <div :class="{hidden: isUserMgrHidden}">
-                        <h1 class="text-center" >注册航班</h1>
+                        <h1 class="text-center" >注册航线</h1>
                         <div style="margin-top: 20px">
                             <div class="panel panel-default">
 
-                                <div class="panel-heading"> 注册航班 </div>
+                                <div class="panel-heading"> 注册航线 </div>
                                 <div class="panel-body">
-                                    <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
+                                <form role="form" method="post" action="admin_manage_flight.php">
+                                        <input type="hidden" name="op" value="create_flight">
                                         <label for="name">航班号</label>
-                                        <input type="text" class="form-control" placeholder="请输入航班号">
+                                        <input type="text" class="form-control" name = "fNo" placeholder="请输入航班号">
                                         <label for="name">飞机型号</label>
-                                        <input type="text" class="form-control" placeholder="请输入飞机型号">
+                                        <input type="text" class="form-control" name = "model" placeholder="请输入飞机型号">
+                                        <label for="name">航空公司</label>
+                                        <input type="text" class="form-control" name = "airline" placeholder="请输入航空公司">
                                         <label for="name">出发机场</label>
-                                        <input type="text" class="form-control" placeholder="请输入出发机场">
+                                        <input type="text" class="form-control" name = "departure" placeholder="请输入出发机场">
                                         <label for="name">到达机场</label>
-                                        <input type="text" class="form-control" placeholder="请输入到达机场">
+                                        <input type="text" class="form-control" name = "arrival" placeholder="请输入到达机场">
                                         <label for="name">中转机场1</label>
-                                        <input type="text" class="form-control" placeholder="请输入中转机场1（如果没有请输入无">
+                                        <input type="text" class="form-control" name="tran-1" value="NULL" placeholder="请输入中转机场1（如果没有可不输入）">
                                         <label for="name">中转机场2</label>
-                                        <input type="text" class="form-control" placeholder="请输入中转机场2（如果没有请输入无">
-
+                                        <input type="text" class="form-control" name="tran-2" value="NULL" placeholder="请输入中转机场2（如果没有可不输入）">
                                         <label for="name">头等舱数量</label>
-                                        <input type="text" class="form-control" placeholder="请输入头等舱数量">
+                                        <input type="text" class="form-control" name = "seat1-total" placeholder="请输入头等舱数量">
                                         <label for="name">经济舱数量</label>
-                                        <input type="text" class="form-control" placeholder="请输入经济舱数量">
-
+                                        <input type="text" class="form-control" name = "seat2-total" placeholder="请输入经济舱数量">
                                         <br>
                                         <button type="submit" class="btn btn-primary">注册</button>
                                     </form>
@@ -188,23 +189,26 @@
                         </div>
                     </div>
                     <div :class="{hidden: isline}">
-                        <h1 class="text-center" >添加航线</h1>
+                        <h1 class="text-center" >添加航班</h1>
                         <div style="margin-top: 20px">
                             <div class="panel panel-default">
 
-                                <div class="panel-heading"> 添加航线 </div>
+                                <div class="panel-heading"> 添加航班 </div>
                                 <div class="panel-body">
-                                    <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
+                                    <form role="form" method="post" action="admin_manage_flight.php">
+                                        <input type="hidden" name="op" value="create_inventory">
                                         <label for="name">航班号</label>
-                                        <input type="text" class="form-control" placeholder="请输入航班号">
+                                        <input type="text" class="form-control" name="fNo" placeholder="请输入航班号">
                                         <label for="name">出发时间</label>
-                                        <input type="text" class="form-control" placeholder="请输入出发时间（按照正确的时间格式）">
+                                        <input type="text" class="form-control" name="de-time" placeholder="请输入出发时间（按照正确的时间格式，如2020-1-1 12:00:00）">
                                         <label for="name">出发机场</label>
-                                        <input type="text" class="form-control" placeholder="请输入出发机场">
+                                        <input type="text" class="form-control" name="departure" placeholder="请输入出发机场">
+                                        <label for="name">到达时间</label>
+                                        <input type="text" class="form-control" name="ar-time" placeholder="请输入到达时间">
                                         <label for="name">头等舱价格</label>
-                                        <input type="text" class="form-control" placeholder="请输入头等舱价格">
+                                        <input type="text" class="form-control" name="price1" placeholder="请输入头等舱价格">
                                         <label for="name">经济舱价格</label>
-                                        <input type="text" class="form-control" placeholder="请输入经济舱价格">
+                                        <input type="text" class="form-control" name="price2" placeholder="请输入经济舱价格">
                                         <br>
                                         <button type="submit" class="btn btn-primary">添加</button>
                                     </form>
@@ -272,11 +276,11 @@
                         </div>
                     </div>
                     <div :class="{hidden: isdelete}">
-                        <h1 class="text-center" >删除航班</h1>
+                        <h1 class="text-center" >删除航线</h1>
                         <div style="margin-top: 20px">
                             <div class="panel panel-default">
 
-                                <div class="panel-heading"> 删除航班 </div>
+                                <div class="panel-heading"> 删除航线 </div>
                                 <div class="panel-body">
                                     <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
                                         <label for="name">航班号</label>
@@ -285,7 +289,7 @@
                                         <button type="submit" class="btn btn-primary">删除</button>
                                     </form>
                                 </div>
-                                <div class="panel-heading"> 删除航线 </div>
+                                <div class="panel-heading"> 删除航班 </div>
                                 <div class="panel-body">
                                     <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
                                         <label for="name">航班号</label>

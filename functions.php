@@ -41,6 +41,22 @@ function get_blacklist(){
 
 }
 
+function airport_name_to_id($name, $mysqli){
+    $query = "SELECT id FROM airport WHERE name = ?";
+    if ($stmt = $mysqli->prepare($query)){
+        $stmt->bind_param('s', $name);
+        $stmt->execute();
+        $stmt->bind_result($id);
+        $stmt->store_result();
+        if($stmt->num_rows != 1){
+            echo "<script>alert('机场名称(".$name.")输入有误!');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./user.php'</script>";
+        }
+        $stmt->fetch();
+        return $id;
+    }
+}
+
 function query_user_tickets($id){
     $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
