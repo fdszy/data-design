@@ -1,4 +1,5 @@
 <?php
+header ( "Content-type:text/html;charset=utf-8" );
 session_start();
 if(!isset($_POST['op'])){
     echo "<script language='javascript' type='text/javascript'>window.location.href='./user.php'</script>";
@@ -15,7 +16,7 @@ if($op === "query"){
 
         $stmt->bind_result($id, $name, $balance);    
         $stmt->store_result();
-        echo "<script>alert('".$stmt->num_rows.",".$stmt->sqlstate."');</script>"; // 测试使用
+        echo "<script>alert('".$stmt->num_rows."');</script>"; // 测试使用
         while ($stmt->fetch()){
             $_SESSION['admin_query_user'] = array('name'=>$name,'id'=>$id,'balance'=>$balance);
         }

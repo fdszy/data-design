@@ -37,6 +37,7 @@ header ( "Content-type:text/html;charset=utf-8" );
 </head>
 </head>
 <body data-spy="scroll" data-target="#myScrollspy">
+<meta charset="utf-8">
 <div id="app">
     <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
