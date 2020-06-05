@@ -50,7 +50,7 @@ switch($_POST['op'){
                     VALUES (?,?,?,?,?,?,?,?,?)";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('sssiisssss', $_POST['fNo'],$_POST['model'],$_POST['airline'],$_POST['seat1-total'],$_POST['seat2-total'],
-                                        $_POST['departure'],$_POST['tran-1'],$_POST['tran-2'],$_POST['arrival'],);
+                                        $_POST['departure'],$_POST['tran-1'],$_POST['tran-2'],$_POST['arrival']);
             if($stmt->execute()){
                 echo "<script>alert('添加成功!');</script>";
             }
@@ -83,7 +83,7 @@ switch($_POST['op'){
                     VALUES (?,?,?,?,?,?,?,?,?)";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('ssssiiff', $_POST['fNo'],$_POST['de-time'],$_POST['departure'],$_POST['ar-time'],
-                            $total_1,$total_2,$_POST['price1'],$_POST['price2'],);
+                            $total_1,$total_2,$_POST['price1'],$_POST['price2']);
             if($stmt->execute()){
                 echo "<script>alert('添加成功!');</script>";
             }
