@@ -7,12 +7,12 @@ if(!isset($_POST['op'])){
 
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 $op = $_POST['op'];
-echo "<script>alert('".$_POST['username']."');</script>"; // 测试使用
 if($op === "query"){
     $query = "SELECT id,name,balance FROM customer WHERE name = ?";
     if ($stmt = $mysqli->prepare($query)){
         $stmt->bind_param('s', $_POST['username']);
         $stmt->execute();
+        echo "<script>alert('".$stmt->error."');</script>"; // 测试使用
         $stmt->bind_result($id, $name, $balance);    
         $stmt->store_result();
         while ($stmt->fetch()){
