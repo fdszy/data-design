@@ -330,7 +330,7 @@ header ( "Content-type:text/html;charset=utf-8" );
                                     <div class="opbtn"></div>
                                     <div class="m_top">
                                        <div class = "aut_na">
-                                           <h4><strong>#'.$key.$value['user'].'</strong>&nbsp&nbsp;</h4>
+                                           <h4><strong>#'.$key.' '.$value['user'].'</strong>&nbsp&nbsp;</h4>
                                        </div>
                                     </div>
                                     <p class="story_time">'.$value['time'].'</p>
