@@ -120,6 +120,50 @@ if($_SESSION['user']['name'] === "admin"){
                             <p class = "col-md-offset-3">账户余额：<?php echo $_SESSION['user']['balance'];?></p>
                         </div>
                     </div>
+                        <div :class="{hidden: isUserMgrHidden}">
+                            <h1 class = "text-center">留言板</h1>
+                            <div class="form-group">
+                                <label for="content">请输入留言内容</label>
+                                <textarea id="content" class="form-control" rows="3"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-primary" id="sub_btn">发送</button>
+                            <div id="messDivId">
+                                <div class="story">
+                                    <div class="opbtn"></div>
+                                    <div class="m_top">
+                                        <div class = "aut_na">
+                                            <h4><strong>sss</strong>&nbsp&nbsp;</h4>
+                                        </div>
+                                    </div>
+                                    <p class="story_time">2020/06/5 10:00</p>
+                                    <p class="story_m">航班啥时候飞</p>
+                                </div>
+                                <br>
+                                <div class="story">
+                                    <div class="opbtn"></div>
+                                    <div class="m_top">
+                                        <div class = "aut_na">
+                                            <h4><strong>管理员</strong>&nbsp;&nbsp;&nbsp;</h4>
+                                        </div>
+                                    </div>
+                                    <p class="story_time">2022/01/12 8:12</p>
+                                    <p class="story_m">延误了，不飞了</p>
+                                    <p class="story_hf"><strong>@sss</strong><small>(2020/06/05 10:00)</small>:航班啥时候飞</p>
+                                </div>
+                                <br>
+                                <div class="story">
+                                    <div class="opbtn"></div>
+                                    <div class="m_top">
+                                        <div class = "aut_na">
+                                            <h4><strong>毛哥</strong>&nbsp;&nbsp;&nbsp;</h4>
+                                        </div>
+                                    </div>
+                                    <p class="story_time">2026/02/10 13:23</p>
+                                    <p class="story_m">别飞了，爬吧</p>
+                                    <p class="story_hf"><strong>@管理员</strong><small>(2022/01/12
+                                        8:12)</small>:延误了，飞不了</p>
+                                </div>
+                            </div>
                         <form action="changepwd.php" method="post">
                         <div :class="{hidden: isChgPwdHidden}">
                             <h1 class = "text-center">修改密码</h1>
