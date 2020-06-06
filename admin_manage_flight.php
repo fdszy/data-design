@@ -103,6 +103,37 @@ switch($_POST['op']){
         echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
         break;
     
+    case "modify_flight":
+        
+        break;
+
+    case "modify_price":
+        $query = "SELECT arrival_time FROM inventory WHERE t_fNo = ? AND t_departure_time = ?";
+        if ($stmt = $mysqli->prepare($query)){
+            $stmt->bind_param('ss', $_POST['fNo'], $_POST['de-time']);
+            $stmt->execute();
+            $stmt->bind_result($temp);    
+            $stmt->store_result();
+            if($stmt->num_rows == 0){
+                echo "<script>alert('该航班不存在！');</script>";
+                echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+                exit;
+            }
+        }
+        $query = "UPDATE inventory SET seat1_price = ?,seat2_price = ? WHERE fNo = ? AND departure = ?";
+        if ($stmt = $mysqli->prepare($query)){
+            $stmt->bind_param('ddss', $_POST['price1'], $_POST['price2'], $_POST['fNo'], $_POST['de-time']);
+            if($stmt->execute()){
+                echo "<script>alert('删除成功!');</script>";
+            }
+            else{
+                echo "<script>alert('删除失败');</script>";
+            }
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }
+        break;
+
     case "delete-flight": 
         $query = "SELECT departure_time FROM inventory WHERE fNo = ?";
         if ($stmt = $mysqli->prepare($query)){
