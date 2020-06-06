@@ -104,7 +104,28 @@ switch($_POST['op']){
         break;
     
     case "modify_flight":
-        
+        $_POST['departure'] = airport_name_to_id($_POST['departure']);
+        $_POST['arrival'] = airport_name_to_id($_POST['arrival']);
+        if($_POST['tran-1'] != NULL){
+            $_POST['tran-1'] = airport_name_to_id($_POST['tran-1'],$mysqli);
+        }
+        if($_POST['tran-2'] != NULL){
+            $_POST['tran-2'] = airport_name_to_id($_POST['tran-2'],$mysqli);
+        }
+        $query = "UPDATE flight SET model = ?,airline = ?,seat1_total = ?,seat2_total = ?,
+            departure_airport = ?,arrival_airport = ?,transfer_airport1 = ?,transfer_airport2 = ? WHERE fNo = ?";
+        if ($stmt = $mysqli->prepare($query)){
+            $stmt->bind_param('ssiisssss', $_POST['model'],$_POST['airline'],$_POST['seat1-total'],$_POST['seat2-total'],
+                $_POST['departure'],$_POST['tran-1'],$_POST['tran-2'],$_POST['arrival'], $_POST['fNo']);
+            if($stmt->execute()){
+                echo "<script>alert('修改成功!');</script>";
+            }
+            else{
+                echo "<script>alert('修改失败');</script>";
+            }
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }
         break;
 
     case "modify_price":
@@ -124,10 +145,10 @@ switch($_POST['op']){
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('ddss', $_POST['price1'], $_POST['price2'], $_POST['fNo'], $_POST['de-time']);
             if($stmt->execute()){
-                echo "<script>alert('删除成功!');</script>";
+                echo "<script>alert('修改成功!');</script>";
             }
             else{
-                echo "<script>alert('删除失败');</script>";
+                echo "<script>alert('修改失败');</script>";
             }
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;

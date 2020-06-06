@@ -3,6 +3,12 @@
 $userid = $_POST['user'];
 $content = $_POST['content'];
 
+if($content === ""){
+  echo "<script>alert('不允许发送空白留言！');</script>";
+  echo "<script language='javascript' type='text/javascript'>window.location.href='./user.php'</script>";
+  exit;
+}
+
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
 $query = "SELECT id FROM customer WHERE credit < 0.00";
