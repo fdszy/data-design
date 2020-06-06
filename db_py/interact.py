@@ -7,7 +7,7 @@ def Echo(echo):
 	print("# end echo #\n")
 
 
-def main():
+def Interact(echo_handler = Echo):
 	flag = True
 	
 	while flag:		
@@ -32,11 +32,11 @@ def main():
 				break
 			else:
 				echo = cursor.fetchall()
-				Echo(echo)
+				echo_handler(echo)
 
 		cursor.close()
 		db.close()
 	
 	
 if __name__ == '__main__':
-	main()
+	Interact()
