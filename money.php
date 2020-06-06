@@ -17,5 +17,8 @@ if ($stmt = $mysqli->prepare($query)){
     if($stmt->execute()){
           echo "<script>alert('充值成功，正在跳转购票页面...');</script>";
           echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+          update_userinfo();
           exit;
         }
+}
+?>
