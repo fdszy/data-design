@@ -1,24 +1,36 @@
 import pymysql
 
-def Echo(echo):
+def Input() -> str:
+	print("# please input cmd #")
+
+	cmd = ""
+	while True:
+		cmd += " " + input(">> ")
+
+		if ';' in cmd:
+			break
+
+	return cmd
+
+
+def Output(echo):
 	print("# echo #")
+
 	for line in echo:
 		print("# %s"%str(line))
+
 	print("# end echo #\n")
 
 
-def Interact(echo_handler = Echo):
+def Interact(input_handler = Input, out_handler = Output):
 	flag = True
 	
 	while flag:		
-		db = pymysql.connect(host = "47.101.211.158", port = 3306, user="mxy", passwd = "123456", db = "ticket_system", charset = "utf8")
+		db = pymysql.connect(host = "47.101.211.158", port = 3306, user = "mxy", passwd = "123456", db = "ticket_system", charset = "utf8")
 		cursor = db.cursor()
 
 		while True:
-			cmd = input("# please input cmd #\n>> ")
-
-			while ';' not in cmd:
-				cmd += " " + input(">> ")
+			cmd = input_handler()
 
 			if cmd == "quit;":
 				flag = False
@@ -32,7 +44,7 @@ def Interact(echo_handler = Echo):
 				break
 			else:
 				echo = cursor.fetchall()
-				echo_handler(echo)
+				out_handler(echo)
 
 		cursor.close()
 		db.close()
