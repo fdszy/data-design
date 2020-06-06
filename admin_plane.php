@@ -142,9 +142,8 @@ header ( "Content-type:text/html;charset=utf-8" );
                                             echo "<tbody>
                                             <tr>
                                               <td>".$result['fNo']."</td>
-                                              <td>".$result['de_time']."</td>
+                                              <td>".$result['de-time']."</td>
                                               <td>".$result['ar-time']."</td>
-                                              <td>".$result['de_time']."</td>
                                               <td>".$result['t-1']."</td>
                                               <td>".$result['l-1']."</td>
                                               <td>".$result['t-2']."</td>
