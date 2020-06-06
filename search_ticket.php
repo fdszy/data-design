@@ -55,7 +55,7 @@ if(($stmt = $mysqli->prepare($query)) and ($stmt2 = $mysqli2->prepare($query2)))
         $stmt2->bind_result($de_time,$ar_time,$price1,$price2);
         $stmt2->store_result();
 
-        while ($stmt->fetch()){
+        while ($stmt2->fetch()){
           $result['flightNo'] = $id;
           $result['departure'] = $start;
           $result['arrival'] = $end;
