@@ -37,7 +37,8 @@ switch($_POST['op']){
             exit;
         }
         else{
-            echo "ssszhuaba";
+            echo "ssszhuaba1111111111111111111111111";
+            echo $stmt->error;
         }
         $mysqli->close();
         break;
@@ -147,6 +148,6 @@ switch($_POST['op']){
     case "delete_inventory":
 
 }
-echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+//echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
 
 ?>
