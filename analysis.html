@@ -35,7 +35,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="./index.html">首页</a></li>
                 <li><a href="./admin_plane.html">航班管理</a></li>
-                <li><a href="./admin_user.html">流量统计</a></li>
+                <li><a href="./admin_user.html">用户管理</a></li>
                 <li class="active"><a href="javascript:void(0)">流量分析</a></li>
 
             </ul>
@@ -52,7 +52,7 @@
 </div>
 
 
-<div style="width:50%;margin-left:25%;margin-top:100px;">
+<div style="width:25%;margin-left:18%;margin-top:100px;">
 
     <canvas id="canvas" height="450" width="1000"></canvas>
 </div>
@@ -61,7 +61,6 @@
 <script>
     window.onload=function()
     {
-        alert("hello")
         getdatafromDB();
     }
 
@@ -74,21 +73,18 @@
                 alert('Error loading XML document');
             },
             success:function(data){
-                alert(data)
                 console.info(data);
-                alert("change")
                 bar(data);
             }
         });
     }
 
     function bar(data) {
-        alert(data.length)
         if(data.length==null || data.length == 0) {
             return;
         }
         var barData={};
-        barData.labels=["一月"];
+        barData.labels=["January","February","March","April","May","June","July","August","September","October","November","December"];
         barData.datasets=[];
         var temData={};
         temData.data=[];
@@ -99,7 +95,7 @@
 
         for(var i=0;i<data.length;i++)
         {
-            alert(data[i].flight_count)
+
             temData.data.push(data[i].flight_count);
         }
         barData.datasets.push(temData); //封装一个规定格式的barData。
@@ -134,9 +130,7 @@
             animationEasing: "easeOutQuart",
             onAnimationComplete: null
         }
-        alert("ok")
         var ctx  = document.getElementById("canvas").getContext('2d');
-        alert("yes")
         myChart = new Chart(ctx).Bar(barData,options, { //重点在这里
             responsive : true
         });
