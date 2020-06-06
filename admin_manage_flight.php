@@ -12,7 +12,7 @@ switch($_POST['op']){
 
         $query = "SELECT i.departure_time, i.arrival_time, f.seat1_total, i.seat1_surplus, f.seat2_total, i.seat2_surplus
             FROM inventory i INNER JOIN flight f
-            On i.fNo = f.flightNo
+            On i.fNo = f.flight_No
             WHERE i.fNo = ? AND DATE_FORMAT(i.departure_time,'%Y-%m-%d') = ?";
         $results = array();
         if ($stmt = $mysqli->prepare($query)){
