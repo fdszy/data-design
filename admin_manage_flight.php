@@ -16,6 +16,7 @@ switch($_POST['op']){
             WHERE i.fNo = ? AND DATE_FORMAT(i.departure_time,'%Y-%m-%d') = ?";
         $results = array();
         if ($stmt = $mysqli->prepare($query)){
+            echo "sssbupa";
             $stmt->bind_param('ss', $_POST['fNo'], $_POST['date']);
             $stmt->execute();
             $stmt->bind_result($de_time,$ar_time,$total_1,$left_1,$total_2,$left_2);    
@@ -34,6 +35,9 @@ switch($_POST['op']){
             var_dump($_SESSION['admin_query_flight']);
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;
+        }
+        else{
+            echo "ssszhuaba";
         }
         $mysqli->close();
         break;
@@ -143,7 +147,6 @@ switch($_POST['op']){
     case "delete_inventory":
 
 }
-var_dump($_SESSION['admin_query_flight']);
 echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
 
 ?>
