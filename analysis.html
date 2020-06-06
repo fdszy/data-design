@@ -51,45 +51,99 @@
     </div>
 </div>
 
+
 <div style="width:50%;margin-left:25%;margin-top:100px;">
 
     <canvas id="canvas" height="450" width="1000"></canvas>
 </div>
-<script>
-    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-    var lineChartData = {
-        labels : ["January","February","March","April","May","June","July"],
-        datasets : [
-            {
-                label: "My First dataset",
-                fillColor : "rgba(220,220,220,0.2)",
-                strokeColor : "rgba(220,220,220,1)",
-                pointColor : "rgba(220,220,220,1)",
-                pointStrokeColor : "#fff",
-                pointHighlightFill : "#fff",
-                pointHighlightStroke : "rgba(220,220,220,1)",
-                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-            },
-            {
-                label: "My Second dataset",
-                fillColor : "rgba(151,187,205,0.2)",
-                strokeColor : "rgba(151,187,205,1)",
-                pointColor : "rgba(151,187,205,1)",
-                pointStrokeColor : "#fff",
-                pointHighlightFill : "#fff",
-                pointHighlightStroke : "rgba(151,187,205,1)",
-                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-            }
-        ]
 
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    window.onload=function()
+    {
+        alert("hello")
+        getdatafromDB();
     }
 
-    window.onload = function(){
-        var ctx = document.getElementById("canvas").getContext("2d");
-        window.myLine = new Chart(ctx).Line(lineChartData, {
-            responsive: true
+    var getdatafromDB = function(){
+        $.ajax({
+            url: "./pro_ana.php",
+            type: "POST",
+            dataType:"json",
+            error: function(){
+                alert('Error loading XML document');
+            },
+            success:function(data){
+                alert(data)
+                console.info(data);
+                alert("change")
+                bar(data);
+            }
         });
     }
+
+    function bar(data) {
+        alert(data.length)
+        if(data.length==null || data.length == 0) {
+            return;
+        }
+        var barData={};
+        barData.labels=["一月"];
+        barData.datasets=[];
+        var temData={};
+        temData.data=[];
+        temData.fillColor= "rgba(151,187,205,0.5)";
+        temData.strokeColor = "rgba(151,187,205,0.8)";
+        temData.highlightFill="rgba(151,187,205,0.75)",
+            temData.highlightStroke= "rgba(151,187,205,1)";
+
+        for(var i=0;i<data.length;i++)
+        {
+            alert(data[i].flight_count)
+            temData.data.push(data[i].flight_count);
+        }
+        barData.datasets.push(temData); //封装一个规定格式的barData。
+        console.info(barData);
+        //// 动画效果
+        var options = {
+            scaleOverlay: false,
+            scaleOverride: false,
+            scaleSteps: null,
+            scaleStepWidth: null,
+            scaleStartValue: null,
+            scaleLineColor: "rgba(0,0,0,.1)",
+            scaleLineWidth: 1,
+            scaleShowLabels: true,
+            scaleLabel: "<%=value%>",
+            scaleFontFamily: "'Arial'",
+            scaleFontSize: 12,
+            scaleFontStyle: "normal",
+            scaleFontColor: "#666",
+            scaleShowGridLines: true,
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            scaleGridLineWidth: 1,
+            bezierCurve: true,
+            pointDot: true,
+            pointDotRadius: 3,
+            pointDotStrokeWidth: 1,
+            datasetStroke: true,
+            datasetStrokeWidth: 2,
+            datasetFill: true,
+            animation: true,
+            animationSteps: 60,
+            animationEasing: "easeOutQuart",
+            onAnimationComplete: null
+        }
+        alert("ok")
+        var ctx  = document.getElementById("canvas").getContext('2d');
+        alert("yes")
+        myChart = new Chart(ctx).Bar(barData,options, { //重点在这里
+            responsive : true
+        });
+
+    }
+
+
 
 
 </script>
