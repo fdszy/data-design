@@ -9,9 +9,11 @@ class batch():
 	key = []
 
 	template_sel = Template("select * from $table")
+	
 	template_ins = {
 					"airport" : Template("insert $table values(\"$id\", \"$name\", \"$city\");"),
-					"flight" : Template("insert $table values(\"$flight_No\", \"$model\", \"$airline\", \"$seat1_total\", \"$seat2_total\", \"$departure_airport\", \"$transfer_airport1\", \"$transfer_airport2\", \"$arrival_airport\");"),
+					"flight" : Template("insert $table values(\"$flight_No\", \"$model\", \"$airline\", $seat1_total, $seat2_total, \"$departure_airport\", $transfer_airport1, $transfer_airport2, \"$arrival_airport\");"),
+					"inventory" : Template("insert $table values(\"$fNo\", \"$departure_time\", \"$departure_airport\", $seat1_surplus, $seat2_surplus, $seat1_price, $seat2_price, \"$arrival_time\");"),
 					}
 
 	def __init__(self):
