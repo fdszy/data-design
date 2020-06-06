@@ -16,8 +16,9 @@ if ($stmt = $mysqli->prepare($query)){
     $stmt->bind_param('ds',$money, $_SESSION['user']['id']);
     if($stmt->execute()){
           echo "<script>alert('充值成功，正在跳转购票页面...');</script>";
-          echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
           update_userinfo($_SESSION['user']['name']);
+          echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+
           exit;
         }
 }

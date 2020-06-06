@@ -33,7 +33,7 @@ if($op == 'buy'){
      
     $query3 = "UPDATE inventory SET ? = ? WHERE fNo = ? AND departure_time = ?";
  
-    $query4 = "UPDATE customer SET balance = ? WHERE id = ?";
+    $query4 = "UPDATE customer SET balance = balance - ? WHERE id = ?";
 
     if ($stmt = $mysqli->prepare($query)){
         $stmt->bind_param('ssss', $price, $left, $total, $fNo, $de_time);
@@ -58,7 +58,7 @@ if($op == 'buy'){
         $stmt->execute();
 
         $stmt = $mysqli->prepare($query4);
-        $stmt->bind_param('ds',$_SESSION['user']['balance']+$pay,$_SESSION['user']['id']);
+        $stmt->bind_param('ds',$pay,$_SESSION['user']['id']);
         $stmt->execute();
 
         update_userinfo($_SESSION['user']['name']);
@@ -82,7 +82,7 @@ elseif($op == 'cancel'){
 
     $query4 = "UPDATE inventory SET ? = ? WHERE fNo = AND departure_time = ?";
  
-    $query5 = "UPDATE customer SET balance = ? WHERE id = ?";
+    $query5 = "UPDATE customer SET balance = balance + ? WHERE id = ?";
 
     if ($stmt = $mysqli->prepare($query)){
         $stmt->bind_param('ss', $fNo, $de_time, $passenger);
@@ -120,7 +120,7 @@ elseif($op == 'cancel'){
         $stmt->execute();
 
         $stmt = $mysqli->prepare($query5);
-        $stmt->bind_param('ds',$_SESSION['user']['balance']+$pay,$_SESSION['user']['id']);
+        $stmt->bind_param('ds',$pay,$_SESSION['user']['id']);
         $stmt->execute();
 
         update_userinfo($_SESSION['user']['name']);
