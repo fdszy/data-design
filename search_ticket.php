@@ -6,7 +6,6 @@ $departure = $_POST['departure'];
 $arrival = $_POST['arrival'];
 $date = $_POST['date']; // 日期
 
-echo "<script>alert('".$date."');</script>";
 if($departure == $arrival){
   echo "<script>alert('出发地和到达地不能相同！');</script>";
   echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
@@ -30,14 +29,14 @@ if ($stmt = $mysqli->prepare($query)){
     $stmt->free_result(); 
     $stmt->bind_param('s', $cities[$arrival]);
     $stmt->execute();
-    $stmt->bind_result($id);    
     $stmt->store_result();
     while ($stmt->fetch()){
       array_push($arrival_ids,$id);
     }
     $stmt->free_result();
 }
-
+var_dump($departure_ids);
+var_dump($arrival_ids);
 $results = array();
 $query = "SELECT flight_No FROM flight WHERE departure_airport = ? AND arrival_airport = ?";
 $query2 = "SELECT departure_time,arrival_time,seat1_price,seat2_price FROM inventory WHERE fNo = ? AND DATE_FORMAT(departure_time,'%Y-%m-%d') = ?";
