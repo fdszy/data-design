@@ -335,11 +335,11 @@ header ( "Content-type:text/html;charset=utf-8" );
                                        </div>
                                     </div>
                                     <p class="story_time">'.$value['time'].'</p>
-                                    <p class="story_m">'.$value['content'].'</p>';
+                                    <p class="story_m">'.htmlspecialchars($value['content']).'</p>';
                                     if($value['reply']!=NULL){
                                         echo '<p class="story_hf"><strong>@'.$results[$value['reply']]['user']
                                         .'</strong><small>('.$results[$value['reply']]['time']
-                                        .')</small>:'.$results[$value['reply']]['content'].'</p>';
+                                        .')</small>:'.htmlspecialchars($results[$value['reply']]['content']).'</p>';
                                     }
                                     echo '</div>
                                     <br>'; 
