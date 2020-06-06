@@ -22,7 +22,7 @@ def Output(echo):
 	print("# end echo #\n")
 
 
-def Interact(input_handler = Input, out_handler = Output):
+def Interact(in_handler = Input, out_handler = Output):
 	flag = True
 	
 	while flag:		
@@ -30,7 +30,7 @@ def Interact(input_handler = Input, out_handler = Output):
 		cursor = db.cursor()
 
 		while True:
-			cmd = input_handler()
+			cmd = in_handler()
 
 			if cmd == "quit;":
 				flag = False
