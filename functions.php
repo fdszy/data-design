@@ -72,7 +72,7 @@ function user_id_to_name($id, $mysqli){
 function refresh_message(){
     $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
     $results = array();
-    $query = "SELECT id,user,time,content,reply_id FROM post";
+    $query = "SELECT id,user,time,content,reply_id FROM post ORDER BY time DESC";
     if ($stmt = $mysqli->prepare($query)){
         $stmt->bind_param('s', $id);
         $stmt->execute();
