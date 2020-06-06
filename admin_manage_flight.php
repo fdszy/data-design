@@ -7,7 +7,7 @@ if(!isset($_POST['op'])){
 }
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
-switch($_POST['op'){
+switch($_POST['op']){
     case "query":
         $query = "SELECT i.departure_time, i.arrival_time, f.seat1_total, i.seat1_surplus, f.seat2_total, i.seat2_surplus
             FROM inventory i INNER JOIN flight f
@@ -93,6 +93,50 @@ switch($_POST['op'){
         }
         echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
         break;
+    
+    case "delete-flight":
+        
+        $query = "SELECT departure_time FROM inventory WHERE fNo = ?";
+        if ($stmt = $mysqli->prepare($query)){
+            $stmt->bind_param('s', $_POST['fNo']);
+            $stmt->execute();
+            $stmt->bind_result($temp);    
+            $stmt->store_result();
+            if($stmt->num_rows != 0){
+                echo "<script>alert('该航线还有对应的航班未删除，请先删除航班');</script>";
+                echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+                exit;
+            }
+        }
+
+        $query = "SELECT model FROM flight WHERE fNo = ?";
+        if ($stmt = $mysqli->prepare($query)){
+            $stmt->bind_param('s', $_POST['fNo']);
+            $stmt->execute();
+            $stmt->bind_result($temp);    
+            $stmt->store_result();
+            if($stmt->num_rows == 0){
+                echo "<script>alert('航线不存在！');</script>";
+                echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+                exit;
+            }
+        }
+
+        $query = "DELETE flight WHERE fNo = ?";
+        if ($stmt = $mysqli->prepare($query)){
+            $stmt->bind_param('s', $_POST['fNo']);
+            if($stmt->execute()){
+                echo "<script>alert('删除成功!');</script>";
+            }
+            else{
+                echo "<script>alert('删除失败');</script>";
+            }
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }
+        break;
+    
+    case "delete_inventory":
 
 }
 

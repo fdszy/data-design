@@ -55,7 +55,7 @@ header ( "Content-type:text/html;charset=utf-8" );
              <li><a href="./index.php">首页</a></li>
             <li class="active"><a href="javascript:void(0)">航班管理</a></li>
             <li><a href="./admin_user.php">客户信息管理</a></li>
-              <li><a href="./buy_ticket.html">流量统计</a></li>
+              <li><a href="./analysis.html">流量统计</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="./login.html">欢迎,<?php session_start();echo $_SESSION['user']['name'];?></a></li>
@@ -229,7 +229,7 @@ header ( "Content-type:text/html;charset=utf-8" );
 
                                 <div class="panel-heading"> 修改航线 </div>
                                 <div class="panel-body">
-                                    <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
+                                    <form role="form" method="post" action="admin_manage_flight.php">    <!- 这里改一下 ->
                                         <label for="name">航班号</label>
                                         <input type="text" class="form-control" placeholder="请输入航班号">
                                         <label for="name">飞机型号</label>
@@ -262,7 +262,7 @@ header ( "Content-type:text/html;charset=utf-8" );
 
                                 <div class="panel-heading"> 修改票价 </div>
                                 <div class="panel-body">
-                                    <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
+                                    <form role="form" method="post" action="admin_manage_flight.php">    <!- 这里改一下 ->
                                         <label for="name">航班号</label>
                                         <input type="text" class="form-control" placeholder="请输入航班号">
                                         <label for="name">出发时间</label>
@@ -287,20 +287,22 @@ header ( "Content-type:text/html;charset=utf-8" );
 
                                 <div class="panel-heading"> 删除航线 </div>
                                 <div class="panel-body">
-                                    <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
+                                    <form role="form" method="post" action="admin_manage_flight.php">
+                                        <input type="hidden" name="op" value="delete_flight">
                                         <label for="name">航班号</label>
-                                        <input type="text" class="form-control" placeholder="请输入航班号">
+                                        <input type="text" name="fNo" class="form-control" placeholder="请输入航班号">
                                         <br>
                                         <button type="submit" class="btn btn-primary">删除</button>
                                     </form>
                                 </div>
                                 <div class="panel-heading"> 删除航班 </div>
                                 <div class="panel-body">
-                                    <form role="form" method="post" action="search.php">    <!- 这里改一下 ->
+                                    <form role="form" method="post" action="admin_manage_flight.php">
+                                        <input type="hidden" name="op" value="delete_inventory">
                                         <label for="name">航班号</label>
-                                        <input type="text" class="form-control" placeholder="请输入航班号">
+                                        <input type="text" name="fNo" class="form-control" placeholder="请输入航班号">
                                         <label for="name">出发时间</label>
-                                        <input type="text" class="form-control" placeholder="请输入出发时间">
+                                        <input type="text" name="de-time" class="form-control" placeholder="请输入出发时间">
                                         <br>
                                         <button type="submit" class="btn btn-primary">删除</button>
                                     </form>

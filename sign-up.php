@@ -6,7 +6,13 @@ $pwd = $_POST['password'];
 $confirm = $_POST['confirm'];
 $id = $_POST['id'];
 
-if($confirm == $pwd){
+if($name === ""){
+  echo "<script>alert('用户名不能为空！');</script>";
+  echo "<script language='javascript' type='text/javascript'>window.location.href='./sign-up.html'</script>";
+  exit;
+}
+
+if($confirm === $pwd){
 
   $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
