@@ -22,7 +22,7 @@ switch($_POST['op']){
             $stmt->bind_result($de_time,$ar_time,$total_1,$left_1,$total_2,$left_2);    
             $stmt->store_result();
             while ($stmt->fetch()){
-                $result = array("fNo"=>$fNo,
+                $result = array("fNo"=>$_POST['fNo'],
                             "de-time"=>$de_time,
                             "ar-time"=>$ar_time,
                             "t-1"=>$total_1,

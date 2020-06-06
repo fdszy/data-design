@@ -133,8 +133,8 @@ header ( "Content-type:text/html;charset=utf-8" );
                                         <th>出发时间</th>
                                         <th>到达时间</th>
                                         <th>头等舱总仓位</th>
-                                        <th>经济舱总仓位</th>
                                         <th>头等舱剩余仓位</th>
+                                        <th>经济舱总仓位</th>
                                         <th>经济舱剩余仓位</th>
                                     </tr>
                                     </thead>";
