@@ -70,7 +70,6 @@ if(($stmt = $mysqli->prepare($query)) and ($stmt2 = $mysqli2->prepare($query2)))
       $stmt->free_result();
     }
   }
-  echo "<script>alert('".var_dump($results)."');</script>";
   $_SESSION['result_inv'] = $results;
   echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
   exit;
