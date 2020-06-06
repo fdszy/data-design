@@ -31,6 +31,7 @@ switch($_POST['op']){
             }
             $_SESSION['admin_query_flight'] = $results;
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
         }
         $mysqli->close();
         break;
@@ -59,6 +60,7 @@ switch($_POST['op']){
             }
         }
         echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+        exit;
         break;
 
     case "create_inventory":
