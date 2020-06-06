@@ -1,7 +1,10 @@
 <?php
 //header("Content-type:text/html;charset=utf-8"); 
 session_start();
-$cities = array('北京','上海'); //others
+$cities = array('北京','上海','广州','郑州','长春','重庆','长沙',
+                '成都','大连','福州','海口','杭州','香港','哈尔滨',
+                '台湾','昆明','拉萨','澳门','南京','沈阳','三亚',
+                '深圳','青岛','台湾','天津','乌鲁木齐','武汉','西安','厦门');
 $departure = $_POST['departure'];
 $arrival = $_POST['arrival'];
 $date = $_POST['date']; // 日期
@@ -13,7 +16,7 @@ if($departure == $arrival){
 }
 
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
-$mysqli2 = new mysqli('47.101.211.158','mxy','123456','ticket_system');
+//$mysqli2 = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
 $departure_ids = array();
 $arrival_ids = array();
@@ -40,7 +43,7 @@ if ($stmt = $mysqli->prepare($query)){
 $results = array();
 $query = "SELECT flight_No FROM flight WHERE departure_airport = ? AND arrival_airport = ?";
 $query2 = "SELECT departure_time,arrival_time,seat1_price,seat2_price FROM inventory WHERE fNo = ? AND DATE_FORMAT(departure_time,'%Y-%m-%d') = ?";
-if(($stmt = $mysqli->prepare($query)) and ($stmt2 = $mysqli2->prepare($query2))){
+if(($stmt = $mysqli->prepare($query)) and ($stmt2 = $mysqli->prepare($query2))){
   foreach($departure_ids as $start){
     foreach($arrival_ids as $end){
       $result = array();
@@ -64,7 +67,9 @@ if(($stmt = $mysqli->prepare($query)) and ($stmt2 = $mysqli2->prepare($query2)))
           $result['price1'] = $price1;
           $result['price2'] = $price2;          
         }
-        array_push($results,$result);
+        if(!empty($result)){
+          array_push($results,$result);
+        }
         $stmt2->free_result();
       }
       $stmt->free_result();

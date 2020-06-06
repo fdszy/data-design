@@ -58,7 +58,7 @@ header ( "Content-type:text/html;charset=utf-8" );
               <li><a href="./analysis.html">流量统计</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="./login.html">欢迎,<?php session_start();echo $_SESSION['user']['name'];?></a></li>
+            <li><a href="./login.html">欢迎, <?php session_start();echo $_SESSION['user']['name'];?></a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
