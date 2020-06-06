@@ -196,7 +196,6 @@ header ( "Content-type:text/html;charset=utf-8" );
                         <h1 class="text-center" >添加航班</h1>
                         <div style="margin-top: 20px">
                             <div class="panel panel-default">
-
                                 <div class="panel-heading"> 添加航班 </div>
                                 <div class="panel-body">
                                     <form role="form" method="post" action="admin_manage_flight.php">
@@ -229,23 +228,24 @@ header ( "Content-type:text/html;charset=utf-8" );
                                 <div class="panel-heading"> 修改航线 </div>
                                 <div class="panel-body">
                                     <form role="form" method="post" action="admin_manage_flight.php">    <!- 这里改一下 ->
+                                        <input type="hidden" name="op" value="modify_flight">
                                         <label for="name">航班号</label>
-                                        <input type="text" class="form-control" placeholder="请输入航班号">
+                                        <input type="text" class="form-control" name="fNo" placeholder="请输入航班号">
                                         <label for="name">飞机型号</label>
-                                        <input type="text" class="form-control" placeholder="请输入飞机型号">
+                                        <input type="text" class="form-control" name="model" placeholder="请输入飞机型号">
                                         <label for="name">出发机场</label>
-                                        <input type="text" class="form-control" placeholder="请输入出发机场">
+                                        <input type="text" class="form-control" name="departure" placeholder="请输入出发机场">
                                         <label for="name">到达机场</label>
-                                        <input type="text" class="form-control" placeholder="请输入到达机场">
+                                        <input type="text" class="form-control" name="arrival" placeholder="请输入到达机场">
                                         <label for="name">中转机场1</label>
-                                        <input type="text" class="form-control" placeholder="请输入中转机场1（如果没有请输入无">
+                                        <input type="text" class="form-control" name="tran-1" placeholder="请输入中转机场1（如果没有请输入无">
                                         <label for="name">中转机场2</label>
-                                        <input type="text" class="form-control" placeholder="请输入中转机场2（如果没有请输入无">
+                                        <input type="text" class="form-control" name="tran-2" placeholder="请输入中转机场2（如果没有请输入无">
 
                                         <label for="name">头等舱数量</label>
-                                        <input type="text" class="form-control" placeholder="请输入头等舱数量">
+                                        <input type="text" class="form-control" name="seat1-total" placeholder="请输入头等舱数量">
                                         <label for="name">经济舱数量</label>
-                                        <input type="text" class="form-control" placeholder="请输入经济舱数量">
+                                        <input type="text" class="form-control" name="seat2-total" placeholder="请输入经济舱数量">
                                         <br>
                                         <button type="submit" class="btn btn-primary">修改</button>
                                     </form>
@@ -262,15 +262,16 @@ header ( "Content-type:text/html;charset=utf-8" );
                                 <div class="panel-heading"> 修改票价 </div>
                                 <div class="panel-body">
                                     <form role="form" method="post" action="admin_manage_flight.php">    <!- 这里改一下 ->
+                                        <input type="hidden" name="op" value="modify_price">
                                         <label for="name">航班号</label>
-                                        <input type="text" class="form-control" placeholder="请输入航班号">
+                                        <input type="text" class="form-control" name="fNo" placeholder="请输入航班号">
                                         <label for="name">出发时间</label>
-                                        <input type="text" class="form-control" placeholder="请输入出发时间（按照正确的时间格式）">
+                                        <input type="text" class="form-control" name="de-time" placeholder="请输入出发时间（按照正确的时间格式）">
 
                                         <label for="name">头等舱价格</label>
-                                        <input type="text" class="form-control" placeholder="请输入头等舱价格">
+                                        <input type="text" class="form-control" name="price1" placeholder="请输入头等舱价格">
                                         <label for="name">经济舱价格</label>
-                                        <input type="text" class="form-control" placeholder="请输入经济舱价格">
+                                        <input type="text" class="form-control" name="price2" placeholder="请输入经济舱价格">
                                         <br>
                                         <button type="submit" class="btn btn-primary">修改</button>
                                     </form>
@@ -317,7 +318,8 @@ header ( "Content-type:text/html;charset=utf-8" );
                             <div class="form-group">
                                 <label for="content">请输入留言内容</label>
                                 <textarea name="content" class="form-control" rows="3"></textarea>
-                                <input type="text" class="form-control" name="reply" value="NULL" placeholder="如果是回复消息，请在这里输入回复的楼层，不是的话输入NULL即可">
+                                <label for="content">如果是回复消息，请在下方输入回复的楼层，不是的话输入NULL即可</label>
+                                <input type="text" class="form-control" name="reply" value="NULL" placeholder="请输入想要回复的楼层">
                             </div>
                             <button type="submit" class="btn btn-primary" id="sub_btn">发送</button>
                             </form>

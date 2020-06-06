@@ -3,7 +3,27 @@
 $userid = $_POST['user'];
 $content = $_POST['content'];
 
+if($content === ""){
+  echo "<script>alert('不允许发送空白留言！');</script>";
+  echo "<script language='javascript' type='text/javascript'>window.location.href='./user.php'</script>";
+  exit;
+}
+
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
+
+$query = "SELECT id FROM customer WHERE credit < 0.00";
+if ($stmt = $mysqli->prepare($query)){
+    $stmt->execute();
+    $stmt->bind_result($id);
+    $stmt->store_result();
+    while($stmt->fetch()){
+      if($userid === $id){
+        echo "<script>alert('您在黑名单中，无法留言，请联系管理员');</script>";
+        echo "<script language='javascript' type='text/javascript'>window.location.href='./user.php'</script>";
+        exit;
+      }
+    }
+}
 
 $query = "SELECT id FROM post ORDER BY time DESC limit 1";
 if ($stmt = $mysqli->prepare($query)){
@@ -12,6 +32,7 @@ if ($stmt = $mysqli->prepare($query)){
     $stmt->store_result();
     $stmt->fetch();
 }
+
 $id = (string)((int)$id+1);
 if($_POST['reply'] === 'NULL'){
   $query = "INSERT post (id,user,content) VALUES (?,?,?)";

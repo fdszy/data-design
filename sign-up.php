@@ -21,14 +21,14 @@ if($confirm === $pwd){
   $pwd = md5($pwd+$salt,FALSE);
 
   //康康用户名用过没
-  $query = "SELECT id from customer WHERE name = ?";
+  $query = "SELECT balance from customer WHERE name = ? OR id = ?";
   if ($stmt = $mysqli->prepare($query)){
-    $stmt->bind_param('s',$name);
+    $stmt->bind_param('ss',$name,$id);
     $stmt->execute();
     $stmt->bind_result($temp);
     $stmt->store_result();
     if($stmt->num_rows != 0){
-      echo "<script>alert('用户名已被使用！');</script>";
+      echo "<script>alert('用户名或id已被使用！');</script>";
       echo "<script language='javascript' type='text/javascript'>window.location.href='./sign-up.html'</script>";
       exit;
     }
