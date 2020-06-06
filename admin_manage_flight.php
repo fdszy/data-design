@@ -6,10 +6,10 @@ if(!isset($_POST['op'])){
     exit;
 }
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
-echo $_POST['op'];
+
 switch($_POST['op']){
     case "query":
-        echo "in query";
+
         $query = "SELECT i.departure_time, i.arrival_time, f.seat1_total, i.seat1_surplus, f.seat2_total, i.seat2_surplus
             FROM inventory i INNER JOIN flight f
             On i.fNo = f.flightNo
@@ -31,6 +31,7 @@ switch($_POST['op']){
                 array_push($results,$result);
             }
             $_SESSION['admin_query_flight'] = $results;
+            var_dump($_SESSION['admin_query_flight']);
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;
         }
@@ -142,6 +143,7 @@ switch($_POST['op']){
     case "delete_inventory":
 
 }
-
+var_dump($_SESSION['admin_query_flight']);
+echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
 
 ?>
