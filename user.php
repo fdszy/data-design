@@ -67,6 +67,8 @@ if($_SESSION['user']['name'] === "admin"){
   <!--[if lt IE 9]>
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+
+
     <![endif]-->
 </head>
 </head>
@@ -108,6 +110,8 @@ if($_SESSION['user']['name'] === "admin"){
                     <a href="#" @click="changePsgMgr()" class="list-group-item" :class="{active: !isUserMgrHidden}">消息中心</a>
                     <a href="#" @click="changeChgPsw()" class="list-group-item"
                        :class="{active: !isChgPwdHidden}">修改密码</a>
+                    <a href="#" @click="changemoney()" class="list-group-item"
+                       :class="{active: !ismoney}">账户充值</a>
                 </div>
             </div><!--/.sidebar-offcanvas-->
                 <div class="col-xs-12 col-sm-9">
@@ -118,7 +122,7 @@ if($_SESSION['user']['name'] === "admin"){
                             <p class = "col-md-offset-3">用户ID：<?php echo $_SESSION['user']['id'];?></p>
                             <p class = "col-md-offset-3">用户名：<?php echo $_SESSION['user']['name'];?></p>
                             <p class = "col-md-offset-3">账户余额：<?php echo $_SESSION['user']['balance'];?></p>
-                            <p class = "col-md-offset-3">信用积分：<?php echo $_SESSION['user']['credit'];?></p>
+                             <p class = "col-md-offset-3">信用积分：<?php echo $_SESSION['user']['credit'];?></p>
                         </div>
                         </div>
 
@@ -163,9 +167,8 @@ if($_SESSION['user']['name'] === "admin"){
                             </div>
                         </div>
 
+                        <form action="changepwd.php" method="post">
                         <div :class="{hidden: isChgPwdHidden}">
-                            <form action="changepwd.php" method="post">
-
                             <h1 class = "text-center">修改密码</h1>
                             <div class="row" style="margin-top: 20px;margin-left: 30px">
                             <div class="col-lg-8">
@@ -198,7 +201,106 @@ if($_SESSION['user']['name'] === "admin"){
                             </div>
                         </div>
                     </div>
-                    </form>
+                        </form>
+
+                        <div :class="{hidden: ismoney}">
+                            <div class="paying" style="margin-left:20%">
+
+                                <form action="money.php" method="post" class="validator" name="f" onsubmit="return chongzhi();" >
+                                    <div class="payamont">
+                                        <input type="text" id="money" name="money" value="" />
+                                        <span>元 （输入充值金额，不支持小数。最低 500元）</span>
+                                    </div>
+                                    <div class="clr"></div>
+                                    <ul class="ui-list-icons clrfix">
+                                        <li>
+                                            <input type="radio" name="bank" id="ABC" value="" checked="checked">
+                                            <label class="icon-box current" for="ABC">
+                                                <span class="icon-box-sparkling" bbd="false"> </span>
+                                                <span class="false icon ABC" title="中国农业银行"></span>
+                                                <span class="bank-name">中国农业银行</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="bank" id="ICBC" value="">
+                                            <label class="icon-box" for="ICBC">
+                                                <span class="icon-box-sparkling" bbd="false"> </span>
+                                                <span class="false icon ICBC" title="中国工商银行"></span>
+                                                <span class="bank-name">中国工商银行</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="bank" id="CCB" value="">
+                                            <label class="icon-box" for="CCB">
+                                                <span class="icon-box-sparkling" bbd="false"> </span>
+                                                <span class="false icon CCB" title="中国建设银行"></span>
+                                                <span class="bank-name">中国建设银行</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="bank" id="CCB" value="">
+                                            <label class="icon-box" for="CCB">
+                                                <span class="icon-box-sparkling" bbd="false"> </span>
+                                                <span class="false icon CCB" title="中国建设银行"></span>
+                                                <span class="bank-name">中国建设银行</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="bank" id="PSBC" value="">
+                                            <label class="icon-box" for="PSBC">
+                                                <span class="icon-box-sparkling" bbd="false"> </span>
+                                                <span class="false icon PSBC" title="中国邮政储蓄银行"></span>
+                                                <span class="bank-name">中国邮政储蓄银行</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="bank" id="BOC" value="">
+                                            <label class="icon-box" for="BOC">
+                                                <span class="icon-box-sparkling" bbd="false"> </span>
+                                                <span class="false icon BOC" title="中国银行"></span>
+                                                <span class="bank-name">中国银行</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="bank" id="CMB" value="">
+                                            <label class="icon-box" for="CMB">
+                                                <span class="icon-box-sparkling" bbd="false"> </span>
+                                                <span class="false icon CMB" title="招商银行"></span>
+                                                <span class="bank-name">招商银行</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="bank" id="COMM" value="">
+                                            <label class="icon-box" for="COMM">
+                                                <span class="icon-box-sparkling" bbd="false"> </span>
+                                                <span class="false icon COMM" title="交通银行"></span>
+                                                <span class="bank-name">交通银行</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="bank" id="SPDB" value="">
+                                            <label class="icon-box" for="SPDB">
+                                                <span class="icon-box-sparkling" bbd="false"> </span>
+                                                <span class="false icon SPDB" title="浦发银行"></span>
+                                                <span class="bank-name">浦发银行</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="bank" id="CEB" value="">
+                                            <label class="icon-box" for="CEB">
+                                                <span class="icon-box-sparkling" bbd="false"> </span>
+                                                <span class="false icon CEB" title="中国光大银行"></span>
+                                                <span class="bank-name">中国光大银行</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <div class="paybok"><input class="csbtx" type="button" value="确认充值" onclick="this.form.submit();" /></div>
+                                </form>
+                            </div>
+                        </div>
+
+
+
                 </div>
 
 
@@ -219,6 +321,7 @@ if($_SESSION['user']['name'] === "admin"){
                     isAccountInfoHidden: false,
                     isUserMgrHidden: true,
                     isChgPwdHidden: true,
+                    ismoney: true,
                     userInfo: {},
                     passengers: [],
                     passengerForm: {
@@ -240,17 +343,26 @@ if($_SESSION['user']['name'] === "admin"){
                         this.isAccountInfoHidden = false;
                         this.isUserMgrHidden = true;
                         this.isChgPwdHidden = true;
+                        this.ismoney = true;
                     },
                     changePsgMgr: function () {
                         this.isAccountInfoHidden = true;
                         this.isUserMgrHidden = false;
                         this.isChgPwdHidden = true;
+                        this.ismoney = true;
                     },
                     changeChgPsw: function () {
                         this.isAccountInfoHidden = true;
                         this.isUserMgrHidden = true;
                         this.isChgPwdHidden = false;
+                        this.ismoney = true;
                     },
+                    changemoney: function () {
+                        this.isAccountInfoHidden = true;
+                        this.isUserMgrHidden = true;
+                        this.isChgPwdHidden = true;
+                        this.ismoney = false;
+                    }
 
                 }
             })
