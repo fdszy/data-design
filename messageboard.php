@@ -13,14 +13,24 @@ if ($stmt = $mysqli->prepare($query)){
     $stmt->fetch();
 }
 $id = (string)((int)$id+1);
-$query = "INSERT post (id,user,content,reply_id) VALUES (?,?,?,?)";
+if($_POST['reply'] === 'NULL'){
+  $query = "INSERT post (id,user,content) VALUES (?,?,?)";
+}
+else{
+  $query = "INSERT post (id,user,content,reply_id) VALUES (?,?,?,?)";
+}
 if ($stmt = $mysqli->prepare($query)){
+  if($_POST['reply'] === 'NULL'){
+    $stmt->bind_param('sss', $id, $userid, $content);
+  }
+  else{
     $stmt->bind_param('ssss', $id, $userid, $content, $_POST['reply']);
-    if($stmt->execute()){
-      echo "<script>alert('留言成功，正在跳转...');</script>";
+  }
+  if($stmt->execute()){
+    echo "<script>alert('留言成功，正在跳转...');</script>";
     }
 	else{
-      echo "<script>alert('留言失败，请重试');</script>";
+    echo "<script>alert('留言失败，请重试');</script>";
     }
 }
 echo "<script language='javascript' type='text/javascript'>window.location.href='./user.php'</script>";
