@@ -103,8 +103,7 @@ switch($_POST['op']){
         echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
         break;
     
-    case "delete-flight":
-        
+    case "delete-flight": 
         $query = "SELECT departure_time FROM inventory WHERE fNo = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('s', $_POST['fNo']);
@@ -117,7 +116,6 @@ switch($_POST['op']){
                 exit;
             }
         }
-
         $query = "SELECT model FROM flight WHERE fNo = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('s', $_POST['fNo']);
@@ -130,7 +128,6 @@ switch($_POST['op']){
                 exit;
             }
         }
-
         $query = "DELETE flight WHERE fNo = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('s', $_POST['fNo']);
@@ -146,6 +143,30 @@ switch($_POST['op']){
         break;
     
     case "delete_inventory":
+        $query = "SELECT passenger_id FROM ticket WHERE t_fNo = ? AND t_departure_time = ?";
+        if ($stmt = $mysqli->prepare($query)){
+            $stmt->bind_param('ss', $_POST['fNo'], $_POST['de-time']);
+            $stmt->execute();
+            $stmt->bind_result($temp);    
+            $stmt->store_result();
+            if($stmt->num_rows != 0){
+                echo "<script>alert('该航班存在已售出的票，请先联系顾客进行退票处理！');</script>";
+                echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+                exit;
+            }
+        }
+        $query = "DELETE inventory WHERE fNo = ? AND departure = ?";
+        if ($stmt = $mysqli->prepare($query)){
+            $stmt->bind_param('ss', $_POST['fNo'], $_POST['de-time']);
+            if($stmt->execute()){
+                echo "<script>alert('删除成功!');</script>";
+            }
+            else{
+                echo "<script>alert('删除失败');</script>";
+            }
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }
 
 }
 //echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";

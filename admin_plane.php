@@ -301,7 +301,7 @@ header ( "Content-type:text/html;charset=utf-8" );
                                         <label for="name">航班号</label>
                                         <input type="text" name="fNo" class="form-control" placeholder="请输入航班号">
                                         <label for="name">出发时间</label>
-                                        <input type="text" name="de-time" class="form-control" placeholder="请输入出发时间">
+                                        <input type="text" name="de-time" class="form-control" placeholder="请输入出发时间(正确格式，如2020-06-06 13:00:00)">
                                         <br>
                                         <button type="submit" class="btn btn-primary">删除</button>
                                     </form>
