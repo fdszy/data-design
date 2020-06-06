@@ -50,13 +50,13 @@
             <li><a href="./buy_ticket.php">购票</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="./login.html">欢迎,
+            <li><a href="./login.html">欢迎, 
                 <?php session_start();echo $_SESSION['user']['name'];?></a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-    <h5>账户余额：0 </h5>
+    <h5></h5>
   </div>
   <div class="py-3 text-center">
     <div class="container">

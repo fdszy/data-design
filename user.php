@@ -91,7 +91,7 @@ if($_SESSION['user']['name'] === "admin"){
               <li><a href="./buy_ticket.php">购票</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="./login.html">欢迎,<?php echo $_SESSION['user']['name'];?></a></li>
+            <li><a href="./login.html">欢迎, <?php echo $_SESSION['user']['name'];?></a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -118,6 +118,7 @@ if($_SESSION['user']['name'] === "admin"){
                             <p class = "col-md-offset-3">用户ID：<?php echo $_SESSION['user']['id'];?></p>
                             <p class = "col-md-offset-3">用户名：<?php echo $_SESSION['user']['name'];?></p>
                             <p class = "col-md-offset-3">账户余额：<?php echo $_SESSION['user']['balance'];?></p>
+                            <p class = "col-md-offset-3">信用积分：<?php echo $_SESSION['user']['credit'];?></p>
                         </div>
                         </div>
 

@@ -61,7 +61,7 @@ if($op == 'buy'){
         $stmt->bind_param('ds',$_SESSION['user']['balance']+$pay,$_SESSION['user']['id']);
         $stmt->execute();
 
-        update_userinfo();
+        update_userinfo($_SESSION['user']['name']);
     }
 
 
@@ -123,7 +123,7 @@ elseif($op == 'cancel'){
         $stmt->bind_param('ds',$_SESSION['user']['balance']+$pay,$_SESSION['user']['id']);
         $stmt->execute();
 
-        update_userinfo();
+        update_userinfo($_SESSION['user']['name']);
 
     }
     $mysqli->close();

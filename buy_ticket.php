@@ -56,7 +56,7 @@
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-    <h5>账户余额：0 </h5>
+    <h5></h5>
       <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
     <div class="panel panel-default">
       <style>
