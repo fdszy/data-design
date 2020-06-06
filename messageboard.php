@@ -12,7 +12,7 @@ if ($stmt = $mysqli->prepare($query)){
     $stmt->store_result();
     $stmt->fetch();
 }
-$id = (string)((int)$id+1));
+$id = (string)((int)$id+1);
 $query = "INSERT post (id,user,content,reply_id) VALUES (?,?,?,?)";
 if ($stmt = $mysqli->prepare($query)){
     $stmt->bind_param('ssss', $id, $userid, $content, $_POST['reply']);
