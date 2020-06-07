@@ -113,10 +113,7 @@ function query_user_tickets($id){
             ON i.departure_airport = a.id
             WHERE fNo = ? and departure_time = ?";
 
-    $query3 = "SELECT a.name 
-            FROM flight f INNER JOIN airport a
-            ON f.arrival_airport = a.id
-            WHERE flight_No = ?";
+    $query3 = "SELECT arrival_airport FROM flight WHERE flight_No = ?";
 
     $results = array();
     if ($stmt = $mysqli->prepare($query)){
@@ -129,16 +126,12 @@ function query_user_tickets($id){
 
             //通过座位号区分舱位
             if(strpos($seat,'A') === 0){
-                $query2 = "SELECT i.arrival_time,a.name,seat1_price
-                FROM inventory i INNER JOIN airport a
-                ON i.departure_airport = a.id
-                WHERE fNo = ? and departure_time = ?";
+                $query2 = "SELECT arrival_time,departure_airport,seat1_price
+                FROM inventory WHERE fNo = ? and departure_time = ?";
             }
             else{
-                $query2 = "SELECT i.arrival_time,a.name,seat2_price
-                FROM inventory i INNER JOIN airport a
-                ON i.departure_airport = a.id
-                WHERE fNo = ? and departure_time = ?";
+                $query2 = "SELECT arrival_time,departure_airport,seat2_price
+                FROM inventory WHERE fNo = ? and departure_time = ?";
             }
 
             $stmt2 = $mysqli->prepare($query2);
