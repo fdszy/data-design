@@ -1,6 +1,6 @@
 <?php
 include 'functions.php';
-
+session_start();
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 $op = $_REQUEST['option'];
 
@@ -16,9 +16,6 @@ if($op == 'buy'){
             ON i.fNo =  f.flight_No
             WHERE i.fNo = ? AND i.departure_time = ?";
         $query3 = "UPDATE inventory SET seat1_surplus = ? WHERE fNo = ? AND departure_time = ?";
-        $price = "seat1_price";
-        $left = "seat1_surplus";
-        $total = "seat1_total";
         $a = 'A';
     }
     else{
@@ -26,9 +23,6 @@ if($op == 'buy'){
             ON i.fNo =  f.flight_No
             WHERE i.fNo = ? AND i.departure_time = ?";
         $query3 = "UPDATE inventory SET seat2_surplus = ? WHERE fNo = ? AND departure_time = ?";
-        $price = "seat2_price";
-        $left = "seat2_surplus";
-        $total = "seat2_total";
         $a = 'B';
     }
 
@@ -46,17 +40,20 @@ if($op == 'buy'){
             echo "<script>alert('该航班该舱位已无余票！');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
         }
-        $stmt->free_result();
 
         $seat_No = $a.strval($seat_total-$seat_left+1);
-
-        $stmt = $mysqli->prepare($query2);
+        var_dump($seat_No);
+        if(!($stmt = $mysqli->prepare($query2)){
+            echo "<script>alert('购买失败，原因0');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+            exit;
+        }
         $stmt->bind_param('sssss',$fNo,$de_time,$pas_id,$_SESSION['user']['id'],$seat_No);
         if(!$stmt->execute()){
             echo "<script>alert('购买失败，原因1');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+            exit;
         }
-
 
         $seat_left = $seat_left-1;
         $stmt = $mysqli->prepare($query3);
@@ -64,6 +61,7 @@ if($op == 'buy'){
         if(!$stmt->execute()){
             echo "<script>alert('购买失败，原因2');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+            exit;
         }
 
         $stmt = $mysqli->prepare($query4);
@@ -71,6 +69,7 @@ if($op == 'buy'){
         if(!$stmt->execute()){
             echo "<script>alert('购买失败，原因3');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+            exit;
         }
 
         update_userinfo($_SESSION['user']['name']);
