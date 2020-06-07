@@ -102,7 +102,7 @@ function query_user_tickets($id){
     $query3 = "SELECT a.name 
             FROM flight f INNER JOIN airport a
             ON f.arrival_airport = a.id
-            WHERE fNo = ?";
+            WHERE flight_No = ?";
 
     $results = array();
     if ($stmt = $mysqli->prepare($query)){
