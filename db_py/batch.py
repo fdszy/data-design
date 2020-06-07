@@ -5,7 +5,8 @@ from string import Template
 
 class batch():
 	sheet = None
-	row = -1
+	curr = -1
+	end = -1
 	key = []
 
 	template_sel = Template("select * from $table")
@@ -21,12 +22,12 @@ class batch():
 
 	@staticmethod
 	def insert():
-		if batch.row == 0:
+		if batch.curr == batch.end:
 			return "quit;"
 
-		data = batch.sheet.row_values(batch.row)
+		data = batch.sheet.row_values(batch.curr)
 		row_dict = {"table" : batch.sheet.name}
-		batch.row -= 1
+		batch.curr -= 1
 
 		for i, value in enumerate(data):
 			row_dict[batch.key[i]] = value
@@ -35,9 +36,9 @@ class batch():
 
 	@staticmethod
 	def clear_post():
-		if batch.row == 0:
+		if batch.curr == batch.end:
 			return "quit;"
 
-		batch.row -= 1
+		batch.curr -= 1
 
-		return "delete from post where id = %d"%batch.row
+		return "delete from post where id = %d"%batch.curr
