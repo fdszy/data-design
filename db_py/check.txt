@@ -1,0 +1,17 @@
+[airport]
+id 		ascii, len=5, format="[a-z][a-z][a-z]T[1-9]"
+name 		utf-8, len<=20
+city 		utf-8, len<=10
+
+[flight]
+flight_No	ascii, len=6, format="[a-z0-9][a-z0-9][0-9][0-9][0-9][0-9]"
+model		ascii, len=4, format: "boeing 737"->"B737"
+airline		utf-8, len<=6, format: "中国国际航空"->"中国国航"
+seat1_total	tinyint, <100
+seat2_total	smallint, <100
+
+de_airport	
+tr_airport1
+tr_airport2	if tr_airport1 is null, tr_airport2 must be null
+av_airport	all the 4 airports mustn't be the same
+
