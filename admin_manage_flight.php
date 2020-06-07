@@ -40,14 +40,14 @@ switch($_POST['op']){
 
     case "create_flight":
         //存放的是机场id,先进行转换
-        $_POST['departure'] = airport_name_to_id($_POST['departure'],$mysqli);
+        /*$_POST['departure'] = airport_name_to_id($_POST['departure'],$mysqli);
         $_POST['arrival'] = airport_name_to_id($_POST['arrival'],$mysqli);
         if($_POST['tran-1'] != NULL){
             $_POST['tran-1'] = airport_name_to_id($_POST['tran-1'],$mysqli);
         }
         if($_POST['tran-2'] != NULL){
             $_POST['tran-2'] = airport_name_to_id($_POST['tran-2'],$mysqli);
-        }
+        }*/
 
         $query = "INSERT flight (flight_No,model,airline,seat1_total,seat2_total,departure_airport,transfer_airport1,transfer_airport2,arrival_airport)
                     VALUES (?,?,?,?,?,?,?,?,?)";
@@ -67,7 +67,7 @@ switch($_POST['op']){
 
     case "create_inventory":
         //同上
-        $_POST['departure'] = airport_name_to_id($_POST['departure'],$mysqli);
+        //$_POST['departure'] = airport_name_to_id($_POST['departure'],$mysqli);
 
         $query = "SELECT seat1_total, seat2_total FROM flight WHERE flight_No = ?";
 
@@ -99,14 +99,14 @@ switch($_POST['op']){
         break;
     
     case "modify_flight":
-        $_POST['departure'] = airport_name_to_id($_POST['departure']);
+        /*$_POST['departure'] = airport_name_to_id($_POST['departure']);
         $_POST['arrival'] = airport_name_to_id($_POST['arrival']);
         if($_POST['tran-1'] != NULL){
             $_POST['tran-1'] = airport_name_to_id($_POST['tran-1'],$mysqli);
         }
         if($_POST['tran-2'] != NULL){
             $_POST['tran-2'] = airport_name_to_id($_POST['tran-2'],$mysqli);
-        }
+        }*/
         $query = "UPDATE flight SET model = ?,airline = ?,seat1_total = ?,seat2_total = ?,
             departure_airport = ?,arrival_airport = ?,transfer_airport1 = ?,transfer_airport2 = ? WHERE fNo = ?";
         if ($stmt = $mysqli->prepare($query)){

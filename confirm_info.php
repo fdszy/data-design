@@ -1,4 +1,5 @@
 <?php
+include 'functions.php';
 if (!isset($_SERVER['HTTP_REFERER'])) {
     header("Location:buy_ticket.php");
     exit;
@@ -93,8 +94,8 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     <div class="form-group">
                         <input type="hidden" name="option" value="buy">
                         <h4>航班号:<?php echo $_GET['fNo']; echo '<input type="hidden" name="fNo" value="'.$_GET['fNo'].'" readonly="true">';?></h4>
-                        <h4>出发机场:<?php echo $_GET['de'];?></h4>
-                        <h4>到达机场:<?php echo $_GET['ar'];?></h4>
+                        <h4>出发机场:<?php echo airport_id_to_visible($_GET['de']);?></h4>
+                        <h4>到达机场:<?php echo airport_id_to_visible($_GET['ar']);?></h4>
                         <h4>出发时间:<?php echo $_GET['de-time']; echo '<input type="hidden" name="time" value="'.$_GET['de-time'].'" readonly="true">';?></h4>
                         <h4>到达时间:<?php echo $_GET['ar-time'];?></h4>
                         <label for="name">乘客姓名</label>

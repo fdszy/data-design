@@ -114,16 +114,20 @@ elseif($op == 'cancel'){
         $stmt->fetch();
         $stmt->free_result();
         if(strpos($seat,'A') === 0){
+            $query2 = "SELECT seat1_price,seat1_surplus from inventory WHERE fNo = ? AND departure_time = ?";
+            $query4 = "UPDATE inventory SET seat1_surplus = ? WHERE fNo = AND departure_time = ?";
             $price = "seat1_price";
             $left = "seat1_surplus";
         }
         else{
+            $query2 = "SELECT seat2_price,seat2_surplus from inventory WHERE fNo = ? AND departure_time = ?";
+            $query4 = "UPDATE inventory SET seat2_surplus = ? WHERE fNo = AND departure_time = ?";
             $price = "seat2_price";
             $left = "seat2_surplus";
         }
 
         $stmt = $mysqli->prepare($query2);
-        $stmt->bind_param('ssss',$price,$left,$fNo,$de_time);
+        $stmt->bind_param('ss',$fNo,$de_time);
         $stmt->execute();
         $stmt->bind_result($pay, $seat_left);
         $stmt->store_result();
@@ -135,7 +139,7 @@ elseif($op == 'cancel'){
 
         $seat_left = $seat_left+1;
         $stmt = $mysqli->prepare($query4);
-        $stmt->bind_param('siss',$left,$seat_left+1,$fNo,$de_time);
+        $stmt->bind_param('iss',$left,$seat_left,$fNo,$de_time);
         $stmt->execute();
 
         $stmt = $mysqli->prepare($query5);

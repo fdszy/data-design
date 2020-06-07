@@ -131,9 +131,9 @@ if(!isset($_SESSION['user'])){
                 <tr>
                   <th scope="row">'.$result['No'].'</th>
                   <td>'.$result['passenger'].'</td>
-                  <td>'.$result['departure'].'</td>
+                  <td>'.airport_id_to_visible($result['departure']).'</td>
                   <td>'.$result['de_time'].'</td>
-                  <td>'.$result['arrival'].'</td>
+                  <td>'.airport_id_to_visible($result['arrival']).'</td>
                   <td>'.$result['ar_time'].'</td>
                   <td>'.$result['price'].'</td>
                   <td>'.$result['seatNo'].'</td>

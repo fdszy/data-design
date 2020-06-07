@@ -41,7 +41,7 @@ function get_blacklist(){
 
 }
 
-function airport_name_to_id($name, $mysqli){
+/*function airport_name_to_id($name, $mysqli){
     $query = "SELECT id FROM airport WHERE name = ?";
     if ($stmt = $mysqli->prepare($query)){
         $stmt->bind_param('s', $name);
@@ -55,6 +55,20 @@ function airport_name_to_id($name, $mysqli){
         $stmt->fetch();
         return $id;
     }
+}*/
+function airport_id_to_visible($id){
+    $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
+    $query = "SELECT name FROM airport WHERE id = ?";
+    if ($stmt = $mysqli->prepare($query)){
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+        $stmt->bind_result($name);
+        $stmt->store_result();
+        $stmt->fetch();
+        $name .= substr($id,-2);
+        return $name;
+    }
+    $mysqli->close();
 }
 
 function check_if_user_exist($name, $mysqli){
