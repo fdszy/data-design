@@ -12,30 +12,32 @@ if($op == 'buy'){
     $de_time = $_POST['time'];
 
     if($seat == '1'){
+        $query = "SELECT seat1_price,seat1_surplus,seat1_total from inventory i INNER JOIN flight f
+            ON i.fNo =  f.flight_No
+            WHERE i.fNo = ? AND i.departure_time = ?";
+        $query3 = "UPDATE inventory SET seat1_surplus = ? WHERE fNo = ? AND departure_time = ?";
         $price = "seat1_price";
         $left = "seat1_surplus";
         $total = "seat1_total";
         $a = 'A';
     }
     else{
+        $query = "SELECT seat2_price,seat2_surplus,seat2_total from inventory i INNER JOIN flight f
+            ON i.fNo =  f.flight_No
+            WHERE i.fNo = ? AND i.departure_time = ?";
+        $query3 = "UPDATE inventory SET seat2_surplus = ? WHERE fNo = ? AND departure_time = ?";
         $price = "seat2_price";
         $left = "seat2_surplus";
         $total = "seat2_total";
         $a = 'B';
     }
 
-    $query = "SELECT ?,?,? from inventory i INNER JOIN flight f
-              ON i.fNo =  f.flight_No
-              WHERE i.fNo = ? AND i.departure_time = ?";
-
     $query2 = "INSERT ticket (t_fNo,t_departure_time,passenger_id,purchaser_id,seat) VALUES (?,?,?,?,?)";
-     
-    $query3 = "UPDATE inventory SET ? = ? WHERE fNo = ? AND departure_time = ?";
  
     $query4 = "UPDATE customer SET balance = balance - ? WHERE id = ?";
 
     if ($stmt = $mysqli->prepare($query)){
-        $stmt->bind_param('sssss', $price, $left, $total, $fNo, $de_time);
+        $stmt->bind_param('ss', $fNo, $de_time);
         $stmt->execute();
         $stmt->bind_result($pay, $seat_left, $seat_total);
         $stmt->store_result();
@@ -54,7 +56,7 @@ if($op == 'buy'){
 
         $seat_left = $seat_left-1;
         $stmt = $mysqli->prepare($query3);
-        $stmt->bind_param('siss',$left,$seat_left,$fNo,$de_time);
+        $stmt->bind_param('iss',$seat_left,$fNo,$de_time);
         $stmt->execute();
 
         $stmt = $mysqli->prepare($query4);
