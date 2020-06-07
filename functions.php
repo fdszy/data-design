@@ -57,6 +57,20 @@ function airport_name_to_id($name, $mysqli){
     }
 }
 
+function check_if_user_exist($name, $mysqli){
+    $query = "SELECT * FROM customer WHERE name = ?";
+    if ($stmt = $mysqli->prepare($query)){
+        $stmt->bind_param('s', $name);
+        $stmt->execute();
+        $stmt->bind_result($temp);
+        $stmt->store_result();
+        if($stmt->num_rows == 1){
+            return true;
+        }
+    }
+    return false;
+}
+
 function user_id_to_name($id, $mysqli){
     $query = "SELECT name FROM customer WHERE id = ?";
     if ($stmt = $mysqli->prepare($query)){
@@ -126,7 +140,7 @@ function query_user_tickets($id){
                 ON i.departure_airport = a.id
                 WHERE fNo = ? and departure_time = ?";
             }
-            
+
             $stmt2 = $mysqli->prepare($query2);
             $stmt2->bind_param('ss', $fNo, $de_time);
             $stmt2->execute();
