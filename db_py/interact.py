@@ -31,8 +31,8 @@ def Interact(in_handler = Input, out_handler = Output):
 
 		while True:
 			cmd = in_handler()
-
-			if cmd == "quit;":
+			
+			if "quit;" in cmd:
 				flag = False
 				break
 
@@ -49,6 +49,7 @@ def Interact(in_handler = Input, out_handler = Output):
 		cursor.close()
 		db.close()
 	
+	print("# Bye~ #")
 	
 if __name__ == '__main__':
 	Interact()
