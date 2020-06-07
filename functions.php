@@ -57,6 +57,20 @@ function airport_name_to_id($name, $mysqli){
     }
 }
 
+function check_if_user_exist($name, $mysqli){
+    $query = "SELECT * FROM customer WHERE name = ?";
+    if ($stmt = $mysqli->prepare($query)){
+        $stmt->bind_param('s', $name);
+        $stmt->execute();
+        $stmt->bind_result($temp);
+        $stmt->store_result();
+        if($stmt->num_rows == 1){
+            return true;
+        }
+    }
+    return false;
+}
+
 function user_id_to_name($id, $mysqli){
     $query = "SELECT name FROM customer WHERE id = ?";
     if ($stmt = $mysqli->prepare($query)){
@@ -99,10 +113,7 @@ function query_user_tickets($id){
             ON i.departure_airport = a.id
             WHERE fNo = ? and departure_time = ?";
 
-    $query3 = "SELECT a.name 
-            FROM flight f INNER JOIN airport a
-            ON f.arrival_airport = a.id
-            WHERE fNo = ?";
+    $query3 = "SELECT arrival_airport FROM flight WHERE flight_No = ?";
 
     $results = array();
     if ($stmt = $mysqli->prepare($query)){
@@ -112,16 +123,19 @@ function query_user_tickets($id){
         $stmt->store_result();
 
         while ($stmt->fetch()){
-            $stmt2 = $mysqli->prepare($query2);
-            //通过座位号区分舱位，未完成
+
+            //通过座位号区分舱位
             if(strpos($seat,'A') === 0){
-                $type = 'seat1_price';
+                $query2 = "SELECT arrival_time,departure_airport,seat1_price
+                FROM inventory WHERE fNo = ? and departure_time = ?";
             }
             else{
-                $type = 'seat2_price';
+                $query2 = "SELECT arrival_time,departure_airport,seat2_price
+                FROM inventory WHERE fNo = ? and departure_time = ?";
             }
 
-            $stmt2->bind_param('sss', $type, $fNo, $de_time);
+            $stmt2 = $mysqli->prepare($query2);
+            $stmt2->bind_param('ss', $fNo, $de_time);
             $stmt2->execute();
             $stmt2->bind_result($ar_time, $departure, $price);
             $stmt2->store_result();

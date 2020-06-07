@@ -186,7 +186,7 @@
                   <td>".$result['price2']."</td>";
               echo '<td><a class="btn btn-primary" href="./confirm_info.php?fNo='.$result['flightNo']
                     .'&de='.$result['departure'].'&ar='.$result['arrival']
-                    .'&de_time='.$result['de-time'].'&ar_time='.$result['ar-time']
+                    .'&de-time='.$result['de-time'].'&ar-time='.$result['ar-time']
                     .'&price1='.$result['price1'].'&price2='.$result['price2']
                         .'"><i class="fa fa-download fa-fw"></i>购买机票</a></td>
                 </tr>

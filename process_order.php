@@ -1,6 +1,6 @@
 <?php
 include 'functions.php';
-
+session_start();
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 $op = $_REQUEST['option'];
 
@@ -11,60 +11,78 @@ if($op == 'buy'){
     $pas_id = $_POST['passenger_id'];
     $de_time = $_POST['time'];
 
+    if(!check_if_user_exist($passenger,$mysqli) or $passenger != user_id_to_name($pas_id,$mysqli)){
+        echo "<script>alert('用户名或身份证号输入错误，建议是重输');</script>";
+        echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+        exit;
+    }
+
     if($seat == '1'){
-        $price = "seat1_price";
-        $left = "seat1_surplus";
-        $total = "seat1_total";
+        $query = "SELECT seat1_price,seat1_surplus,seat1_total from inventory i INNER JOIN flight f
+            ON i.fNo =  f.flight_No
+            WHERE i.fNo = ? AND i.departure_time = ?";
+        $query3 = "UPDATE inventory SET seat1_surplus = ? WHERE fNo = ? AND departure_time = ?";
         $a = 'A';
     }
     else{
-        $price = "seat2_price";
-        $left = "seat2_surplus";
-        $total = "seat2_total";
+        $query = "SELECT seat2_price,seat2_surplus,seat2_total from inventory i INNER JOIN flight f
+            ON i.fNo =  f.flight_No
+            WHERE i.fNo = ? AND i.departure_time = ?";
+        $query3 = "UPDATE inventory SET seat2_surplus = ? WHERE fNo = ? AND departure_time = ?";
         $a = 'B';
     }
 
-    $query = "SELECT ?,?,? from inventory i INNER JOIN flight f
-              ON i.fNo =  f.flight_No
-              WHERE i.fNo = ? AND i.departure_time = ?
-              UNION ";
-
     $query2 = "INSERT ticket (t_fNo,t_departure_time,passenger_id,purchaser_id,seat) VALUES (?,?,?,?,?)";
-     
-    $query3 = "UPDATE inventory SET ? = ? WHERE fNo = ? AND departure_time = ?";
  
     $query4 = "UPDATE customer SET balance = balance - ? WHERE id = ?";
 
     if ($stmt = $mysqli->prepare($query)){
-        $stmt->bind_param('ssss', $price, $left, $total, $fNo, $de_time);
+        $stmt->bind_param('ss', $fNo, $de_time);
         $stmt->execute();
         $stmt->bind_result($pay, $seat_left, $seat_total);
         $stmt->store_result();
         $stmt->fetch();
-        if($num == 0){
+        if($seat_left == 0){
             echo "<script>alert('该航班该舱位已无余票！');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+            exit;
         }
-        $stmt->free_result();
 
         $seat_No = $a.strval($seat_total-$seat_left+1);
-
-        $stmt = $mysqli->prepare($query2);
+        var_dump($seat_No);
+        if(!($stmt = $mysqli->prepare($query2))){
+            echo "<script>alert('购买失败，原因0');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+            exit;
+        }
         $stmt->bind_param('sssss',$fNo,$de_time,$pas_id,$_SESSION['user']['id'],$seat_No);
-        $stmt->execute();
+        if(!$stmt->execute()){
+            echo "<script>alert('购买失败，原因1');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+            exit;
+        }
 
+        $seat_left = $seat_left-1;
         $stmt = $mysqli->prepare($query3);
-        $stmt->bind_param('siss',$left,$num-1,$fNo,$de_time);
-        $stmt->execute();
+        $stmt->bind_param('iss',$seat_left,$fNo,$de_time);
+        if(!$stmt->execute()){
+            echo "<script>alert('购买失败，原因2');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+            exit;
+        }
 
         $stmt = $mysqli->prepare($query4);
         $stmt->bind_param('ds',$pay,$_SESSION['user']['id']);
-        $stmt->execute();
+        if(!$stmt->execute()){
+            echo "<script>alert('购买失败，原因3');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+            exit;
+        }
 
         update_userinfo($_SESSION['user']['name']);
+        echo "<script>alert('购买成功，正在转到订单页面');</script>";
+        echo "<script language='javascript' type='text/javascript'>window.location.href='./ticket.php'</script>";
     }
-
-
 }
 elseif($op == 'cancel'){
     $fNo = $_GET['fNo'];
@@ -115,6 +133,7 @@ elseif($op == 'cancel'){
         $stmt->bind_param('ss',$fNo,$de_time);
         $stmt->execute();
 
+        $seat_left = $seat_left+1;
         $stmt = $mysqli->prepare($query4);
         $stmt->bind_param('siss',$left,$seat_left+1,$fNo,$de_time);
         $stmt->execute();
@@ -124,6 +143,8 @@ elseif($op == 'cancel'){
         $stmt->execute();
 
         update_userinfo($_SESSION['user']['name']);
+        echo "<script>alert('退票成功，正在转到订单页面');</script>";
+        echo "<script language='javascript' type='text/javascript'>window.location.href='./ticket.php'</script>";
 
     }
     $mysqli->close();

@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(!isset($_SESSION['user'])){
+    header("Location:login.html");
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -51,7 +57,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="./login.html">欢迎, 
-                <?php session_start();echo $_SESSION['user']['name'];?></a></li>
+                <?php echo $_SESSION['user']['name'];?></a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -131,8 +137,7 @@
                   <td>'.$result['ar_time'].'</td>
                   <td>'.$result['price'].'</td>
                   <td>'.$result['seatNo'].'</td>
-                  <a class="btn btn-primary" href="./process_order.php?option=cancel&fNo='.$result['No'].'&passenger='.$result['passenger'].'&time='.$result['de_time'].'">退票</a>
-                  <td><br></td>
+                  <td><a class="btn btn-primary" href="./process_order.php?option=cancel&fNo='.$result['No'].'&passenger='.$result['passenger'].'&time='.$result['de_time'].'">退票</a></td>
                 </tr>
                 <tr></tr>
                 <tr></tr>
