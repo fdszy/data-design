@@ -43,7 +43,7 @@ if($op == 'buy'){
 
         $seat_No = $a.strval($seat_total-$seat_left+1);
         var_dump($seat_No);
-        if(!($stmt = $mysqli->prepare($query2)){
+        if(!($stmt = $mysqli->prepare($query2))){
             echo "<script>alert('购买失败，原因0');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
             exit;
