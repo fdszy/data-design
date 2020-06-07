@@ -112,16 +112,23 @@ function query_user_tickets($id){
         $stmt->store_result();
 
         while ($stmt->fetch()){
-            $stmt2 = $mysqli->prepare($query2);
-            //通过座位号区分舱位，未完成
+
+            //通过座位号区分舱位
             if(strpos($seat,'A') === 0){
-                $type = 'seat1_price';
+                $query2 = "SELECT i.arrival_time,a.name,seat1_price
+                FROM inventory i INNER JOIN airport a
+                ON i.departure_airport = a.id
+                WHERE fNo = ? and departure_time = ?";
             }
             else{
-                $type = 'seat2_price';
+                $query2 = "SELECT i.arrival_time,a.name,seat2_price
+                FROM inventory i INNER JOIN airport a
+                ON i.departure_airport = a.id
+                WHERE fNo = ? and departure_time = ?";
             }
-
-            $stmt2->bind_param('sss', $type, $fNo, $de_time);
+            
+            $stmt2 = $mysqli->prepare($query2);
+            $stmt2->bind_param('ss', $fNo, $de_time);
             $stmt2->execute();
             $stmt2->bind_result($ar_time, $departure, $price);
             $stmt2->store_result();
