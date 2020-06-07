@@ -40,7 +40,7 @@ if($op == 'buy'){
         $stmt->bind_result($pay, $seat_left, $seat_total);
         $stmt->store_result();
         $stmt->fetch();
-        if($num == 0){
+        if($seat_left == 0){
             echo "<script>alert('该航班该舱位已无余票！');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
         }

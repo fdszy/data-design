@@ -92,15 +92,15 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                 <form role="form" method="post" action="./process_order.php">
                     <div class="form-group">
                         <input type="hidden" name="option" value="buy">
-                        <h4>航班号:<?php echo '<input type="text" name="fNo" value="'.$_GET['fNo'].'" readonly="true">';?></h4>
+                        <h4>航班号:<?php echo $_GET['fNo']; echo '<input type="hidden" name="fNo" value="'.$_GET['fNo'].'" readonly="true">';?></h4>
                         <h4>出发机场:<?php echo $_GET['de'];?></h4>
                         <h4>到达机场:<?php echo $_GET['ar'];?></h4>
-                        <h4>出发时间:<?php echo '<input type="text" name="time" value="'.$_GET['de-time'].'" readonly="true">';?></h4>
+                        <h4>出发时间:<?php echo $_GET['de-time']; echo '<input type="text" name="time" value="'.$_GET['de-time'].'" readonly="true">';?></h4>
                         <h4>到达时间:<?php echo $_GET['ar-time'];?></h4>
-                        <label for="name">购票人姓名</label>
+                        <label for="name">乘客姓名</label>
                         <input type="text" class="form-control" id="name" name="passenger" placeholder="请输入姓名">
                         <br>
-                        <label for="name">购票人身份证号</label>
+                        <label for="name">乘客身份证号</label>
                         <input type="text" class="form-control" id="name" name="passenger_id" placeholder="请输入身份证号">
                         <br>
                         <label class="btn btn-primary">
