@@ -35,7 +35,7 @@ if($op == 'buy'){
     $query4 = "UPDATE customer SET balance = balance - ? WHERE id = ?";
 
     if ($stmt = $mysqli->prepare($query)){
-        $stmt->bind_param('ssss', $price, $left, $total, $fNo, $de_time);
+        $stmt->bind_param('sssss', $price, $left, $total, $fNo, $de_time);
         $stmt->execute();
         $stmt->bind_result($pay, $seat_left, $seat_total);
         $stmt->store_result();
