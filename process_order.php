@@ -26,8 +26,7 @@ if($op == 'buy'){
 
     $query = "SELECT ?,?,? from inventory i INNER JOIN flight f
               ON i.fNo =  f.flight_No
-              WHERE i.fNo = ? AND i.departure_time = ?
-              UNION ";
+              WHERE i.fNo = ? AND i.departure_time = ?";
 
     $query2 = "INSERT ticket (t_fNo,t_departure_time,passenger_id,purchaser_id,seat) VALUES (?,?,?,?,?)";
      
@@ -53,9 +52,9 @@ if($op == 'buy'){
         $stmt->bind_param('sssss',$fNo,$de_time,$pas_id,$_SESSION['user']['id'],$seat_No);
         $stmt->execute();
 
-        $num = $num-1;
+        $seat_left = $seat_left-1;
         $stmt = $mysqli->prepare($query3);
-        $stmt->bind_param('siss',$left,$num,$fNo,$de_time);
+        $stmt->bind_param('siss',$left,$seat_left,$fNo,$de_time);
         $stmt->execute();
 
         $stmt = $mysqli->prepare($query4);
