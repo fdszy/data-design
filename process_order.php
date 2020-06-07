@@ -53,8 +53,9 @@ if($op == 'buy'){
         $stmt->bind_param('sssss',$fNo,$de_time,$pas_id,$_SESSION['user']['id'],$seat_No);
         $stmt->execute();
 
+        $num = $num-1;
         $stmt = $mysqli->prepare($query3);
-        $stmt->bind_param('siss',$left,$num-1,$fNo,$de_time);
+        $stmt->bind_param('siss',$left,$num,$fNo,$de_time);
         $stmt->execute();
 
         $stmt = $mysqli->prepare($query4);
@@ -62,6 +63,8 @@ if($op == 'buy'){
         $stmt->execute();
 
         update_userinfo($_SESSION['user']['name']);
+        echo "<script>alert('购买成功，正在转到订单页面');</script>";
+        echo "<script language='javascript' type='text/javascript'>window.location.href='./ticket.php'</script>";
     }
 
 
@@ -115,6 +118,7 @@ elseif($op == 'cancel'){
         $stmt->bind_param('ss',$fNo,$de_time);
         $stmt->execute();
 
+        $seat_left = $seat_left+1;
         $stmt = $mysqli->prepare($query4);
         $stmt->bind_param('siss',$left,$seat_left+1,$fNo,$de_time);
         $stmt->execute();
@@ -124,6 +128,8 @@ elseif($op == 'cancel'){
         $stmt->execute();
 
         update_userinfo($_SESSION['user']['name']);
+        echo "<script>alert('退票成功，正在转到订单页面');</script>";
+        echo "<script language='javascript' type='text/javascript'>window.location.href='./ticket.php'</script>";
 
     }
     $mysqli->close();

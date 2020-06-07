@@ -104,10 +104,10 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                         <input type="text" class="form-control" id="name" name="passenger_id" placeholder="请输入身份证号">
                         <br>
                         <label class="btn btn-primary">
-                            <input type="radio" name="seat" id="option1" value="1"> 经济舱 ￥<?php echo $_GET['price1'];?>
+                            <input type="radio" name="seat" id="option1" value="1"> 头等舱 ￥<?php echo $_GET['price1'];?>
                         </label>
                         <label class="btn btn-primary">
-                            <input type="radio" name="seat" id="option2" value="2"> 头等舱 ￥<?php echo $_GET['price2'];?>
+                            <input type="radio" name="seat" id="option2" value="2"> 经济舱 ￥<?php echo $_GET['price2'];?>
                         </label>
                         <br>
                         <div class = "col-md-offset-3">
