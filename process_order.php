@@ -52,23 +52,31 @@ if($op == 'buy'){
 
         $stmt = $mysqli->prepare($query2);
         $stmt->bind_param('sssss',$fNo,$de_time,$pas_id,$_SESSION['user']['id'],$seat_No);
-        $stmt->execute();
+        if(!$stmt->execute()){
+            echo "<script>alert('购买失败，原因1');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+        }
+
 
         $seat_left = $seat_left-1;
         $stmt = $mysqli->prepare($query3);
         $stmt->bind_param('iss',$seat_left,$fNo,$de_time);
-        $stmt->execute();
+        if(!$stmt->execute()){
+            echo "<script>alert('购买失败，原因2');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+        }
 
         $stmt = $mysqli->prepare($query4);
         $stmt->bind_param('ds',$pay,$_SESSION['user']['id']);
-        $stmt->execute();
+        if(!$stmt->execute()){
+            echo "<script>alert('购买失败，原因3');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+        }
 
         update_userinfo($_SESSION['user']['name']);
         echo "<script>alert('购买成功，正在转到订单页面');</script>";
         echo "<script language='javascript' type='text/javascript'>window.location.href='./ticket.php'</script>";
     }
-
-
 }
 elseif($op == 'cancel'){
     $fNo = $_GET['fNo'];
