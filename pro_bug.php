@@ -9,7 +9,7 @@ if(!isset($_SESSION['user'])){
 $bug = $_POST['bug'];
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
-$query = "insert into buginfo (submitter,description,isfixed) values('?','?','N')";
+$query = "insert into buginfo (submitter,description,isfixed) values(?,?,'N')";
 
 if ($stmt = $mysqli->prepare($query)){
     $stmt->bind_param('ss',$_SESSION['user']['id'],$bug);
@@ -19,5 +19,8 @@ if ($stmt = $mysqli->prepare($query)){
 
           exit;
         }
+    exit;
 
 }
+
+?>

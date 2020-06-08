@@ -87,14 +87,14 @@
     </div>
 </div>
 <div>
-    <form action="pro_bug.php" method="post">
-    <form role="form">
+    <form role="form" action="pro_bug.php" method="post">
         <div class="form-group" style ="margin-left:20%;width: 60%">
             <label for="name">bug描述</label>
             <textarea class="form-control" rows="8" id="bug" name="bug"></textarea>
         </div>
-    </form>
-    <button type="button" class="btn btn-primary" style="width: 20% ;margin-left: 40%">提交</button>
+        <div class="form-group">
+                        <button type="submit" class="btn btn-primary form-control" style="width: 20% ;margin-left: 40%">提交</button>
+                    </div>
     </form>
 </div>
 </body>
