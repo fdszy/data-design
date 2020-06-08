@@ -143,7 +143,7 @@ elseif($op == 'cancel'){
 
         $seat_left = $seat_left+1;
         $stmt = $mysqli->prepare($query4);
-        $stmt->bind_param('iss',$left,$seat_left,$fNo,$de_time);
+        $stmt->bind_param('iss',$seat_left,$fNo,$de_time);
         if(!$stmt->execute()){
             echo "<script>alert('退票失败，原因y');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./ticket.php'</script>";
