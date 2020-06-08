@@ -96,7 +96,7 @@ elseif($op == 'cancel'){
     
     $query2 = "SELECT ?,? from inventory WHERE fNo = ? AND departure_time = ?";
 
-    $query3 = "DELETE from ticket WHERE t_fNo = ? AND passenger_id = ?";
+    $query3 = "DELETE from ticket WHERE t_fNo = ? AND departure_time = ? AND passenger_id = ?";
 
     $query4 = "UPDATE inventory SET ? = ? WHERE fNo = ? AND departure_time = ?";
  
@@ -134,7 +134,7 @@ elseif($op == 'cancel'){
         $stmt->fetch();
 
         $stmt = $mysqli->prepare($query3);
-        $stmt->bind_param('ss',$fNo,$pas_id);
+        $stmt->bind_param('sss',$fNo,$de_time,$pas_id);
         if(!$stmt->execute()){
             echo "<script>alert('退票失败，原因x');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./ticket.php'</script>";
