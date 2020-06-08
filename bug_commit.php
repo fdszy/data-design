@@ -57,7 +57,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="./login.html">欢迎,
-                        <?php session_start();echo $_SESSION['user'];?></a></li>
+                        <?php session_start();echo $_SESSION['user']['name'];?></a></li>
                 </ul>
             </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
