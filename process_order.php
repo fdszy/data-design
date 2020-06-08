@@ -96,7 +96,7 @@ elseif($op == 'cancel'){
     
     $query2 = "SELECT ?,? from inventory WHERE fNo = ? AND departure_time = ?";
 
-    $query3 = "DELETE from ticket WHERE t_fNo = ? AND departure_time = ? AND passenger_id = ?";
+    $query3 = "DELETE from ticket WHERE t_fNo = ? AND t_departure_time = ? AND passenger_id = ?";
 
     $query4 = "UPDATE inventory SET ? = ? WHERE fNo = ? AND departure_time = ?";
  
