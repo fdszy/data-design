@@ -29,9 +29,6 @@
 
 <body>
   <div id="app">
-    <div class="jumbotron">
-        <h1 class="text-center">购票中心</h1>
-    </div>
     <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <div class="navbar-header">
@@ -57,13 +54,11 @@
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
     <h5></h5>
+    <div style="width: 1600px;height: 400px;background:url(image/buy.png) no-repeat center;background-size:cover;margin: 0px;padding: 0px;">
+
+        <div style="width: auto;height: auto;background-color: white">
       <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-    <div class="panel panel-default">
-      <style>
-        .form-group {
-          height: 200px;
-          width: 300px;
-      </style>
+    <div class="panel panel-default" style="margin-left:18%;margin-top:50px;">
       <div class="panel-heading"> 机票搜索 </div>
       <div class="panel-body">
         <form role="form" method="post" action="search_ticket.php">
@@ -150,7 +145,9 @@
       </div>
     </div>
       </div>
-    <p><img src="image/ticket_plane.jpg"class = "img-round" width="1000"height="300" class="img-responsive center-block"/> </p>
+      </div>
+      </div>
+
         <div class="panel panel-default">
       <div class="panel-heading"> 查询结果 </div>
       <div class="panel-body">
@@ -161,7 +158,6 @@
           <div class="table-responsive">
             <table class="table table-bordered ">
             <?php 
-            include 'functions.php';
             if(isset($_SESSION['result_inv'])){
               echo '<thead class="thead-dark">
                 <tr>
@@ -179,8 +175,8 @@
               echo "<tbody>
                 <tr>
                   <th>".$result['flightNo']."</th>
-                  <td>".airport_id_to_visible($result['departure'])."</td>
-                  <td>".airport_id_to_visible($result['arrival'])."</td>
+                  <td>".$result['departure']."</td>
+                  <td>".$result['arrival']."</td>
                   <td>".$result['de-time']."</td>
                   <td>".$result['ar-time']."</td>
                   <td>".$result['price1']."</td>
