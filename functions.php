@@ -13,7 +13,7 @@ function valid_airport($airport){
 }
 
 function update_userinfo($username){
-    session_start();
+    //session_start();
     $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
     $query = "SELECT id,name,balance,credit FROM customer WHERE name = ?";
