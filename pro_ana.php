@@ -16,7 +16,7 @@ function openDb($dbConf){
 
 $conn = openDb($dbconf);
 
-$sql = 'select COUNT(*) flight_count from inventory group by MONTH(departure_time)';
+$sql = 'select COUNT(*) flight_count,DAY(departure_time) day from inventory where MONTH(departure_time) = 7 group by DAY(departure_time)';
 
 $rs = $conn->query($sql);
 
