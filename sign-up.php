@@ -6,11 +6,18 @@ $pwd = $_POST['password'];
 $confirm = $_POST['confirm'];
 $id = $_POST['id'];
 
-if($name === ""){
-  echo "<script>alert('用户名不能为空！');</script>";
+//输入检查
+if($name === "" or preg_match("/\d/",$name)){
+  echo "<script>alert('用户名非法：不能为空且不能包含数字');</script>";
   echo "<script language='javascript' type='text/javascript'>window.location.href='./sign-up.html'</script>";
   exit;
 }
+if($id === "" or !preg_match("/^\d*$/",$id)){
+  echo "<script>alert('身份证号非法：只能包含0-9的数字');</script>";
+  echo "<script language='javascript' type='text/javascript'>window.location.href='./sign-up.html'</script>";
+  exit;
+}
+
 
 if($confirm === $pwd){
 
@@ -20,7 +27,7 @@ if($confirm === $pwd){
   $salt = substr(str_shuffle($strs),mt_rand(0,strlen($strs)-11),10);
   $pwd = md5($pwd+$salt,FALSE);
 
-  //康康用户名用过没
+  //康康用户名或者id用过没
   $query = "SELECT balance from customer WHERE name = ? OR id = ?";
   if ($stmt = $mysqli->prepare($query)){
     $stmt->bind_param('ss',$name,$id);

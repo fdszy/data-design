@@ -9,7 +9,11 @@ $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
 switch($_POST['op']){
     case "query":
-
+        if(!preg_match('/^[A-Za-z0-9]{2}[0-9]{4}$/', $_POST['fNo'])){
+            echo "<script>alert('航班号格式不正确！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }
         $query = "SELECT i.departure_time, i.arrival_time, f.seat1_total, i.seat1_surplus, f.seat2_total, i.seat2_surplus
             FROM inventory i INNER JOIN flight f
             On i.fNo = f.flight_No
