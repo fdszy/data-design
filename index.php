@@ -235,7 +235,7 @@ if(!isset($_SESSION['user'])){
                                     <div class="widget">
                                         <h3>提交bug</h3>
                                         <ul>
-                                            <li><a href="./bug_commit.html">若发现bug在这里提交</a></li>
+                                            <li><a href="./bug_commit.php">若发现bug在这里提交</a></li>
 
                                         </ul>
                                     </div>
