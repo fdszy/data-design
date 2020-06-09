@@ -84,7 +84,6 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
     </nav><!-- /.navbar -->
-    <h5>账户余额：0 </h5>
     <div class = "col-md-offset-4">
         <div class="panel panel-default">
             <div class="panel-heading"> 订单基础信息 </div>

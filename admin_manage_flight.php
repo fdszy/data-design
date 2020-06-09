@@ -35,7 +35,6 @@ switch($_POST['op']){
                 array_push($results,$result);
             }
             $_SESSION['admin_query_flight'] = $results;
-            var_dump($_SESSION['admin_query_flight']);
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;
         }
