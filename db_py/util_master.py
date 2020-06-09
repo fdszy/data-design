@@ -15,7 +15,7 @@ def weekday_cycle_m (year, month, day = 1, cycle = 1):
 	
 	return weekday_cycle
 
-def str_date_inc(str_date, inc = 1) -> str:
+def str_date_inc (str_date, inc = 1) -> str:
 	[year, month, day] = [int(i) for i in str_date.split("-")]
 	date_curr = date(year, month, day)
 	date_curr += timedelta(days = inc)
@@ -23,15 +23,15 @@ def str_date_inc(str_date, inc = 1) -> str:
 	return "%d-%d-%d"%(date_curr.year, date_curr.month, date_curr.day)
 
 
-def minute_delta (t1, t2):
+def minute_delta (t1, t2, cross = True):
 
 	[h1, m1] = [int(i) for i in t1.split(":")]
 	[h2, m2] = [int(i) for i in t2.split(":")]
 
-	if h2 >= h1:
-		return 60 * (h2 - h1) + m2 - m1
+	if cross and h2 < h1:
+		return 60 *(24 - h1 + h2) + m2 - m1	
 	else:
-		return 60 *(24 - h1 + h2) + m2 - m1
+		return 60 * (h2 - h1) + m2 - m1
 
 def eco_price (time):
 	if time < 120:
