@@ -157,7 +157,8 @@
         <div class="col-md-12">
           <div class="table-responsive">
             <table class="table table-bordered ">
-            <?php 
+            <?php
+            include 'functions.php';
             if(isset($_SESSION['result_inv'])){
               echo '<thead class="thead-dark">
                 <tr>
@@ -175,8 +176,8 @@
               echo "<tbody>
                 <tr>
                   <th>".$result['flightNo']."</th>
-                  <td>".$result['departure']."</td>
-                  <td>".$result['arrival']."</td>
+                  <td>".airport_id_to_visible($result['departure'])."</td>
+                  <td>".airport_id_to_visible($result['arrival'])."</td>
                   <td>".$result['de-time']."</td>
                   <td>".$result['ar-time']."</td>
                   <td>".$result['price1']."</td>
