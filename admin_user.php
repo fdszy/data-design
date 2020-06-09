@@ -92,7 +92,7 @@
                     <li><a href="./index.php">首页</a></li>
                     <li><a href="./admin_plane.php">航班管理</a></li>
                     <li class="active"><a href="javascript:void(0)">客户信息管理</a></li>
-                    <li><a href="./analysis.html">流量统计</a></li>
+                    <li><a href="./analysis.php">流量统计</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="./login.html">欢迎, <?php session_start();echo $_SESSION['user']['name'];?></a></li>
