@@ -1,7 +1,11 @@
 <?php 
 session_start();
 if(!isset($_SESSION['user'])){
-    header("Location:login.html");
+  header("Location:login.html");
+}
+if($_SESSION['user']['name'] === "admin"){
+  header("Location:admin_plane.php");
+  exit;
 }
 ?>
 <!DOCTYPE html>

@@ -24,15 +24,6 @@ if ($stmt = $mysqli->prepare($query)){
     }
 }
 
-/*$query = "SELECT id FROM post ORDER BY time DESC limit 1";
-if ($stmt = $mysqli->prepare($query)){
-    $stmt->execute();
-    $stmt->bind_result($id);
-    $stmt->store_result();
-    $stmt->fetch();
-}
-
-$id = (string)((int)$id+1);*/
 if($_POST['reply'] === 'NULL'){
   $query = "INSERT post (user,content) VALUES (?,?)";
 }

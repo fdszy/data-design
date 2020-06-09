@@ -33,19 +33,19 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="./index.html">首页</a></li>
-                <li><a href="./admin_plane.html">航班管理</a></li>
-                <li><a href="./admin_user.html">用户管理</a></li>
+                <li><a href="./index.php">首页</a></li>
+                <li><a href="./admin_plane.php">航班管理</a></li>
+                <li><a href="./admin_user.php">用户管理</a></li>
                 <li class="active"><a href="javascript:void(0)">流量分析</a></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="./login.html">欢迎,<?php session_start();echo $_SESSION['user'];?></a></li>
+                <li><a href="./login.html">欢迎,<?php session_start();echo $_SESSION['user']['name'];?></a></li>
             </ul>
         </div><!-- /.nav-collapse -->
     </div><!-- /.container -->
 </nav><!-- /.navbar -->
-<div class = container">
+<div class = "container">
     <div class="jumbotron">
         <h1 class="text-center">流量分析</h1>
     </div>

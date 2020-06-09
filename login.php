@@ -8,12 +8,6 @@ $pwd = $_POST['password'];
 
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
-//$sql = "SELECT * FROM user WHERE username = '$user';";
-
-//$result = $mysqli->query($sql);
-
-//$row = $result->fetch_assoc();
-
 $query = "SELECT id,name,balance,pwd_hash,salt,credit FROM customer WHERE name = ?";
 if ($stmt = $mysqli->prepare($query))
 {
@@ -28,14 +22,14 @@ if ($stmt = $mysqli->prepare($query))
     $stmt->store_result();
 
     if($stmt->num_rows == 0){//没有这个用户
-		  echo "<script>alert('用户名或密码错误');</script>";
+	  echo "<script>alert('用户名或密码错误');</script>";
       echo "<script language='javascript' type='text/javascript'>window.location.href='./login.html'</script>";
     }
     while ($stmt->fetch())
     {
         // 逐条从MySQL服务取数据
 	    if(md5($pwd+$salt,FALSE) == $password){
-		    echo "<script>alert('登陆成功！');</script>";
+		    //echo "<script>alert('登陆成功！');</script>";
             $_SESSION['user'] = array('name'=>$name,'id'=>$id,'balance'=>$balance,'credit'=>$credit);
             echo "<script language='javascript' type='text/javascript'>window.location.href='./index.php'</script>";
             exit;
