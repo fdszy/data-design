@@ -12,6 +12,28 @@ function valid_airport($airport){
     return preg_match('/^[A-Za-z]{3}T[1-9]$/', $airport);
 }
 
+function VIP_level($id, $mysqli){
+    $query = "SELECT credit FROM customer WHERE id = ?";
+    if ($stmt = $mysqli->prepare($query)){
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+        $stmt->bind_result($credit);
+        $stmt->store_result();
+        while ($stmt->fetch()){
+            if($credit < 50.0){
+                return 1;
+            }
+            elseif($credit < 200.0){
+                return 2;
+            }
+            else{
+                return 3;
+            }
+	    }
+    }
+    return 0;
+}
+
 function update_userinfo($username){
     //session_start();
     $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
