@@ -1,6 +1,17 @@
 <?php
 header ( "Content-type:text/html;charset=utf-8" ); 
 
+
+function valid_flightNo($fNo){
+    return preg_match('/^[A-Za-z0-9]{2}[0-9]{4}$/', $fNo);
+}
+function valid_seat_num($seat_total){
+    return is_numeric($seat_total) && ((int)$seat_total < 100);
+}
+function valid_airport($airport){
+    return preg_match('/^[A-Za-z]{3}T[1-9]$/', $airport);
+}
+
 function update_userinfo($username){
     session_start();
     $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');

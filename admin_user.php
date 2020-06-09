@@ -124,7 +124,7 @@
                                     <input type="hidden" name="op" value="query">
                                     <div class="form-group">
                                         <label for="name">用户名</label>
-                                        <input type="text" class="form-control" name="username" placeholder="请输入需要查询的账户名">
+                                        <input type="text" class="form-control" name="username" maxlength=5 placeholder="请输入需要查询的账户名">
                                         <label for="name"></label>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary form-control">查询</button>
