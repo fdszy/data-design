@@ -8,6 +8,12 @@ if(!isset($_POST['op'])){
 
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 $op = $_POST['op'];
+if($_POST['username'] === "" or preg_match("/\d/",$_POST['username'])){
+    echo "<script>alert('输入的用户名非法：不能为空且不能包含数字');</script>";
+    echo "<script language='javascript' type='text/javascript'>window.location.href='./sign-up.html'</script>";
+    exit;
+}
+
 if($op === "query"){
     $query = "SELECT id,name,balance FROM customer WHERE name = ?";
     if ($stmt = $mysqli->prepare($query)){

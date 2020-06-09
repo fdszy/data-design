@@ -9,7 +9,7 @@ $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
 switch($_POST['op']){
     case "query":
-        if(!preg_match('/^[A-Za-z0-9]{2}[0-9]{4}$/', $_POST['fNo'])){
+        if(!valid_flightNo($_POST['fNo'])){
             echo "<script>alert('航班号格式不正确！');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;
@@ -43,16 +43,27 @@ switch($_POST['op']){
         break;
 
     case "create_flight":
-        //存放的是机场id,先进行转换
-        /*$_POST['departure'] = airport_name_to_id($_POST['departure'],$mysqli);
-        $_POST['arrival'] = airport_name_to_id($_POST['arrival'],$mysqli);
-        if($_POST['tran-1'] != NULL){
-            $_POST['tran-1'] = airport_name_to_id($_POST['tran-1'],$mysqli);
-        }
-        if($_POST['tran-2'] != NULL){
-            $_POST['tran-2'] = airport_name_to_id($_POST['tran-2'],$mysqli);
-        }*/
 
+        if(!valid_flightNo($_POST['fNo'])){
+            echo "<script>alert('航班号格式不正确！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }
+        if(!valid_airport($_POST['departure']) || !valid_airport($_POST['arrival']) || $_POST['departure']===$_POST['arrival']){
+            echo "<script>alert('机场格式不正确，或始发终到机场不能相同');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }
+        if($_POST['tran-1']==='NULL' || $_POST['tran-2']!='NULL'){
+            echo "<script>alert('中转机场1为空时，中转机场2不能为空！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }
+        if(!valid_seat_num($_POST['seat1-total']) || !valid_seat_num($_POST['seat2-total'])){
+            echo "<script>alert('座位数设置不正确！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;  
+        }
         $query = "INSERT flight (flight_No,model,airline,seat1_total,seat2_total,departure_airport,transfer_airport1,transfer_airport2,arrival_airport)
                     VALUES (?,?,?,?,?,?,?,?,?)";
         if ($stmt = $mysqli->prepare($query)){
@@ -66,13 +77,16 @@ switch($_POST['op']){
             }
         }
         echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
-        exit;
         break;
 
     case "create_inventory":
         //同上
         //$_POST['departure'] = airport_name_to_id($_POST['departure'],$mysqli);
-
+        if(!valid_flightNo($_POST['fNo'])){
+            echo "<script>alert('航班号格式不正确！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }
         $query = "SELECT seat1_total, seat2_total FROM flight WHERE flight_No = ?";
 
         if ($stmt = $mysqli->prepare($query)){

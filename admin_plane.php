@@ -174,7 +174,7 @@ header ( "Content-type:text/html;charset=utf-8" );
                                         <label for="name">航空公司</label>
                                         <input type="text" class="form-control" name = "airline" placeholder="请输入航空公司">
                                         <label for="name">出发机场</label>
-                                        <input type="text" class="form-control" name = "departure" placeholder="请输入出发机场">
+                                        <input type="text" class="form-control" name = "departure" placeholder="请输入出发机场（输入格式为包括航站楼的机场ID，如：PEKT1）">
                                         <label for="name">到达机场</label>
                                         <input type="text" class="form-control" name = "arrival" placeholder="请输入到达机场">
                                         <label for="name">中转机场1</label>
