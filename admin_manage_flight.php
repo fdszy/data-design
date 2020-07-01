@@ -49,11 +49,11 @@ switch($_POST['op']){
             exit;
         }
         if(!valid_airport($_POST['departure']) || !valid_airport($_POST['arrival']) || $_POST['departure']===$_POST['arrival']){
-            echo "<script>alert('机场格式不正确，或始发终到机场不能相同');</script>";
+            echo "<script>alert('机场格式不正确，或始发终到机场不能相同！');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;
         }
-        if($_POST['tran-1']==='NULL' || $_POST['tran-2']!='NULL'){
+        if($_POST['tran-1'] === 'NULL' && $_POST['tran-2'] != 'NULL'){
             echo "<script>alert('中转机场1为空时，中转机场2不能为空！');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;
@@ -63,18 +63,38 @@ switch($_POST['op']){
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;  
         }
-        $query = "INSERT flight (flight_No,model,airline,seat1_total,seat2_total,departure_airport,transfer_airport1,transfer_airport2,arrival_airport)
-                    VALUES (?,?,?,?,?,?,?,?,?)";
-        if ($stmt = $mysqli->prepare($query)){
-            $stmt->bind_param('sssiisssss', $_POST['fNo'],$_POST['model'],$_POST['airline'],$_POST['seat1-total'],$_POST['seat2-total'],
-                                        $_POST['departure'],$_POST['tran-1'],$_POST['tran-2'],$_POST['arrival']);
-            if($stmt->execute()){
-                echo "<script>alert('添加成功!');</script>";
-            }
-            else{
-                echo "<script>alert('添加失败');</script>";
-            }
+
+        if($_POST['tran-1'] === 'NULL'){
+            $query = "INSERT flight 
+                (flight_No,model,airline,seat1_total,seat2_total,departure_airport,arrival_airport) 
+                VALUES (?,?,?,?,?,?,?)";
+            $stmt = $mysqli->prepare($query);
+            $stmt->bind_param('sssiiss', $_POST['fNo'],$_POST['model'],$_POST['airline'],$_POST['seat1-total'],
+                $_POST['seat2-total'],$_POST['departure'],$_POST['arrival']);
         }
+        else if($_POST['tran-2'] === 'NULL'){
+            $query = "INSERT flight 
+                (flight_No,model,airline,seat1_total,seat2_total,departure_airport,transfer_airport1,arrival_airport) 
+                VALUES (?,?,?,?,?,?,?,?)";
+            $stmt = $mysqli->prepare($query);
+            $stmt->bind_param('sssiisss', $_POST['fNo'],$_POST['model'],$_POST['airline'],$_POST['seat1-total'],
+                $_POST['seat2-total'],$_POST['departure'],$_POST['tran-1'],$_POST['arrival']);
+        }
+        else{
+            $query = "INSERT flight 
+                (flight_No,model,airline,seat1_total,seat2_total,departure_airport,transfer_airport1,transfer_airport2,arrival_airport) 
+                VALUES (?,?,?,?,?,?,?,?,?)";
+            $stmt = $mysqli->prepare($query);
+            $stmt->bind_param('sssiissss', $_POST['fNo'],$_POST['model'],$_POST['airline'],$_POST['seat1-total'],
+                $_POST['seat2-total'],$_POST['departure'],$_POST['tran-1'],$_POST['tran-2'],$_POST['arrival']);
+        }
+        if($stmt->execute()){
+            echo "<script>alert('添加成功!');</script>";
+        }
+        else{
+            echo "<script>alert('添加失败');</script>";
+        }
+        
         echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
         break;
 
