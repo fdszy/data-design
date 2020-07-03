@@ -6,7 +6,7 @@ function valid_flightNo($fNo){
     return preg_match('/^[A-Za-z0-9]{2}[0-9]{4}$/', $fNo);
 }
 function valid_seat_num($seat_total){
-    return is_numeric($seat_total) && ((int)$seat_total < 100);
+    return is_numeric($seat_total) && ((int)$seat_total < 300);
 }
 function valid_airport($airport){
     return preg_match('/^[A-Za-z]{3}T[1-9]$/', $airport);
