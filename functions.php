@@ -11,6 +11,9 @@ function valid_seat_num($seat_total){
 function valid_airport($airport){
     return preg_match('/^[A-Za-z]{3}T[1-9]$/', $airport);
 }
+function valid_time($time){
+    return preg_match('/^20[0-9]{2}-[0-1][0-9]-[0-1][0-9] [0-2][0-9]:[0-5][0-9]:[0-5][0-9]$/', $time);
+}
 
 function VIP_level($id, $mysqli){
     $query = "SELECT credit FROM customer WHERE id = ?";

@@ -187,18 +187,11 @@ switch($_POST['op']){
         }
         break;
 
-    case "delete-flight": 
-        $query = "SELECT departure_time FROM inventory WHERE fNo = ?";
-        if ($stmt = $mysqli->prepare($query)){
-            $stmt->bind_param('s', $_POST['fNo']);
-            $stmt->execute();
-            $stmt->bind_result($temp);    
-            $stmt->store_result();
-            if($stmt->num_rows != 0){
-                echo "<script>alert('该航线还有对应的航班未删除，请先删除航班');</script>";
-                echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
-                exit;
-            }
+    case "delete-flight":
+        if(!valid_flightNo($_POST['fNo'])){
+            echo "<script>alert('航班号格式不正确！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
         }
         $query = "SELECT model FROM flight WHERE fNo = ?";
         if ($stmt = $mysqli->prepare($query)){
@@ -212,6 +205,19 @@ switch($_POST['op']){
                 exit;
             }
         }
+        $query = "SELECT departure_time FROM inventory WHERE fNo = ?";
+        if ($stmt = $mysqli->prepare($query)){
+            $stmt->bind_param('s', $_POST['fNo']);
+            $stmt->execute();
+            $stmt->bind_result($temp);    
+            $stmt->store_result();
+            if($stmt->num_rows != 0){
+                echo "<script>alert('该航线还有对应的航班未删除，请先删除航班');</script>";
+                echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+                exit;
+            }
+        }
+
         $query = "DELETE flight WHERE fNo = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('s', $_POST['fNo']);
@@ -227,6 +233,16 @@ switch($_POST['op']){
         break;
     
     case "delete_inventory":
+        if(!valid_flightNo($_POST['fNo'])){
+            echo "<script>alert('航班号格式不正确！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }
+        if(!valid_flightNo($_POST['de-time'])){
+            echo "<script>alert('出发时间格式不正确！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }  
         $query = "SELECT passenger_id FROM ticket WHERE t_fNo = ? AND t_departure_time = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('ss', $_POST['fNo'], $_POST['de-time']);
