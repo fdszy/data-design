@@ -5,7 +5,7 @@ $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 $op = $_REQUEST['option'];
 $level = VIP_level($_SESSION['user']['id'],$mysqli); //会员等级
 
-if($op == 'buy'){
+if($op === 'buy'){
     $fNo = $_POST['fNo'];
     $seat = $_POST['seat'];    
     $passenger = $_POST['passenger'];
@@ -21,7 +21,7 @@ if($op == 'buy'){
         exit;
     }
 
-    if($seat == '1'){
+    if($seat === '1'){
         $query = "SELECT seat1_price,seat1_surplus,seat1_total from inventory i INNER JOIN flight f
             ON i.fNo =  f.flight_No
             WHERE i.fNo = ? AND i.departure_time = ?";
@@ -90,7 +90,7 @@ if($op == 'buy'){
         echo "<script language='javascript' type='text/javascript'>window.location.href='./ticket.php'</script>";
     }
 }
-elseif($op == 'cancel'){
+elseif($op === 'cancel'){
     $fNo = $_GET['fNo'];
     $passenger = $_GET['passenger'];
     $de_time = $_GET['time'];

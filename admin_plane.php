@@ -72,8 +72,8 @@ header ( "Content-type:text/html;charset=utf-8" );
                 <div class="list-group">
                     <a href="#" @click="changeAccountInfo()" class="list-group-item"
                        :class="{active: !isAccountInfoHidden}" >票务信息</a>
-                    <a href="#" @click="changePsgMgr()" class="list-group-item" :class="{active: !isUserMgrHidden}">注册航班</a>
-                    <a href="#" @click="changeline()" class="list-group-item" :class="{active: !isline}">添加航线</a>
+                    <a href="#" @click="changePsgMgr()" class="list-group-item" :class="{active: !isUserMgrHidden}">注册航线</a>
+                    <a href="#" @click="changeline()" class="list-group-item" :class="{active: !isline}">添加航班</a>
                     <a href="#" @click="changeflight()" class="list-group-item" :class="{active: !isflight}">修改航班</a>
                     <a href="#" @click="changeprice()" class="list-group-item" :class="{active: !isprice}">修改票价信息</a>
                     <a href="#" @click="changedelete()" class="list-group-item" :class="{active: !isdelete}">删除航班</a>
