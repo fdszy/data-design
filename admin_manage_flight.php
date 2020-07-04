@@ -187,7 +187,7 @@ switch($_POST['op']){
         }
         break;
 
-    case "delete-flight":
+    case "delete_flight":
         if(!valid_flightNo($_POST['fNo'])){
             echo "<script>alert('航班号格式不正确！');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
