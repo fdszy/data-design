@@ -218,7 +218,7 @@ switch($_POST['op']){
             }
         }
 
-        $query = "DELETE flight WHERE fNo = ?";
+        $query = "DELETE FROM flight WHERE fNo = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('s', $_POST['fNo']);
             if($stmt->execute()){
@@ -255,7 +255,7 @@ switch($_POST['op']){
                 exit;
             }
         }
-        $query = "DELETE inventory WHERE fNo = ? AND departure = ?";
+        $query = "DELETE FROM inventory WHERE fNo = ? AND departure = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('ss', $_POST['fNo'], $_POST['de-time']);
             if($stmt->execute()){
