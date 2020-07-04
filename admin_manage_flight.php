@@ -263,7 +263,7 @@ switch($_POST['op']){
                 exit;
             }
         }
-        $query = "DELETE FROM inventory WHERE fNo = ? AND departure = ?";
+        $query = "DELETE FROM inventory WHERE fNo = ? AND departure_time = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('ss', $_POST['fNo'], $_POST['de-time']);
             if($stmt->execute()){
