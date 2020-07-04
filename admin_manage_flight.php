@@ -193,7 +193,7 @@ switch($_POST['op']){
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;
         }
-        $query = "SELECT model FROM flight WHERE fNo = ?";
+        $query = "SELECT model FROM flight WHERE flight_No = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('s', $_POST['fNo']);
             $stmt->execute();
@@ -218,7 +218,7 @@ switch($_POST['op']){
             }
         }
 
-        $query = "DELETE FROM flight WHERE fNo = ?";
+        $query = "DELETE FROM flight WHERE flight_No = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('s', $_POST['fNo']);
             if($stmt->execute()){
