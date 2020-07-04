@@ -106,24 +106,33 @@ switch($_POST['op']){
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;
         }
+        if(!valid_time($_POST['de-time']) || !valid_time($_POST['ar-time'])){
+            echo "<script>alert('出发或到达时间格式不正确！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }
+        if(!valid_airport($_POST['departure'])){
+            echo "<script>alert('机场格式不正确，或始发终到机场不能相同！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }  
         $query = "SELECT seat1_total, seat2_total FROM flight WHERE flight_No = ?";
-
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('s', $_POST['fNo']);
             $stmt->execute();
             $stmt->bind_result($total_1,$total_2);    
             $stmt->store_result();
             if($stmt->num_rows != 1){
-                echo "<script>alert('航班号输入有误!');</script>";
+                echo "<script>alert('该航班号的航线不存在！');</script>";
                 echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             }
             $stmt->fetch();
         }
     
         $query = "INSERT inventory (fNo,departure_time,departure_airport,arrival_time,seat1_surplus,seat2_surplus,seat1_price,seat2_price)
-                    VALUES (?,?,?,?,?,?,?,?,?)";
+                    VALUES (?,?,?,?,?,?,?,?)";
         if ($stmt = $mysqli->prepare($query)){
-            $stmt->bind_param('ssssiiff', $_POST['fNo'],$_POST['de-time'],$_POST['departure'],$_POST['ar-time'],
+            $stmt->bind_param('ssssiidd', $_POST['fNo'],$_POST['de-time'],$_POST['departure'],$_POST['ar-time'],
                             $total_1,$total_2,$_POST['price1'],$_POST['price2']);
             if($stmt->execute()){
                 echo "<script>alert('添加成功!');</script>";
@@ -205,9 +214,6 @@ switch($_POST['op']){
                 exit;
             }
         }
-        else{
-            echo "<script>alert('error 1');</script>";
-        }
         $query = "SELECT departure_time FROM inventory WHERE fNo = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('s', $_POST['fNo']);
@@ -220,10 +226,6 @@ switch($_POST['op']){
                 exit;
             }
         }
-        else{
-            echo "<script>alert('error 2');</script>";
-        }
-
         $query = "DELETE FROM flight WHERE flight_No = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('s', $_POST['fNo']);
@@ -236,9 +238,6 @@ switch($_POST['op']){
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;
         }
-        else{
-            echo "<script>alert('error 3');</script>";
-        }
         break;
     
     case "delete_inventory":
@@ -247,7 +246,7 @@ switch($_POST['op']){
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;
         }
-        if(!valid_flightNo($_POST['de-time'])){
+        if(!valid_time($_POST['de-time'])){
             echo "<script>alert('出发时间格式不正确！');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;
@@ -278,6 +277,7 @@ switch($_POST['op']){
         }
 
 }
-//echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+echo "<script>alert('无效操作');</script>";
+echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
 
 ?>
