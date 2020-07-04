@@ -205,6 +205,9 @@ switch($_POST['op']){
                 exit;
             }
         }
+        else{
+            echo "<script>alert('error 1');</script>";
+        }
         $query = "SELECT departure_time FROM inventory WHERE fNo = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('s', $_POST['fNo']);
@@ -216,6 +219,9 @@ switch($_POST['op']){
                 echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
                 exit;
             }
+        }
+        else{
+            echo "<script>alert('error 2');</script>";
         }
 
         $query = "DELETE FROM flight WHERE flight_No = ?";
@@ -229,6 +235,9 @@ switch($_POST['op']){
             }
             echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
             exit;
+        }
+        else{
+            echo "<script>alert('error 3');</script>";
         }
         break;
     
