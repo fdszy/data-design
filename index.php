@@ -82,6 +82,65 @@ if(!isset($_SESSION['user'])){
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
+    <section id="feature" >
+        <div class="container">
+           <div class="center wow fadeInDown">
+                <h2>数据分析</h2>
+                <p class="lead">我们提供了以下数据分析服务以帮助您更好的理解我们的工作</p>
+            </div>
+
+            <div class="row">
+                <div class="features">
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-bullhorn"></i>
+                            <a href="ana1.html">航线分析</a>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-comments"></i>
+                            <h2>Retina ready</h2>
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-cloud-download"></i>
+                            <h2>Easy to customize</h2>
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-leaf"></i>
+                            <h2>Adipisicing elit</h2>
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-cogs"></i>
+                            <h2>Sed do eiusmod</h2>
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-heart"></i>
+                            <h2>Labore et dolore</h2>
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                        </div>
+                    </div><!--/.col-md-4-->
+                </div><!--/.services-->
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#feature-->
 <section id="services" class="service-item" style="background:url(./image/game/bg_services.jpg)">
 	   <div class="container">
             <div class="center wow fadeInDown">
