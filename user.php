@@ -102,7 +102,7 @@ if($_SESSION['user']['name'] === "admin"){
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-
+   <hr />
         <div class="container">
             <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
                 <div class="list-group">
