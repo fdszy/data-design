@@ -5,6 +5,8 @@ $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 $op = $_REQUEST['option'];
 $level = VIP_level($_SESSION['user']['id'],$mysqli); //会员等级
 
+$x = 0.01; //机票钱转化为积分的基本系数
+
 if($op === 'buy'){
     $fNo = $_POST['fNo'];
     $seat = $_POST['seat'];    
@@ -12,8 +14,6 @@ if($op === 'buy'){
     $pas_id = $_POST['passenger_id'];
     $de_time = $_POST['time'];
 
-    $x = 0.01; //机票钱转化为积分的基本系数
-    $x *= $level;
 
     if(!check_if_user_exist($passenger,$mysqli) or $passenger != user_id_to_name($pas_id,$mysqli)){
         echo "<script>alert('用户名或身份证号输入错误，建议是重输');</script>";
@@ -106,7 +106,7 @@ elseif($op === 'cancel'){
 
     $query4 = "UPDATE inventory SET ? = ? WHERE fNo = ? AND departure_time = ?";
  
-    $query5 = "UPDATE customer SET balance = balance + ? WHERE id = ?";
+    $query5 = "UPDATE customer SET balance = balance + ?, credit = credit - ? WHERE id = ?";
 
     if ($stmt = $mysqli->prepare($query)){
         $stmt->bind_param('sss', $fNo, $de_time, $passenger);
@@ -124,6 +124,7 @@ elseif($op === 'cancel'){
             $query4 = "UPDATE inventory SET seat1_surplus = ? WHERE fNo = ? AND departure_time = ?";
             $price = "seat1_price";
             $left = "seat1_surplus";
+            $x *= 1.5; //头等舱1.5倍转化
         }
         else{
             $query2 = "SELECT seat2_price,seat2_surplus from inventory WHERE fNo = ? AND departure_time = ?";
@@ -156,9 +157,10 @@ elseif($op === 'cancel'){
             exit;
         }
 
-        $pay *= (0.993+0.002*$level); //退票收取0.5%手续费，2级会员0.3%, 3级会员0.1%
+        $credit_minus = $pay*$x;
+        $pay *= (0.994+0.002*$level); //退票收取0.4%手续费，2级会员0.2%, 3级会员0
         $stmt = $mysqli->prepare($query5);
-        $stmt->bind_param('ds',$pay,$_SESSION['user']['id']);
+        $stmt->bind_param('dds',$pay,$credit_minus,$_SESSION['user']['id']);
         if(!$stmt->execute()){
             echo "<script>alert('退票失败，原因z');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./ticket.php'</script>";

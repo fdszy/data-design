@@ -124,8 +124,8 @@ if($_SESSION['user']['name'] === "admin"){
                             <div style="margin-top: 20px">
                             <p class = "col-md-offset-3">用户ID：<?php echo $_SESSION['user']['id'];?></p>
                             <p class = "col-md-offset-3">用户名：<?php echo $_SESSION['user']['name'];?></p>
-                            <p class = "col-md-offset-3">账户余额：<?php echo $_SESSION['user']['balance'];?></p>
-                             <p class = "col-md-offset-3">信用积分：<?php echo $_SESSION['user']['credit'];?></p>
+                            <p class = "col-md-offset-3">账户余额：<?php echo round($_SESSION['user']['balance'],2);?></p>
+                             <p class = "col-md-offset-3">信用积分：<?php echo round($_SESSION['user']['credit'],2);?></p>
                         </div>
                         </div>
 
