@@ -148,7 +148,7 @@ if(!isset($_SESSION['user'])){
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="image/game/贪吃蛇.png" href="./tanchishe/index.html">
+                            <a href="./tanchishe/index.html"><img src="image/game/贪吃蛇.png" width="300" height="200"></a>
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">贪吃蛇</h3>
@@ -160,11 +160,11 @@ if(!isset($_SESSION['user'])){
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services2.png">
+                            <a href="./chrome/game/index.html"><img src="image/game/chrome.png" width="300" height="200"></a>
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">SEO Marketing</h3>
-                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+                            <h3 class="media-heading">小恐龙</h3>
+                            <p>小恐龙要一直跳</p>
                         </div>
                     </div>
                 </div>
@@ -181,41 +181,6 @@ if(!isset($_SESSION['user'])){
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-4">
-                    <div class="media services-wrap wow fadeInDown">
-                        <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services4.png">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading">SEO Marketing</h3>
-                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-4">
-                    <div class="media services-wrap wow fadeInDown">
-                        <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services5.png">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading">SEO Marketing</h3>
-                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-4">
-                    <div class="media services-wrap wow fadeInDown">
-                        <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services6.png">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading">SEO Marketing</h3>
-                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
-                        </div>
-                    </div>
-                </div>
             </div><!--/.row-->
         </div><!--/.container-->
     </section><!--/#services-->
