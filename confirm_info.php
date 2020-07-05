@@ -57,9 +57,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         <li class="breadcrumb-item active">确认购票信息</li>
     </ol>
 
-    <div class="jumbotron">
-        <h1 class="text-center">确认订单信息</h1>
-    </div>
+    <img src="image/订单.jpg"  width="1600px" height="400px">
     <nav class="navbar navbar-fixed-top navbar-inverse">
         <div class="container">
             <div class="navbar-header">
