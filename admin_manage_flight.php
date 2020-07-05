@@ -205,6 +205,16 @@ switch($_POST['op']){
         break;
 
     case "modify_price":
+        if(!valid_flightNo($_POST['fNo'])){
+            echo "<script>alert('航班号格式不正确！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }
+        if(!valid_time($_POST['de-time'])){
+            echo "<script>alert('出发或到达时间格式不正确！');</script>";
+            echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_plane.php'</script>";
+            exit;
+        }
         $query = "SELECT arrival_time FROM inventory WHERE t_fNo = ? AND t_departure_time = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('ss', $_POST['fNo'], $_POST['de-time']);
@@ -217,7 +227,7 @@ switch($_POST['op']){
                 exit;
             }
         }
-        $query = "UPDATE inventory SET seat1_price = ?,seat2_price = ? WHERE fNo = ? AND departure = ?";
+        $query = "UPDATE inventory SET seat1_price = ?,seat2_price = ? WHERE fNo = ? AND departure_time = ?";
         if ($stmt = $mysqli->prepare($query)){
             $stmt->bind_param('ddss', $_POST['price1'], $_POST['price2'], $_POST['fNo'], $_POST['de-time']);
             if($stmt->execute()){

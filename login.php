@@ -31,7 +31,13 @@ if ($stmt = $mysqli->prepare($query))
 	    if(md5($pwd+$salt,FALSE) == $password){
 		    //echo "<script>alert('登陆成功！');</script>";
             $_SESSION['user'] = array('name'=>$name,'id'=>$id,'balance'=>$balance,'credit'=>$credit);
-            echo "<script language='javascript' type='text/javascript'>window.location.href='./index.php'</script>";
+            if($name === 'admin'){
+                echo "<script language='javascript' type='text/javascript'>window.location.href='./admin_user.php'</script>";
+            }
+            else{
+                echo "<script language='javascript' type='text/javascript'>window.location.href='./index.php'</script>";
+            }
+            
             exit;
 	    }
 	    else{
