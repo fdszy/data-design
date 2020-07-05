@@ -233,6 +233,8 @@ header ( "Content-type:text/html;charset=utf-8" );
                                         <input type="text" class="form-control" name="fNo" placeholder="请输入航班号">
                                         <label for="name">飞机型号</label>
                                         <input type="text" class="form-control" name="model" placeholder="请输入飞机型号">
+                                        <label for="name">航空公司</label>
+                                        <input type="text" class="form-control" name="airline" placeholder="请输入航空公司">
                                         <label for="name">出发机场</label>
                                         <input type="text" class="form-control" name="departure" placeholder="请输入出发机场">
                                         <label for="name">到达机场</label>
