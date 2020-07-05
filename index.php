@@ -101,40 +101,35 @@ if(!isset($_SESSION['user'])){
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-comments"></i>
-                            <h2>Retina ready</h2>
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                            <a href="ana2.html">折扣率分析</a>
                         </div>
                     </div><!--/.col-md-4-->
 
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
-                            <i class="fa fa-cloud-download"></i>
-                            <h2>Easy to customize</h2>
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                            <i class="fa fa-comments"></i>
+                            <a href="ana3.html">城市连通率分析</a>
                         </div>
                     </div><!--/.col-md-4-->
 
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-leaf"></i>
-                            <h2>Adipisicing elit</h2>
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                             <h2>更多内容，敬请期待</h2>
                         </div>
                     </div><!--/.col-md-4-->
 
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-cogs"></i>
-                            <h2>Sed do eiusmod</h2>
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                            <h2>更多内容，敬请期待</h2>
                         </div>
                     </div><!--/.col-md-4-->
 
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-heart"></i>
-                            <h2>Labore et dolore</h2>
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                             <h2>更多内容，敬请期待</h2>
                         </div>
                     </div><!--/.col-md-4-->
                 </div><!--/.services-->
@@ -153,11 +148,11 @@ if(!isset($_SESSION['user'])){
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services1.png">
+                            <img class="img-responsive" src="image/game/贪吃蛇.png" href="./tanchishe/index.html">
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">SEO Marketing</h3>
-                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+                            <h3 class="media-heading">贪吃蛇</h3>
+                            <p>尽可能让你的蛇达到最长吧</p>
                         </div>
                     </div>
                 </div>
