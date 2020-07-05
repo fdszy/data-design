@@ -38,15 +38,15 @@ if(!isset($_SESSION['user'])){
 	<!-- 轮播（Carousel）项目 -->
 	<div class="carousel-inner">
 		<div class="item active">
-            <a href="./buy_ticket.html"><img src="image/机票选购.jpg"/></a>
+            <a href="./buy_ticket.php"><img src="image/机票选购.jpg"/></a>
 			<div class="carousel-caption">机票选购</div>
 		</div>
 		<div class="item">
-            <a href="./ticket.html"><img src="image/订单信息.jpg" /></a>
+            <a href="./ticket.php"><img src="image/订单信息.jpg" /></a>
 			<div class="carousel-caption">订单信息</div>
 		</div>
 		<div class="item">
-            <a href="./user.html"><img src="image/个人中心.jpg" class="img-responsive center-block"/></a>
+            <a href="./user.php"><img src="image/个人中心.jpg" class="img-responsive center-block"/></a>
 			<div class="carousel-caption">个人中心</div>
 		</div>
 	</div>
