@@ -35,7 +35,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="./index.php">首页</a></li>
                 <li><a href="./admin_plane.php">航班管理</a></li>
-                <li><a href="./admin_user.php">用户管理</a></li>
+                <li><a href="./admin_user.php">客户信息管理</a></li>
                 <li class="active"><a href="javascript:void(0)">流量分析</a></li>
 
             </ul>
@@ -93,13 +93,11 @@
         temData.highlightFill="rgba(151,187,205,0.75)",
             temData.highlightStroke= "rgba(151,187,205,1)";
 
-        alert("1");
         for(var i=0;i<data.length;i++)
         {
             barData.labels.push(data[i].day)
             temData.data.push(data[i].flight_count);
         }
-        alert("2")
         barData.datasets.push(temData); //封装一个规定格式的barData。
         console.info(barData);
         //// 动画效果
@@ -132,7 +130,6 @@
             animationEasing: "easeOutQuart",
             onAnimationComplete: null
         }
-        alert("3")
         var ctx  = document.getElementById("canvas").getContext('2d');
         myChart = new Chart(ctx).Bar(barData,options, { //重点在这里
             responsive : true

@@ -72,12 +72,23 @@ if(!isset($_SESSION['user'])){
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
              <li class="active"><a href="javascript:void(0)">首页</a></li>
-            <li><a href="./user.php">个人中心</a></li>
-            <li><a href="./ticket.php">订单信息</a></li>
-              <li><a href="./buy_ticket.php">购票</a></li>
+             <?php
+             if($_SESSION['user']['name']==='admin'){
+                echo '<li><a href="./admin_plane.php">航班管理</a></li>
+                <li><a href="./admin_user.php">客户信息管理</a></li>
+                <li><a href="./analysis.php">流量统计</a></li>';
+             }
+             else{
+                echo '<li><a href="./user.php">个人中心</a></li>
+                <li><a href="./ticket.php">订单信息</a></li>
+                  <li><a href="./buy_ticket.php">购票</a></li>';
+             }
+
+             ?>
+
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="./login.html">欢迎,<?php echo $_SESSION['user']['name'];?></a></li>
+            <li><a href="./login.html">欢迎, <?php echo $_SESSION['user']['name'];?></a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
