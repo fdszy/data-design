@@ -175,7 +175,7 @@ switch($_POST['op']){
             $query = "UPDATE flight SET model = ?,airline = ?,seat1_total = ?,seat2_total = ?,
                 departure_airport = ?,arrival_airport = ?
                 WHERE flight_No = ?";
-            $stmt = $mysqli->prepare($query)；
+            $stmt = $mysqli->prepare($query);
             $stmt->bind_param('ssiisss', $_POST['model'],$_POST['airline'],$_POST['seat1-total'],$_POST['seat2-total'],
                 $_POST['departure'],$_POST['arrival'], $_POST['fNo']);
         }
@@ -183,7 +183,7 @@ switch($_POST['op']){
             $query = "UPDATE flight SET model = ?,airline = ?,seat1_total = ?,seat2_total = ?,
                 departure_airport = ?,arrival_airport = ?,transfer_airport1 = ?
                 WHERE flight_No = ?";
-            $stmt = $mysqli->prepare($query)；
+            $stmt = $mysqli->prepare($query);
             $stmt->bind_param('ssiissss', $_POST['model'],$_POST['airline'],$_POST['seat1-total'],$_POST['seat2-total'],
                 $_POST['departure'],$_POST['tran-1'],$_POST['arrival'], $_POST['fNo']);
         }
@@ -191,7 +191,7 @@ switch($_POST['op']){
             $query = "UPDATE flight SET model = ?,airline = ?,seat1_total = ?,seat2_total = ?,
                 departure_airport = ?,arrival_airport = ?,transfer_airport1 = ?,transfer_airport2 = ? 
                 WHERE flight_No = ?";
-            $stmt = $mysqli->prepare($query)；
+            $stmt = $mysqli->prepare($query);
             $stmt->bind_param('ssiisssss', $_POST['model'],$_POST['airline'],$_POST['seat1-total'],$_POST['seat2-total'],
                 $_POST['departure'],$_POST['tran-1'],$_POST['tran-2'],$_POST['arrival'], $_POST['fNo']);
         }
