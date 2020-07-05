@@ -152,6 +152,10 @@
       <div class="panel-heading"> 查询结果 </div>
       <div class="panel-body">
           <div class="py-5">
+          <div class="weather" style="margin-left:30%;">
+   <iframe width="4000" scrolling="no" height="65" frameborder="0" allowtransparency="true" marginwidth=10px src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=5&py=beijing">
+   </iframe>
+ </div>
     <div class="container">
       <div class="row">
         <div class="col-md-12">
