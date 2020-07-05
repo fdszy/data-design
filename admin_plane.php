@@ -39,6 +39,7 @@ header ( "Content-type:text/html;charset=utf-8" );
 <body data-spy="scroll" data-target="#myScrollspy">
 <meta charset="utf-8">
 <div id="app">
+<img src="image/航班管理.jpg"  width="1600px" height="400px">
     <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <div class="navbar-header">
@@ -63,10 +64,7 @@ header ( "Content-type:text/html;charset=utf-8" );
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-    <div class = container">
-        <div class="jumbotron">
-        <h1 class="text-center">航班管理</h1>
-    </div>
+
         <div class="container">
             <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
                 <div class="list-group">
