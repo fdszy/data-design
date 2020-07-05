@@ -72,7 +72,7 @@ if(!isset($_SESSION['user'])){
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
              <li class="active"><a href="javascript:void(0)">首页</a></li>
-            <li><a href="./user.php">账号管理</a></li>
+            <li><a href="./user.php">个人中心</a></li>
             <li><a href="./ticket.php">订单信息</a></li>
               <li><a href="./buy_ticket.php">购票</a></li>
           </ul>
@@ -82,7 +82,89 @@ if(!isset($_SESSION['user'])){
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
+<section id="services" class="service-item" style="background:url(./image/game/bg_services.jpg)">
+	   <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>愉快玩耍吧</h2>
+                <p class="lead">我们写了一些游戏以防您在候机时无聊 <br> 当然也有一些游戏是抄的传统游戏</p>
+            </div>
 
+            <div class="row">
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services1.png">
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">SEO Marketing</h3>
+                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services2.png">
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">SEO Marketing</h3>
+                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services3.png">
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">SEO Marketing</h3>
+                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services4.png">
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">SEO Marketing</h3>
+                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services5.png">
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">SEO Marketing</h3>
+                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services6.png">
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">SEO Marketing</h3>
+                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#services-->
 <section id="recent-works">
         <div class="container">
             <div class="center wow fadeInDown">
