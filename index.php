@@ -182,11 +182,11 @@ if(!isset($_SESSION['user'])){
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <a href="./chrome/game/index.html"><img src="image/game/surf.jpg" width="300" height="200"></a>
+                            <a href="edge://surf/"><img src="image/game/surf.jpg" width="300" height="200"></a>
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">冲浪</h3>
-                            <p>冲浪人我冲浪魂</p>
+                            <p>冲浪人我冲浪魂(仅限edge浏览器)</p>
                         </div>
                     </div>
                 </div>
