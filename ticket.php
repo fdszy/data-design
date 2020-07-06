@@ -38,9 +38,7 @@ if($_SESSION['user']['name'] === "admin"){
 
 <body >
   <div id="app">
-    <div class="jumbotron">
-      <h1 class="text-center">订单信息</h1>
-    </div>
+      <img src="image/订单.jpg"  width="1600px" height="400px">
     <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <div class="navbar-header">
@@ -68,6 +66,7 @@ if($_SESSION['user']['name'] === "admin"){
     </nav><!-- /.navbar -->
     <h5></h5>
   </div>
+  <hr/>
   <div class="py-3 text-center">
     <div class="container">
       <div class="row">
