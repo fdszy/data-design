@@ -159,11 +159,11 @@ if(!isset($_SESSION['user'])){
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <a href="./tanchishe/index.html"><img src="image/game/贪吃蛇.png" width="300" height="200"></a>
+                            <a href="./tanchishe/index.html"><img src="image/game/snake.jpg" width="300" height="200"></a>
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">贪吃蛇</h3>
-                            <p>尽可能让你的蛇达到最长吧</p>
+                            <p>就这？就这？你的蛇这就不行了？</p>
                         </div>
                     </div>
                 </div>
@@ -171,23 +171,22 @@ if(!isset($_SESSION['user'])){
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <a href="./chrome/game/index.html"><img src="image/game/chrome.png" width="300" height="200"></a>
+                            <a href="./chrome/game/index.html"><img src="image/game/dino.jpg" width="300" height="200"></a>
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">小恐龙</h3>
-                            <p>小恐龙要一直跳</p>
+                            <p>不会吧不会吧？不会真有人会撞仙人掌吧</p>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services3.png">
+                            <a href="./chrome/game/index.html"><img src="image/game/surf.jpg" width="300" height="200"></a>
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">SEO Marketing</h3>
-                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+                            <h3 class="media-heading">冲浪</h3>
+                            <p>冲浪人我冲浪魂</p>
                         </div>
                     </div>
                 </div>
