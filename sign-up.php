@@ -18,14 +18,8 @@ if($id === "" or !preg_match("/^\d*$/",$id)){
   exit;
 }
 
-
 if($confirm === $pwd){
-
   $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
-
-  $strs = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890qwertyuiopasdfghjklzxcvbnm";
-  $salt = substr(str_shuffle($strs),mt_rand(0,strlen($strs)-11),10);
-  $pwd = md5($pwd+$salt,FALSE);
 
   //康康用户名或者id用过没
   $query = "SELECT balance from customer WHERE name = ? OR id = ?";
@@ -40,6 +34,12 @@ if($confirm === $pwd){
       exit;
     }
   }
+
+  //加盐生成哈希值
+  $strs = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890qwertyuiopasdfghjklzxcvbnm";
+  $salt = substr(str_shuffle($strs),mt_rand(0,strlen($strs)-11),10);
+  $pwd = md5($pwd+$salt,FALSE);
+
 
   //正常注册
   $query = "INSERT customer (id,name,pwd_hash,salt,balance,credit) VALUES (?,?,?,?,0.00,0.00)";

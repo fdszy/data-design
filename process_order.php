@@ -14,7 +14,6 @@ if($op === 'buy'){
     $pas_id = $_POST['passenger_id'];
     $de_time = $_POST['time'];
 
-
     if(!check_if_user_exist($passenger,$mysqli) or $passenger != user_id_to_name($pas_id,$mysqli)){
         echo "<script>alert('用户名或身份证号输入错误，建议是重输');</script>";
         echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
