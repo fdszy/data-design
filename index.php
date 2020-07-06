@@ -163,7 +163,7 @@ if(!isset($_SESSION['user'])){
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">贪吃蛇</h3>
-                            <p>就这？就这？你的蛇这就不行了？</p>
+                            <p>小朋友,我已经在此恭候多时</p>
                         </div>
                     </div>
                 </div>
