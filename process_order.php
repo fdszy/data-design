@@ -14,13 +14,14 @@ if($op === 'buy'){
     $pas_id = $_POST['passenger_id'];
     $de_time = $_POST['time'];
 
+    //检查乘客姓名和身份证号
     if(!check_if_user_exist($passenger,$mysqli) or $passenger != user_id_to_name($pas_id,$mysqli)){
         echo "<script>alert('用户名或身份证号输入错误，建议是重输');</script>";
         echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
         exit;
     }
 
-    if($seat === '1'){
+    if($seat === '1'){//头等舱
         $query = "SELECT seat1_price,seat1_surplus,seat1_total from inventory i INNER JOIN flight f
             ON i.fNo =  f.flight_No
             WHERE i.fNo = ? AND i.departure_time = ?";

@@ -5,7 +5,6 @@ if(!isset($_SESSION['user'])){
     exit;
 }
 
-
 $money = $_POST['money'];
 
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
