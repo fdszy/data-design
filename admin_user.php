@@ -101,6 +101,7 @@
             </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
     </nav><!-- /.navbar -->
+    <hr />
     <div class = container">
 
         <div class="container">

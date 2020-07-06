@@ -82,6 +82,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
             </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
     </nav><!-- /.navbar -->
+    <hr />
     <div class = "col-md-offset-4">
         <div class="panel panel-default">
             <div class="panel-heading"> 订单基础信息 </div>
