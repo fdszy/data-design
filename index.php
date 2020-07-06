@@ -112,7 +112,7 @@ if(!isset($_SESSION['user'])){
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-comments"></i>
-                            <a href="ana2.html"><h2>折扣率分析</h2></a>
+                            <a href="ana2.html"><h2>准点率分析</h2></a>
                         </div>
                     </div><!--/.col-md-4-->
 
