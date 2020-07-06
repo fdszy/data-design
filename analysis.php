@@ -45,11 +45,8 @@
         </div><!-- /.nav-collapse -->
     </div><!-- /.container -->
 </nav><!-- /.navbar -->
-<div class = "container">
-    <div class="jumbotron">
-        <h1 class="text-center">流量分析</h1>
-    </div>
-</div>
+<img src="image/流量.jpg"  width="1600px" height="400px">
+<hr/>
 
 
 <div style="width:25%;margin-left:18%;margin-top:100px;">
