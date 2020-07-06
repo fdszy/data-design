@@ -16,13 +16,11 @@ if($departure == $arrival){
 }
 
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
-//$mysqli2 = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
 $departure_ids = array();
 $arrival_ids = array();
 $query = "SELECT id FROM airport WHERE city = ?";
 if ($stmt = $mysqli->prepare($query)){
-
     $stmt->bind_param('s', $cities[$departure]);
     $stmt->execute();
     $stmt->bind_result($id);    
@@ -42,7 +40,8 @@ if ($stmt = $mysqli->prepare($query)){
 
 $results = array();
 $query = "SELECT flight_No FROM flight WHERE departure_airport = ? AND arrival_airport = ?";
-$query2 = "SELECT departure_time,arrival_time,seat1_price,seat2_price FROM inventory WHERE fNo = ? AND DATE_FORMAT(departure_time,'%Y-%m-%d') = ?";
+$query2 = "SELECT departure_time,arrival_time,seat1_price,seat2_price FROM inventory 
+          WHERE fNo = ? AND DATE_FORMAT(departure_time,'%Y-%m-%d') = ?";
 if(($stmt = $mysqli->prepare($query)) and ($stmt2 = $mysqli->prepare($query2))){
   foreach($departure_ids as $start){
     foreach($arrival_ids as $end){
