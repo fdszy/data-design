@@ -8,7 +8,6 @@ if(!isset($_SESSION['user'])){
 
 $money = $_POST['money'];
 
-
 $mysqli = new mysqli('47.101.211.158','mxy','123456','ticket_system');
 
 $query = "UPDATE customer SET balance = balance + ? WHERE id = ?";
