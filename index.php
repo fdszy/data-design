@@ -105,21 +105,21 @@ if(!isset($_SESSION['user'])){
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-bullhorn"></i>
-                            <a href="ana1.html">航线分析</a>
+                            <a href="ana1.html"><h2>航线分析</h2></a>
                         </div>
                     </div><!--/.col-md-4-->
 
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-comments"></i>
-                            <a href="ana2.html">折扣率分析</a>
+                            <a href="ana2.html"><h2>折扣率分析</h2></a>
                         </div>
                     </div><!--/.col-md-4-->
 
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-comments"></i>
-                            <a href="ana3.html">城市连通率分析</a>
+                            <a href="ana3.html"><h2>城市连通率分析</h2></a>
                         </div>
                     </div><!--/.col-md-4-->
 
