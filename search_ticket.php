@@ -9,6 +9,13 @@ $departure = $_POST['departure'];
 $arrival = $_POST['arrival'];
 $date = $_POST['date']; // 日期
 
+$cur = date("y-m-d h:i:s"); 
+if(strtotime($cur1)>strtotime($date)){ // 已开行的航班不能购买
+    echo "<script>alert('不能查询已开行的航班');</script>";
+    echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
+    exit;
+}
+
 if($departure == $arrival){
   echo "<script>alert('出发地和到达地不能相同！');</script>";
   echo "<script language='javascript' type='text/javascript'>window.location.href='./buy_ticket.php'</script>";
