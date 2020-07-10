@@ -186,18 +186,25 @@
                   <td>".$result['ar-time']."</td>
                   <td>".$result['price1']."</td>
                   <td>".$result['price2']."</td>";
-              echo '<td><a class="btn btn-primary" href="./confirm_info.php?fNo='.$result['flightNo']
+              $cur = date("y-m-d h:i:s"); 
+              if(strtotime($cur)<strtotime($result['de-time'])){
+                echo '<td><a class="btn btn-primary" href="./confirm_info.php?fNo='.$result['flightNo']
                     .'&de='.$result['departure'].'&ar='.$result['arrival']
                     .'&de-time='.$result['de-time'].'&ar-time='.$result['ar-time']
                     .'&price1='.$result['price1'].'&price2='.$result['price2']
-                        .'"><i class="fa fa-download fa-fw"></i>购买机票</a></td>
-                </tr>
-                <tr></tr>
-                <tr></tr>
-              </tbody>';
-                }
-                unset($_SESSION['result_inv']);
+                        .'"><i class="fa fa-download fa-fw"></i>购买机票</a></td>';
+
               }
+              else{
+                echo '<td>航班已开行，无法购买</td>'
+              }                
+              echo '</tr>
+                  <tr></tr>
+                  <tr></tr>
+                  </tbody>';
+            }
+            unset($_SESSION['result_inv']);
+          }
             ?>
             </table>
           </div>

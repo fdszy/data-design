@@ -38,7 +38,7 @@ if($confirm === $pwd){
   //加盐生成哈希值
   $strs = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890qwertyuiopasdfghjklzxcvbnm";
   $salt = substr(str_shuffle($strs),mt_rand(0,strlen($strs)-11),10);
-  $pwd = md5($pwd+$salt,FALSE);
+  $pwd = md5($pwd.$salt,FALSE);
 
 
   //正常注册

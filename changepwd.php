@@ -19,7 +19,7 @@ if ($stmt = $mysqli->prepare($query)){
         exit;
     }
     while ($stmt->fetch()){
-        if(md5($oldpwd+$salt,FALSE) != $pwd){
+        if(md5($oldpwd.$salt,FALSE) != $pwd){
             echo "<script>alert('旧密码错误');</script>";
             echo "<script language='javascript' type='text/javascript'>window.location.href='./user.php'</script>";
             exit;
@@ -37,7 +37,7 @@ if($confirm != $newpwd){
 
 $query = "UPDATE customer SET pwd_hash = ? WHERE name = ?";
 if ($stmt = $mysqli->prepare($query)){
-  $stmt->bind_param('ss', md5($newpwd+$salt,FALSE),$name);
+  $stmt->bind_param('ss', md5($newpwd.$salt,FALSE),$name);
   if($stmt->execute()){
     echo "<script>alert('修改成功！');</script>";
     echo "<script language='javascript' type='text/javascript'>window.location.href='./user.php'</script>";
