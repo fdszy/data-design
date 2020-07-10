@@ -196,7 +196,7 @@
 
               }
               else{
-                echo '<td>航班已开行，无法购买</td>'
+                echo '<td>无法购买</td>';
               }                
               echo '</tr>
                   <tr></tr>
